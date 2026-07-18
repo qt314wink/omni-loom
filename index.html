@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omni-Loom — The Enterprise Deterministic Fabrication Compiler</title>
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════
+   OMNI-LOOM FABRICATION COMPILER — COMPLETE DESIGN SYSTEM
+   Integrated toolchain output:
+   - Musepool design inspiration (desert palette, agency layout, WebGL motion)
+   - AI Image Prompt Schema generated hero + material textures
+   - SVG tactile filters for fabric/leather/wood/denim material simulation
+   - Interactive Research Report patterns for data viz (stats, pipeline)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── SEMANTIC TOKEN ARCHITECTURE ────────────────────────────────────────── */
+:root {
+  /* COLOR PRIMITIVES — 24-color master palette from slide KMeans analysis */
+  --loom-copper:        #B87333;
+  --loom-copper-light:  #D4A843;
+  --loom-copper-dark:   #8B5A2B;
+  --loom-denim:         #2B3F5C;
+  --loom-denim-light:   #3D5161;
+  --loom-denim-deep:    #1A0F2E;
+  --loom-sage:          #7A9E8C;
+  --loom-sage-light:    #A1B1AE;
+  --loom-sage-dark:     #527568;
+  --loom-dust:          #C4B9A8;
+  --loom-dust-light:    #E8E0D4;
+  --loom-dust-warm:     #D5CEC4;
+  --loom-oxide:         #8B4513;
+  --loom-oxide-light:   #AD9073;
+  --loom-linen:         #F5F0E8;
+  --loom-midnight:      #1A0F2E;
+  --loom-void:          #0D0A12;
+  --loom-embroidery:    #D4A843;
+  --loom-thread-cyan:   #00D4AA;
+  --loom-thread-magenta:#FF6B9D;
+  --loom-thread-violet: #6B4EE6;
+
+  /* MATERIAL TOKENS — from AI Image Prompt Schema material physics */
+  --mat-glass:          rgba(255,255,255,0.08);
+  --mat-glass-border:   rgba(255,255,255,0.15);
+  --mat-leather:        linear-gradient(145deg, #6B4E3D 0%, #4A342B 50%, #3D2C27 100%);
+  --mat-wood:           linear-gradient(180deg, #8B6F4E 0%, #6B5344 50%, #4A3828 100%);
+  --mat-copper:         linear-gradient(145deg, #D4A843 0%, #B87333 40%, #8B5A2B 100%);
+  --mat-denim:          linear-gradient(135deg, #2B3F5C 0%, #1E2D42 100%);
+  --mat-holographic:    linear-gradient(135deg, #6B4EE6, #00D4AA, #FF6B9D, #6B4EE6);
+
+  /* DIMENSION / SHADOW TOKENS */
+  --z-stitch:           inset 0 -2px 4px rgba(0,0,0,0.3), 0 2px 4px rgba(255,255,255,0.1);
+  --z-copper-bevel:     inset 0 0 20px rgba(0,0,0,0.5), 0 0 30px rgba(184,115,51,0.3);
+  --z-paper-lift:       0 4px 20px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+  --z-emboss:           0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  --z-deep:             0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  --z-glow-copper:      0 0 20px rgba(184,115,51,0.4), 0 0 60px rgba(184,115,51,0.1);
+  --z-glow-cyan:        0 0 15px rgba(0,212,170,0.3);
+
+  /* MOTION TOKENS — Musepool 2FzMifwb WebGL motion reference */
+  --ease-weave:         cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-loom:          cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-settle:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-mouse:         cubic-bezier(0.05, 0.5, 0.5, 1);
+  --dur-fast:           0.2s;
+  --dur-normal:         0.4s;
+  --dur-slow:           0.8s;
+  --dur-holographic:    8s;
+  --dur-breathe:        4s;
+
+  /* SPACING TOKENS — Musepool msz30ocg agency layout */
+  --space-xs:  4px;   --space-sm:  8px;
+  --space-md:  16px;  --space-lg:  32px;
+  --space-xl:  64px;  --space-2xl: 128px;
+  --space-hero: 40vh;
+
+  /* TYPOGRAPHY */
+  --font-embroidery: 'Georgia', 'Times New Roman', serif;
+  --font-circuit:    'Courier New', 'Monaco', monospace;
+  --font-parchment:  'Georgia', serif;
+  --font-ui:         -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* STITCH TOKENS */
+  --stitch-running: 2px dashed var(--loom-embroidery);
+  --stitch-saddle:  3px double var(--loom-oxide);
+  --stitch-blanket: 2px dashed var(--loom-dust);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BLACK SCREEN FIX EXPLAINED:
+   
+   Root cause: The original had background layers at z-index: -1, which
+   placed them BEHIND the body's stacking context. The body had 
+   background: var(--loom-void) which is nearly black, completely 
+   obscuring the subtle (8% opacity) gradient layers.
+   
+   Fix applied:
+   1. Body has NO background color — it's transparent
+   2. Background layers at z-index: 0 (fixed, pointer-events: none)
+   3. All content wrapped in .content-layer at z-index: 1
+   4. Opacity increased from 8% to 12% on holographic gradient
+   5. Added hero background image as visible anchor
+   ═══════════════════════════════════════════════════════════════════════════ */
+body {
+  font-family: var(--font-ui);
+  color: var(--loom-dust-light);
+  overflow-x: hidden;
+  /* NO background — layers show through transparent body */
+  background: transparent;
+  min-height: 100vh;
+}
+
+/* ── BACKGROUND LAYER STACK ──
+   z-index: 0 — behind all content, pointer-events: none */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.bg-holo {
+  background: var(--loom-void);
+  overflow: hidden;
+}
+.bg-holo::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: var(--mat-holographic);
+  background-size: 400% 400%;
+  animation: holo-shift var(--dur-holographic) ease-in-out infinite;
+  opacity: 0.12; /* increased from 0.08 */
+  filter: blur(80px);
+}
+.bg-holo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(107,78,230,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0,212,170,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(255,107,157,0.12) 0%, transparent 50%);
+}
+@keyframes holo-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.bg-circuit {
+  z-index: 0;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(90deg, transparent 98%, rgba(0,212,170,0.35) 98%),
+    linear-gradient(0deg, transparent 98%, rgba(0,212,170,0.35) 98%);
+  background-size: 60px 60px;
+}
+#particle-canvas { z-index: 0; }
+
+/* ── CONTENT LAYER ── z-index: 1+ */
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SVG FILTER DEFINITIONS ── Tactile material simulation */
+.svg-filters { position: absolute; width: 0; height: 0; }
+
+/* ── CURSOR ── */
+.cursor-loom {
+  position: fixed;
+  width: 24px; height: 24px;
+  border: 2px solid var(--loom-copper);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.15s var(--ease-weave), width 0.2s, height 0.2s;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+}
+.cursor-loom::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px dashed var(--loom-embroidery);
+  border-radius: 50%;
+  animation: cursor-rotate 8s linear infinite;
+}
+@keyframes cursor-rotate { to { transform: rotate(360deg); } }
+.cursor-trail {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--loom-copper);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0.6;
+  transition: opacity 0.5s;
+}
+
+/* ── NAVIGATION ── */
+.nav-loom {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: var(--space-md) var(--space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13,10,18,0.85);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border-bottom: 1px solid rgba(212,168,67,0.15);
+  transition: all var(--dur-normal) var(--ease-settle);
+}
+.nav-loom.scrolled {
+  padding: var(--space-sm) var(--space-xl);
+  background: rgba(13,10,18,0.95);
+}
+.nav-logo {
+  font-family: var(--font-embroidery);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--loom-copper);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+}
+.nav-logo::after {
+  content: '';
+  display: block;
+  width: 0; height: 2px;
+  background: var(--loom-embroidery);
+  transition: width var(--dur-normal) var(--ease-weave);
+}
+.nav-logo:hover::after { width: 100%; }
+.nav-links { display: flex; gap: var(--space-lg); list-style: none; }
+.nav-links a {
+  color: var(--loom-dust);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  transition: color var(--dur-fast);
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--loom-thread-cyan);
+  transition: width var(--dur-normal) var(--ease-weave);
+}
+.nav-links a:hover { color: var(--loom-thread-cyan); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── HERO ── AI-generated background + SVG tactile overlay */
+.hero-loom {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: var(--space-hero) var(--space-xl);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(13,10,18,0.4) 0%, rgba(13,10,18,0.7) 60%, rgba(13,10,18,0.95) 100%),
+    url('images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+}
+.hero-title {
+  font-family: var(--font-embroidery);
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 700;
+  color: var(--loom-copper);
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.1),
+    0 2px 0 rgba(0,0,0,0.3),
+    0 4px 8px rgba(0,0,0,0.4),
+    0 0 40px rgba(184,115,51,0.3);
+}
+/* SVG stitch effect on title using text-shadow */
+.hero-title .stitch-text {
+  display: inline-block;
+  position: relative;
+}
+.hero-title .stitch-text::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 0; right: 0;
+  height: 3px;
+  background: repeating-linear-gradient(90deg,
+    var(--loom-embroidery) 0px, var(--loom-embroidery) 8px,
+    transparent 8px, transparent 12px);
+  opacity: 0.9;
+}
+.hero-subtitle {
+  font-family: var(--font-parchment);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--loom-dust-light);
+  font-style: italic;
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+.hero-tagline {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--mat-leather);
+  border: var(--stitch-saddle);
+  border-radius: 4px;
+  font-family: var(--font-circuit);
+  font-size: 0.9rem;
+  color: var(--loom-dust-light);
+  letter-spacing: 0.15em;
+  box-shadow: var(--z-emboss);
+  position: relative;
+  overflow: hidden;
+}
+.hero-tagline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* ── CACTUS GARDEN ── SVG illustrated, breathing animation */
+.cactus-garden {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+}
+.cactus {
+  position: absolute;
+  bottom: 0;
+  animation: cactus-breathe var(--dur-breathe) ease-in-out infinite;
+}
+.cactus-1 { left: 5%; width: 80px; height: 120px; animation-delay: 0s; }
+.cactus-2 { left: 15%; width: 60px; height: 90px; animation-delay: 0.5s; }
+.cactus-3 { right: 10%; width: 70px; height: 100px; animation-delay: 1s; }
+.cactus-4 { right: 25%; width: 50px; height: 80px; animation-delay: 1.5s; }
+@keyframes cactus-breathe {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.03) scaleX(0.98); }
+}
+
+/* ── SECTION BASE ── */
+.section-loom {
+  position: relative;
+  padding: var(--space-2xl) var(--space-xl);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+.section-title {
+  font-family: var(--font-embroidery);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--loom-copper);
+  margin-bottom: var(--space-md);
+  position: relative;
+  display: inline-block;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--loom-embroidery);
+  border-radius: 2px;
+}
+.section-desc {
+  font-family: var(--font-parchment);
+  font-size: 1.1rem;
+  color: var(--loom-dust);
+  max-width: 600px;
+  margin: var(--space-lg) auto 0;
+  line-height: 1.7;
+}
+
+/* ── CARD SYSTEM with SVG tactile material filters ── */
+.card-loom {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--dur-normal) var(--ease-weave);
+  box-shadow: var(--z-paper-lift);
+}
+/* Gradient border using mask — no extra elements needed */
+.card-loom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(212,168,67,0.3), transparent 50%, rgba(0,212,170,0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.card-loom:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--z-deep), var(--z-glow-copper);
+}
+.card-loom:hover::before {
+  background: linear-gradient(135deg, rgba(212,168,67,0.6), transparent 50%, rgba(0,212,170,0.4));
+}
+/* Running stitch border — animated */
+.card-stitch {
+  position: absolute;
+  inset: 4px;
+  border: var(--stitch-running);
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0.3;
+  transition: opacity var(--dur-normal);
+}
+.card-loom:hover .card-stitch {
+  opacity: 0.7;
+}
+.card-icon {
+  width: 56px; height: 56px;
+  margin-bottom: var(--space-md);
+}
+.card-title {
+  font-family: var(--font-embroidery);
+  font-size: 1.3rem;
+  color: var(--loom-copper-light);
+  margin-bottom: var(--space-sm);
+}
+.card-body {
+  font-size: 0.95rem;
+  color: var(--loom-dust);
+  line-height: 1.6;
+}
+
+/* Material variants with AI-generated textures */
+.card-leather {
+  background:
+    linear-gradient(145deg, rgba(107,78,61,0.85), rgba(74,52,43,0.9)),
+    url('images/leather.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
+  border: 2px solid var(--loom-oxide);
+  box-shadow: var(--z-emboss), inset 0 0 30px rgba(0,0,0,0.3);
+}
+.card-wood {
+  background:
+    linear-gradient(180deg, rgba(139,111,78,0.85), rgba(107,83,68,0.9)),
+    url('images/wood.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
+  border: 2px solid var(--loom-oxide-light);
+}
+.card-denim {
+  background:
+    linear-gradient(135deg, rgba(43,63,92,0.9), rgba(30,45,66,0.95)),
+    url('images/denim.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
+  border: 2px solid var(--loom-denim-light);
+}
+.card-glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(30px) saturate(1.2);
+  -webkit-backdrop-filter: blur(30px) saturate(1.2);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.card-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* ── PIPELINE TIMELINE ── */
+.pipeline-loom {
+  position: relative;
+  padding: var(--space-xl) 0;
+}
+.pipeline-thread {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg,
+    var(--loom-copper) 0%, var(--loom-thread-cyan) 25%,
+    var(--loom-thread-magenta) 50%, var(--loom-thread-violet) 75%,
+    var(--loom-copper) 100%);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0,212,170,0.3);
+}
+.pipeline-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all var(--dur-slow) var(--ease-loom);
+}
+.pipeline-stage.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pipeline-stage:nth-child(even) { flex-direction: row-reverse; }
+.pipeline-node {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--mat-copper);
+  border: 3px solid var(--loom-dust-light);
+  box-shadow: var(--z-copper-bevel), var(--z-glow-copper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-circuit);
+  font-weight: bold;
+  color: var(--loom-midnight);
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.pipeline-node::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 2px dashed var(--loom-embroidery);
+  border-radius: 50%;
+  animation: cursor-rotate 12s linear infinite;
+}
+.pipeline-content {
+  flex: 1;
+  max-width: 450px;
+  padding: var(--space-md) var(--space-lg);
+  margin: 0 var(--space-lg);
+}
+
+/* ── GRID SYSTEM ── */
+.grid-loom {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+}
+.grid-loom-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-loom-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 768px) {
+  .grid-loom-2, .grid-loom-3 { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .pipeline-thread { left: 30px; }
+  .pipeline-stage, .pipeline-stage:nth-child(even) { flex-direction: column; align-items: flex-start; padding-left: 70px; }
+}
+
+/* ── BUTTONS ── */
+.btn-loom {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-circuit);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--dur-normal) var(--ease-weave);
+}
+.btn-loom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+.btn-loom:hover::before { transform: translateX(100%); }
+.btn-copper {
+  background: var(--mat-copper);
+  color: var(--loom-midnight);
+  box-shadow: var(--z-copper-bevel);
+}
+.btn-copper:hover { transform: translateY(-2px); box-shadow: var(--z-copper-bevel), var(--z-glow-copper); }
+.btn-ghost {
+  background: transparent;
+  color: var(--loom-copper);
+  border: 2px solid var(--loom-copper);
+}
+.btn-ghost:hover { background: rgba(184,115,51,0.1); box-shadow: var(--z-glow-copper); }
+
+/* ── PROBLEM / SOLUTION CARDS ── */
+.problem-card {
+  background: linear-gradient(145deg, rgba(139,69,19,0.25), rgba(61,44,39,0.5));
+  border-left: 4px solid var(--loom-oxide);
+  padding: var(--space-md);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: var(--space-md);
+}
+.solution-card {
+  background: linear-gradient(145deg, rgba(0,212,170,0.12), rgba(107,78,230,0.12));
+  border-left: 4px solid var(--loom-thread-cyan);
+  padding: var(--space-md);
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── MORPHISM SHOWCASE ── */
+.morphism-showcase {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+.morphism-panel {
+  aspect-ratio: 3/4;
+  border-radius: 8px;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--dur-normal) var(--ease-weave);
+}
+.morphism-panel:hover { transform: translateY(-12px) scale(1.03); z-index: 10; }
+.morphism-glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.2);
+}
+.morphism-wood {
+  background:
+    linear-gradient(180deg, rgba(139,111,78,0.7), rgba(74,56,40,0.8)),
+    url('images/wood.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
+  border: 2px solid var(--loom-oxide-light);
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
+}
+.morphism-paper {
+  background: var(--loom-linen);
+  border: 1px solid var(--loom-dust);
+  box-shadow: var(--z-paper-lift);
+  color: var(--loom-midnight);
+}
+.morphism-silicon {
+  background: linear-gradient(145deg, #5B6E6F, #3D5161);
+  border: 2px solid var(--loom-sage);
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,212,170,0.1);
+}
+.morphism-label {
+  font-family: var(--font-embroidery);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-xs);
+}
+.morphism-desc { font-size: 0.8rem; opacity: 0.8; line-height: 1.4; }
+
+/* ── STATS ── Interactive Research Report pattern */
+.stat-loom { text-align: center; padding: var(--space-lg); }
+.stat-number {
+  font-family: var(--font-circuit);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--loom-copper);
+  line-height: 1;
+  text-shadow: var(--z-glow-copper);
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--loom-dust);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: var(--space-sm);
+}
+.stat-divider {
+  width: 40px; height: 2px;
+  background: var(--loom-embroidery);
+  margin: var(--space-sm) auto;
+}
+
+/* ── MANIFESTO HUB ── Radial diagram */
+.manifesto-hub {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+.manifesto-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: var(--mat-copper);
+  border: 4px solid var(--loom-embroidery);
+  box-shadow: var(--z-copper-bevel), var(--z-glow-copper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-md);
+  z-index: 10;
+}
+.manifesto-spoke {
+  position: absolute;
+  width: 150px;
+  padding: var(--space-sm);
+  background: var(--mat-leather);
+  border: var(--stitch-saddle);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  transition: all var(--dur-normal) var(--ease-weave);
+}
+.manifesto-spoke:hover { transform: scale(1.1); box-shadow: var(--z-glow-copper); }
+
+/* ── ROADMAP ── */
+.roadmap-loom {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+.roadmap-phase {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+.roadmap-badge {
+  width: 80px; height: 80px;
+  margin: 0 auto var(--space-md);
+  border-radius: 50%;
+  background: var(--mat-denim);
+  border: 3px solid var(--loom-copper);
+  box-shadow: var(--z-copper-bevel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-circuit);
+  font-size: 0.7rem;
+  color: var(--loom-dust-light);
+  position: relative;
+  z-index: 2;
+}
+.roadmap-badge::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 2px dashed var(--loom-embroidery);
+  border-radius: 50%;
+  animation: cursor-rotate 15s linear infinite;
+}
+.roadmap-title {
+  font-family: var(--font-embroidery);
+  font-size: 1rem;
+  color: var(--loom-copper-light);
+  margin-bottom: var(--space-xs);
+}
+.roadmap-body {
+  font-size: 0.8rem;
+  color: var(--loom-dust);
+  line-height: 1.5;
+  padding: var(--space-sm);
+  background: rgba(0,0,0,0.2);
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── FOOTER ── */
+.footer-loom {
+  background: linear-gradient(180deg, transparent, rgba(13,10,18,0.9));
+  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+  text-align: center;
+  border-top: 1px solid rgba(212,168,67,0.1);
+  position: relative;
+}
+.footer-loom::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--loom-embroidery), transparent);
+}
+.footer-tagline {
+  font-family: var(--font-embroidery);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--loom-copper);
+  margin-bottom: var(--space-md);
+}
+.footer-cta { display: inline-flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; justify-content: center; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--dur-slow) var(--ease-loom);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal.visible.reveal-left, .reveal.visible.reveal-right { transform: translateX(0); }
+
+/* ── AUDIO TOGGLE ── */
+.audio-toggle {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--mat-copper);
+  border: 2px solid var(--loom-embroidery);
+  color: var(--loom-midnight);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all var(--dur-normal) var(--ease-weave);
+  box-shadow: var(--z-copper-bevel);
+}
+.audio-toggle:hover { transform: scale(1.1); box-shadow: var(--z-copper-bevel), var(--z-glow-copper); }
+.audio-toggle.muted { opacity: 0.5; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--loom-void); }
+::-webkit-scrollbar-thumb { background: var(--loom-copper-dark); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--loom-copper); }
+::selection { background: rgba(184,115,51,0.3); color: var(--loom-dust-light); }
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG FILTERS: Tactile material simulation -->
+<svg class="svg-filters" aria-hidden="true">
+  <defs>
+    <!-- Fabric weave pattern -->
+    <pattern id="fabric-weave" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="3" height="3" fill="rgba(212,168,67,0.08)"/>
+      <rect x="3" y="3" width="3" height="3" fill="rgba(212,168,67,0.08)"/>
+    </pattern>
+    <!-- Leather grain noise -->
+    <filter id="leather-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="#8B6F4E" surfaceScale="1" result="light">
+        <feDistantLight azimuth="45" elevation="60"/>
+      </feDiffuseLighting>
+      <feBlend in="light" in2="SourceGraphic" mode="multiply"/>
+    </filter>
+    <!-- Embossed stitch -->
+    <filter id="emboss-stitch" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
+      <feOffset in="blur" dx="1" dy="1" result="offset"/>
+      <feSpecularLighting in="blur" surfaceScale="2" specularConstant="0.8" specularExponent="15" result="spec">
+        <fePointLight x="-500" y="-500" z="500"/>
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceAlpha" operator="in" result="spec"/>
+      <feMerge>
+        <feMergeNode in="offset"/>
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="spec"/>
+      </feMerge>
+    </filter>
+    <!-- Copper metallic gradient -->
+    <linearGradient id="copper-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4A843"/>
+      <stop offset="30%" stop-color="#B87333"/>
+      <stop offset="60%" stop-color="#8B5A2B"/>
+      <stop offset="100%" stop-color="#D4A843"/>
+    </linearGradient>
+    <!-- Denim texture filter -->
+    <filter id="denim-texture" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- BACKGROUND LAYERS (z-index: 0) -->
+<div class="bg-layer bg-holo"></div>
+<div class="bg-layer bg-circuit"></div>
+<canvas id="particle-canvas" class="bg-layer"></canvas>
+
+<!-- CURSOR -->
+<div class="cursor-loom" id="cursor"></div>
+
+<!-- AUDIO TOGGLE -->
+<button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+  </svg>
+</button>
+
+<!-- CONTENT LAYER (z-index: 1+) -->
+<div class="content-layer">
+
+<!-- NAVIGATION -->
+<nav class="nav-loom" id="navbar">
+  <a href="#" class="nav-logo">Omni-Loom</a>
+  <ul class="nav-links">
+    <li><a href="#problem">The Schism</a></li>
+    <li><a href="#morphism">Framework</a></li>
+    <li><a href="#substrate">Physics</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero-loom" id="hero">
+  <div class="hero-content">
+    <h1 class="hero-title"><span class="stitch-text">Omni-Loom</span></h1>
+    <p class="hero-subtitle">The Enterprise Deterministic Fabrication Compiler</p>
+    <div class="hero-tagline">Every cut, compiled.</div>
+    <div style="margin-top: var(--space-xl); display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+      <a href="#problem" class="btn-loom btn-copper">Explore the Schism</a>
+      <a href="#manifesto" class="btn-loom btn-ghost">View Manifesto</a>
+    </div>
+  </div>
+  <!-- SVG Cactus Garden -->
+  <div class="cactus-garden">
+    <svg class="cactus cactus-1" viewBox="0 0 80 120" fill="none">
+      <ellipse cx="40" cy="110" rx="30" ry="8" fill="#0D0A12" opacity="0.4"/>
+      <path d="M32,110 L32,35 Q32,18 40,18 Q48,18 48,35 L48,110" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
+      <path d="M32,55 Q18,50 18,40 Q18,30 28,35" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
+      <path d="M48,50 Q62,45 62,35 Q62,25 52,30" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
+      <line x1="36" y1="30" x2="36" y2="33" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/>
+      <line x1="44" y1="25" x2="44" y2="28" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="cactus cactus-2" viewBox="0 0 60 90" fill="none">
+      <ellipse cx="30" cy="82" rx="22" ry="6" fill="#0D0A12" opacity="0.4"/>
+      <path d="M24,82 L24,40 Q24,25 30,25 Q36,25 36,40 L36,82" fill="#6B8F7A" stroke="#4A6B5A" stroke-width="2"/>
+      <path d="M24,55 Q15,50 15,42 Q15,34 22,38" fill="#6B8F7A" stroke="#4A6B5A" stroke-width="2"/>
+      <line x1="28" y1="32" x2="28" y2="35" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="cactus cactus-3" viewBox="0 0 70 100" fill="none">
+      <ellipse cx="35" cy="92" rx="25" ry="7" fill="#0D0A12" opacity="0.4"/>
+      <path d="M28,92 L28,30 Q28,16 35,16 Q42,16 42,30 L42,92" fill="#5A7D6A" stroke="#3D5C4A" stroke-width="2"/>
+      <path d="M42,52 Q54,47 54,37 Q54,27 46,32" fill="#5A7D6A" stroke="#3D5C4A" stroke-width="2"/>
+      <line x1="32" y1="24" x2="32" y2="27" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <svg class="cactus cactus-4" viewBox="0 0 50 80" fill="none">
+      <ellipse cx="25" cy="74" rx="18" ry="5" fill="#0D0A12" opacity="0.4"/>
+      <path d="M20,74 L20,35 Q20,22 25,22 Q30,22 30,35 L30,74" fill="#7A9E8C" stroke="#5A7D6A" stroke-width="2"/>
+      <line x1="23" y1="28" x2="23" y2="31" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="section-loom" id="problem">
+  <div class="section-header reveal">
+    <h2 class="section-title">The Format Schism</h2>
+    <p class="section-desc">Mid-size fabrication shops hemorrhage 780+ hours annually to format fragmentation. Every file conversion is a stitch unpicked.</p>
+  </div>
+  <div class="grid-loom grid-loom-2">
+    <div class="reveal reveal-left">
+      <div class="problem-card">
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-oxide-light); margin-bottom: var(--space-sm);">Fragmented Vector Tools</h3>
+        <p style="color: var(--loom-dust-light);">Designers work in Illustrator, CorelDRAW, Inkscape — each exporting incompatible paths. The 780+ hour manual file conversion tax drains creative capacity.</p>
+      </div>
+      <div class="problem-card">
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-oxide-light); margin-bottom: var(--space-sm);">Inconsistent Scaling</h3>
+        <p style="color: var(--loom-dust-light);">Arbitrary color spaces between design and machine yield $400+ material waste per registration error. Needle breaks and unpredictable kerf compound losses.</p>
+      </div>
+      <div class="problem-card">
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-oxide-light); margin-bottom: var(--space-sm);">Proprietary Lock-in</h3>
+        <p style="color: var(--loom-dust-light);">Rigid machine protocols (DST, G-Code) trap shops in vendor ecosystems. No interoperability, no portability, no escape.</p>
+      </div>
+    </div>
+    <div class="reveal reveal-right">
+      <div class="solution-card">
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-thread-cyan); margin-bottom: var(--space-sm);">The Omni-Loom Bridge</h3>
+        <p style="color: var(--loom-dust-light);">A universal intermediate representation — <code style="color: var(--loom-copper);">stitch_plan.json</code> — compiles intent to physical dispatch with mathematical determinism.</p>
+      </div>
+      <div style="margin-top: var(--space-lg); padding: var(--space-lg); background: var(--mat-denim); border-radius: 8px; border: 1px solid var(--loom-denim-light);">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); text-align: center;">
+          <div class="stat-loom">
+            <div class="stat-number" data-count="780">0</div>
+            <div class="stat-divider"></div>
+            <div class="stat-label">Hours Saved / Year</div>
+          </div>
+          <div class="stat-loom">
+            <div class="stat-number" data-count="400">0</div>
+            <div class="stat-divider"></div>
+            <div class="stat-label">$ Waste Prevented</div>
+          </div>
+          <div class="stat-loom">
+            <div class="stat-number" data-count="100">0</div>
+            <div class="stat-divider"></div>
+            <div class="stat-label">% Deterministic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MORPHISM FRAMEWORK -->
+<section class="section-loom" id="morphism">
+  <div class="section-header reveal">
+    <h2 class="section-title">The Morphism Diagnostic Framework</h2>
+    <p class="section-desc">Four material paradigms, one unified compiler. Each morphism represents a distinct tactile language translated into deterministic machine instruction.</p>
+  </div>
+  <div class="morphism-showcase reveal">
+    <div class="morphism-panel morphism-glass">
+      <div class="morphism-label" style="color: var(--loom-dust-light);">Glassmorphism</div>
+      <div class="morphism-desc" style="color: var(--loom-dust);">Maximizes visibility for precise preview panels and laser toolpaths. Frosted clarity with depth.</div>
+    </div>
+    <div class="morphism-panel morphism-wood">
+      <div class="morphism-label" style="color: var(--loom-dust-light);">Woodmorphism</div>
+      <div class="morphism-desc" style="color: var(--loom-dust);">Warm, organic variation and depth. Natural grain patterns inform tactile feedback.</div>
+    </div>
+    <div class="morphism-panel morphism-paper">
+      <div class="morphism-label">Papermorphism</div>
+      <div class="morphism-desc">Stackable, annotatable layers of fabric design. Fold, crease, annotate.</div>
+    </div>
+    <div class="morphism-panel morphism-silicon">
+      <div class="morphism-label" style="color: var(--loom-dust-light);">Siliconmorphism</div>
+      <div class="morphism-desc" style="color: var(--loom-dust);">Industrial precision and chemical mixing. The substrate of computation.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPUTATIONAL SUBSTRATE -->
+<section class="section-loom" id="substrate">
+  <div class="section-header reveal">
+    <h2 class="section-title">The Computational Substrate</h2>
+    <p class="section-desc">Processing physics and light at the speed of thought. Rust/WASM meets WebGPU for real-time deterministic simulation.</p>
+  </div>
+  <div class="grid-loom grid-loom-2">
+    <div class="card-loom card-denim reveal reveal-left">
+      <div class="card-stitch"></div>
+      <div class="card-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <rect x="8" y="8" width="40" height="40" rx="4" fill="url(#copper-shine)" opacity="0.3"/>
+          <path d="M16,28 L24,20 L32,28 L40,20" stroke="#00D4AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16,36 L28,24 L40,36" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="28" cy="28" r="20" stroke="#00D4AA" stroke-width="1" opacity="0.3" stroke-dasharray="4 4"/>
+        </svg>
+      </div>
+      <h3 class="card-title">The Warp: Rust/WASM XPBD Solver</h3>
+      <p class="card-body">Calculates soft-body kinematics, cloth draping, and thread tension with deterministic accuracy.</p>
+      <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-thread-cyan);">&gt; xpbd.solve(mesh, constraints, dt=0.016)</div>
+    </div>
+    <div class="card-loom card-glass reveal reveal-right">
+      <div class="card-stitch"></div>
+      <div class="card-icon">
+        <svg viewBox="0 0 56 56" fill="none">
+          <rect x="4" y="4" width="48" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
+          <path d="M14,42 L14,14 L28,28 L42,14 L42,42" stroke="#FF6B9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="28" cy="28" r="8" stroke="#6B4EE6" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <h3 class="card-title">The Weft: WebGPU Render Pipeline</h3>
+      <p class="card-body">Procedural textures — wood grain via fractal noise, fabric weave via turbulence — without heavy asset payloads.</p>
+      <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-thread-magenta);">&gt; webgpu.render(proceduralTexture, PBR)</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8-STAGE PIPELINE -->
+<section class="section-loom" id="pipeline">
+  <div class="section-header reveal">
+    <h2 class="section-title">The 8-Stage Compilation Pipeline</h2>
+    <p class="section-desc">From creative intent to physical dispatch — every stage is versioned, reversible, and mathematically provable.</p>
+  </div>
+  <div class="pipeline-loom">
+    <div class="pipeline-thread"></div>
+    <div class="pipeline-stage" data-stage="1">
+      <div class="pipeline-node">1</div>
+      <div class="pipeline-content card-loom card-leather">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Intent Capture</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">Natural language or SVG parsed into AST. Every decision logged as semantic node.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">parse(intent) &rarr; AST</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="2">
+      <div class="pipeline-node">2</div>
+      <div class="pipeline-content card-loom card-denim">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Orchestration</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">Chief Spatial Architect distributes work. Multi-threaded with dependency graph resolution.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">orchestrate(AST) &rarr; DAG</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="3">
+      <div class="pipeline-node">3</div>
+      <div class="pipeline-content card-loom card-wood">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Physics</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">Rust XPBD solver: soft-body kinematics, cloth draping, thread tension.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">solve(mesh, constraints)</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="4">
+      <div class="pipeline-node">4</div>
+      <div class="pipeline-content card-loom card-glass">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Render</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">WebGPU procedural textures — wood grain, fabric weave, leather grain.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">render(PBR, noise)</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="5">
+      <div class="pipeline-node">5</div>
+      <div class="pipeline-content card-loom card-leather">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Synesthesia</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">Audio-haptic mapping: visual data into vibration envelopes and spectral soundscapes.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">map(visual &rarr; haptic)</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="6">
+      <div class="pipeline-node">6</div>
+      <div class="pipeline-content card-loom card-denim">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Geometry Unwrap</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">ABF++ flattening: 3D surfaces to 2D toolpaths with minimal distortion.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">unwrap(mesh) &rarr; UV</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="7">
+      <div class="pipeline-node">7</div>
+      <div class="pipeline-content card-loom card-wood">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Fabrication Export</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">G-Code, DST, PNG generation with trapping, color separation, registration marks.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">export(toolpath, format)</code>
+      </div>
+    </div>
+    <div class="pipeline-stage" data-stage="8">
+      <div class="pipeline-node">8</div>
+      <div class="pipeline-content card-loom card-glass">
+        <div class="card-stitch"></div>
+        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Cyber-Physical Handshake</h3>
+        <p style="font-size: 0.85rem; color: var(--loom-dust);">Containerized dispatch via MQTT/OPC-UA. Real-time telemetry feedback loop.</p>
+        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">dispatch(machine, verify)</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMBROIDERED MANIFESTO -->
+<section class="section-loom" id="manifesto">
+  <div class="section-header reveal">
+    <h2 class="section-title">The Embroidered Manifesto</h2>
+    <p class="section-desc">One universal intermediate representation. Six fabrication modalities. Infinite material expression.</p>
+  </div>
+  <div class="manifesto-hub reveal" id="manifestoHub">
+    <div class="manifesto-center">
+      <div style="font-family: var(--font-circuit); font-size: 0.9rem; font-weight: bold; color: var(--loom-midnight);">stitch_plan.json</div>
+      <div style="font-family: var(--font-circuit); font-size: 0.65rem; margin-top: 4px; opacity: 0.8; color: var(--loom-midnight);">Universal IR</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12-MONTH ROADMAP -->
+<section class="section-loom" id="roadmap">
+  <div class="section-header reveal">
+    <h2 class="section-title">The 12-Month Roadmap</h2>
+    <p class="section-desc">From foundation to orbit. Four phases, twelve months, one deterministic trajectory.</p>
+  </div>
+  <div class="roadmap-loom reveal">
+    <div class="roadmap-phase">
+      <div class="roadmap-badge">M1-3</div>
+      <div class="roadmap-title">Foundation</div>
+      <div class="roadmap-body">Rust XPBD solver, WebGPU shaders, Docker Compose. Lock design tokens and component library.</div>
+      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">4 engineers</div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="roadmap-badge">M4-6</div>
+      <div class="roadmap-title">Pipeline</div>
+      <div class="roadmap-body">8-stage compilation pipeline. Git-as-Memory audit trails. CE/UL pre-audits. Kubernetes.</div>
+      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">5 engineers</div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="roadmap-badge">M7-9</div>
+      <div class="roadmap-title">Integration</div>
+      <div class="roadmap-body">Machine worker fleet. MQTT telemetry. Beta customers, stress tests.</div>
+      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">6 engineers</div>
+    </div>
+    <div class="roadmap-phase">
+      <div class="roadmap-badge">M10-12</div>
+      <div class="roadmap-title">Launch</div>
+      <div class="roadmap-body">Enterprise pilots. LumenForge + ThreadWeave launch. Community onboarding.</div>
+      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">6 engineers</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-loom" id="cta">
+  <div class="reveal">
+    <h2 class="footer-tagline">The Bridge is the Product.</h2>
+    <p style="font-family: var(--font-parchment); font-size: 1.2rem; color: var(--loom-dust); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+      There are good design tools. There are good fabrication machines. Omni-Loom is the reliable, deterministic, auditable bridge between them.
+    </p>
+    <div class="footer-cta">
+      <a href="#" class="btn-loom btn-copper" onclick="event.preventDefault(); alert('Enterprise pilot scheduling coming soon.');">Schedule Pilot</a>
+      <a href="#" class="btn-loom btn-ghost" onclick="event.preventDefault(); alert('Technical whitepaper download coming soon.');">Download Whitepaper</a>
+    </div>
+    <div style="margin-top: var(--space-2xl); padding-top: var(--space-lg); border-top: 1px solid rgba(212,168,67,0.1);">
+      <p style="font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-dust); opacity: 0.5;">
+        Omni-Loom Fabrication Compiler &copy; 2026 &mdash; Every cut, compiled.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /content-layer -->
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// OMNI-LOOM INTERACTION ENGINE — Self-contained, zero-dependency
+// Integrated: particle physics, custom cursor, scroll reveal, ambient audio
+// ═══════════════════════════════════════════════════════════════════════════
+(function() {
+  'use strict';
+
+  // ── CURSOR SYSTEM ── 8-particle trail with spring physics
+  const cursor = document.getElementById('cursor');
+  let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+  const trails = [];
+  const TRAIL_COUNT = 8;
+  for (let i = 0; i < TRAIL_COUNT; i++) {
+    const t = document.createElement('div');
+    t.className = 'cursor-trail';
+    document.body.appendChild(t);
+    trails.push({ el: t, x: 0, y: 0 });
+  }
+  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    let px = cursorX, py = cursorY;
+    trails.forEach((t, i) => {
+      t.x += (px - t.x) * (0.1 + i * 0.02);
+      t.y += (py - t.y) * (0.1 + i * 0.02);
+      t.el.style.left = t.x + 'px';
+      t.el.style.top = t.y + 'px';
+      t.el.style.opacity = 0.5 - (i / TRAIL_COUNT) * 0.4;
+      t.el.style.transform = `translate(-50%,-50%) scale(${1 - i * 0.08})`;
+      px = t.x; py = t.y;
+    });
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Hover state
+  document.querySelectorAll('a, button, .card-loom, .morphism-panel, .pipeline-node').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '48px';
+      cursor.style.height = '48px';
+      cursor.style.borderColor = 'var(--loom-thread-cyan)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '24px';
+      cursor.style.height = '24px';
+      cursor.style.borderColor = 'var(--loom-copper)';
+    });
+  });
+
+  // ── PARTICLE SYSTEM ── 60 particles with fabric mesh connections
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const PARTICLE_COUNT = 60;
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.opacity = Math.random() * 0.5 + 0.1;
+      this.hue = Math.random() > 0.5 ? 30 : 170;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      // Mouse repulsion
+      const dx = this.x - mouseX, dy = this.y - mouseY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 100) {
+        const f = (100 - dist) / 100;
+        this.x += (dx/dist) * f * 2;
+        this.y += (dy/dist) * f * 2;
+      }
+      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${this.hue},70%,60%,${this.opacity})`;
+      ctx.fill();
+    }
+  }
+  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+  function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(212,168,67,${0.08 * (1 - d/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawConnections();
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  // ── SCROLL REVEAL ── IntersectionObserver
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate stat counters
+        entry.target.querySelectorAll('.stat-number[data-count]').forEach(stat => {
+          if (stat.dataset.animated) return;
+          stat.dataset.animated = 'true';
+          const target = parseInt(stat.dataset.count);
+          const start = performance.now();
+          const duration = 2000;
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            stat.textContent = Math.floor(eased * target);
+            if (progress < 1) requestAnimationFrame(update);
+            else stat.textContent = target + (target === 100 ? '%' : '+');
+          }
+          requestAnimationFrame(update);
+        });
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .pipeline-stage').forEach(el => revealObserver.observe(el));
+
+  // ── NAVBAR SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 100);
+  });
+
+  // ── SMOOTH SCROLL ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const id = this.getAttribute('href');
+      if (id === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ── MANIFESTO SPOKES ── Radial positioning
+  const hub = document.getElementById('manifestoHub');
+  const spokeData = [
+    { label: 'CNC Routing', desc: 'SVG \u2192 G-Code', cls: 'spoke-top', style: 'top:5%;left:50%;transform:translateX(-50%)' },
+    { label: 'Embroidery', desc: 'SVG \u2192 DST', cls: 'spoke-tr', style: 'top:12%;right:8%' },
+    { label: 'Screen Print', desc: 'Multi-layer PNG', cls: 'spoke-right', style: 'top:50%;right:3%;transform:translateY(-50%)' },
+    { label: 'Sublimation', desc: 'WebGPU \u2192 300 DPI', cls: 'spoke-br', style: 'bottom:12%;right:8%' },
+    { label: 'Laser Cut', desc: 'Kerf-compensated', cls: 'spoke-bottom', style: 'bottom:5%;left:50%;transform:translateX(-50%)' },
+    { label: '3D Print', desc: 'Sliced G-Code', cls: 'spoke-bl', style: 'bottom:12%;left:8%' },
+    { label: 'Weaving', desc: 'Jacquard format', cls: 'spoke-left', style: 'top:50%;left:3%;transform:translateY(-50%)' },
+    { label: 'Quilting', desc: 'Long-arm path', cls: 'spoke-tl', style: 'top:12%;left:8%' },
+  ];
+  spokeData.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'manifesto-spoke ' + s.cls;
+    el.style.cssText = s.style;
+    el.innerHTML = `<div style="font-family:var(--font-embroidery);color:var(--loom-copper-light);font-size:0.9rem;">${s.label}</div><div style="font-size:0.7rem;color:var(--loom-dust);margin-top:4px;">${s.desc}</div>`;
+    hub.appendChild(el);
+  });
+
+  // ── AUDIO ENGINE ── Web Audio API ambient drone
+  const audioToggle = document.getElementById('audioToggle');
+  let audioEnabled = false, audioCtx = null, gainNodes = [];
+  function initAudio() {
+    if (audioCtx) return;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const freqs = [110, 164.81, 220, 329.63];
+    freqs.forEach((freq, i) => {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+      osc.type = i % 2 === 0 ? 'sine' : 'triangle';
+      osc.frequency.value = freq;
+      filter.type = 'lowpass';
+      filter.frequency.value = 800;
+      gain.gain.value = 0;
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      gainNodes.push(gain);
+    });
+  }
+  audioToggle.addEventListener('click', () => {
+    if (!audioEnabled) {
+      initAudio();
+      audioCtx.resume();
+      gainNodes.forEach((g, i) => g.gain.setTargetAtTime([0.03,0.02,0.015,0.01][i], audioCtx.currentTime, 1));
+      audioToggle.classList.remove('muted');
+      audioEnabled = true;
+    } else {
+      gainNodes.forEach(g => g.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5));
+      audioToggle.classList.add('muted');
+      audioEnabled = false;
+    }
+  });
+
+  // ── PARALLAX ──
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const holo = document.querySelector('.bg-holo');
+    if (holo) holo.style.transform = `translateY(${scrolled * 0.15}px)`;
+  });
+
+  console.log('%c Omni-Loom Fabrication Compiler ', 'background:#B87333;color:#1A0F2E;font-size:14px;font-weight:bold;padding:4px 8px;border-radius:4px;');
+  console.log('%c Every cut, compiled. ', 'color:#D4A843;font-style:italic;');
+})();
+</script>
+
+</body>
+</html>
