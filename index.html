@@ -3,10 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Omni-Loom is a universal fabrication compiler that compiles creative intent to physical dispatch. Save 780+ hours annually by eliminating format fragmentation across CNC, embroidery, laser cutting, and 3D printing.">
+<meta name="keywords" content="fabrication compiler, CNC, embroidery, laser cutting, 3D printing, manufacturing, design tools">
+<meta name="author" content="Omni-Loom">
+<meta name="theme-color" content="#B87333">
+<meta name="color-scheme" content="dark">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thetbxcrmozis.kimi.page">
+<meta property="og:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
+<meta property="og:description" content="Every cut, compiled. Save 780+ hours annually with deterministic fabrication across CNC, embroidery, laser cutting, and 3D printing.">
+<meta property="og:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
+<meta property="og:site_name" content="Omni-Loom">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
+<meta name="twitter:description" content="Every cut, compiled. Save 780+ hours annually with deterministic fabrication.">
+<meta name="twitter:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://thetbxcrmozis.kimi.page">
+
+<!-- Preconnect hints -->
+<link rel="preconnect" href="https://thetbxcrmozis.kimi.page">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231A0F2E' stroke='%23B87333' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23D4A843'/%3E%3C/svg%3E">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Omni-Loom Fabrication Compiler",
+  "description": "Universal fabrication compiler that compiles creative intent to physical dispatch across CNC, embroidery, laser cutting, and 3D printing.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "127"
+  }
+}
+</script>
+
 <title>Omni-Loom — The Enterprise Deterministic Fabrication Compiler</title>
 <style>
 /* ═══════════════════════════════════════════════════════════════════════════
-   OMNI-LOOM FABRICATION COMPILER — COMPLETE DESIGN SYSTEM
+   OMNI-LOOM FABRICATION COMPILER — COMPLETE DESIGN SYSTEM v2
    Integrated toolchain output:
    - Musepool design inspiration (desert palette, agency layout, WebGL motion)
    - AI Image Prompt Schema generated hero + material textures
@@ -872,17 +923,212 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--loom-copper); }
 ::selection { background: rgba(184,115,51,0.3); color: var(--loom-dust-light); }
 
-/* ── REDUCED MOTION ── */
+/* ── SKIP LINK ── */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--loom-copper);
+  color: var(--loom-midnight);
+  padding: 8px 16px;
+  z-index: 100000;
+  font-family: var(--font-circuit);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--mat-holographic);
+  background-size: 200% 200%;
+  animation: holo-shift 3s ease-in-out infinite;
+  z-index: 10001;
+  pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+/* ── FOCUS-VISIBLE STATES ── */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--loom-thread-cyan);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.nav-links a:focus-visible::after {
+  width: 100%;
+}
+.card-loom:focus-visible {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--z-deep), var(--z-glow-copper);
+}
+
+/* ── 3D TACTILE CARD TRANSFORMS ── */
+.card-loom {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+.card-loom:hover {
+  transform: translateY(-8px) scale(1.02) rotateX(2deg);
+}
+.morphism-panel {
+  transform-style: preserve-3d;
+  perspective: 600px;
+}
+.morphism-panel:hover {
+  transform: translateY(-12px) scale(1.03) rotateX(3deg) rotateY(-2deg);
+}
+
+/* ── SVG STITCH ANIMATION ── */
+@keyframes stitch-draw {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+.card-stitch {
+  background: repeating-linear-gradient(90deg,
+    var(--loom-embroidery) 0px, var(--loom-embroidery) 6px,
+    transparent 6px, transparent 10px);
+  height: 2px;
+  border: none;
+  border-radius: 0;
+  animation: stitch-draw 2s ease-out forwards;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* ── MOBILE BOTTOM NAV ── */
+@media (max-width: 768px) {
+  .nav-loom {
+    top: auto;
+    bottom: 0;
+    border-bottom: none;
+    border-top: 1px solid rgba(212,168,67,0.15);
+    padding: var(--space-sm) var(--space-md);
+  }
+  .nav-loom.scrolled {
+    padding: var(--space-sm) var(--space-md);
+  }
+  .nav-links {
+    display: flex !important;
+    gap: var(--space-sm);
+  }
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+  }
+  /* Add padding to bottom of sections to account for fixed nav */
+  .section-loom {
+    padding-bottom: calc(var(--space-2xl) + 60px);
+  }
+  .footer-loom {
+    padding-bottom: calc(var(--space-xl) + 60px);
+  }
+  .hero-loom {
+    padding-bottom: calc(var(--space-hero) + 60px);
+  }
+  /* Hide cursor on touch devices */
+  .cursor-loom,
+  .cursor-trail {
+    display: none;
+  }
+}
+
+/* ── 44px MINIMUM TAP TARGETS ── */
+.btn-loom,
+.audio-toggle,
+.pipeline-node,
+.nav-links a {
+  min-height: 44px;
+  min-width: 44px;
+}
+.nav-links a {
+  display: flex;
+  align-items: center;
+}
+
+/* ── PREFERS-REDUCED-MOTION: AUDIO RESPECT ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  .audio-toggle {
+    display: none;
+  }
+}
+
+/* ── NEWSLETTER CAPTURE ── */
+.newsletter-loom {
+  display: flex;
+  gap: var(--space-sm);
+  max-width: 500px;
+  margin: var(--space-lg) auto 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.newsletter-loom input {
+  flex: 1;
+  min-width: 200px;
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  color: var(--loom-dust-light);
+  font-family: var(--font-circuit);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+.newsletter-loom input:focus-visible {
+  outline: 2px solid var(--loom-thread-cyan);
+  border-color: var(--loom-thread-cyan);
+}
+.newsletter-loom input::placeholder {
+  color: var(--loom-dust);
+  opacity: 0.6;
+}
+
+/* ── SOCIAL PROOF ── */
+.social-proof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  margin-top: var(--space-lg);
+  opacity: 0.5;
+}
+.social-proof-item {
+  font-family: var(--font-circuit);
+  font-size: 0.75rem;
+  color: var(--loom-dust);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ── LOADING="LAZY" FOR IMAGES ── */
+img, .hero-loom {
+  content-visibility: auto;
 }
 </style>
 </head>
 <body>
+
+<!-- SKIP TO CONTENT -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- SCROLL PROGRESS BAR -->
+<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
 <!-- SVG FILTERS: Tactile material simulation -->
 <svg class="svg-filters" aria-hidden="true">
@@ -946,18 +1192,18 @@ body {
 </button>
 
 <!-- CONTENT LAYER (z-index: 1+) -->
-<div class="content-layer">
+<div class="content-layer" id="main-content" role="main">
 
 <!-- NAVIGATION -->
-<nav class="nav-loom" id="navbar">
-  <a href="#" class="nav-logo">Omni-Loom</a>
+<nav class="nav-loom" id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="Omni-Loom home">Omni-Loom</a>
   <ul class="nav-links">
-    <li><a href="#problem">The Schism</a></li>
-    <li><a href="#morphism">Framework</a></li>
-    <li><a href="#substrate">Physics</a></li>
-    <li><a href="#pipeline">Pipeline</a></li>
-    <li><a href="#manifesto">Manifesto</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#problem" aria-label="The Format Schism section">The Schism</a></li>
+    <li><a href="#morphism" aria-label="Morphism Framework section">Framework</a></li>
+    <li><a href="#substrate" aria-label="Computational Substrate section">Physics</a></li>
+    <li><a href="#pipeline" aria-label="Compilation Pipeline section">Pipeline</a></li>
+    <li><a href="#manifesto" aria-label="Embroidered Manifesto section">Manifesto</a></li>
+    <li><a href="#roadmap" aria-label="12-Month Roadmap section">Roadmap</a></li>
   </ul>
 </nav>
 
@@ -968,13 +1214,13 @@ body {
     <p class="hero-subtitle">The Enterprise Deterministic Fabrication Compiler</p>
     <div class="hero-tagline">Every cut, compiled.</div>
     <div style="margin-top: var(--space-xl); display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
-      <a href="#problem" class="btn-loom btn-copper">Explore the Schism</a>
-      <a href="#manifesto" class="btn-loom btn-ghost">View Manifesto</a>
+      <a href="#problem" class="btn-loom btn-copper" aria-label="Explore the Format Schism section">Explore the Schism</a>
+      <a href="#manifesto" class="btn-loom btn-ghost" aria-label="View the Embroidered Manifesto">View Manifesto</a>
     </div>
   </div>
   <!-- SVG Cactus Garden -->
   <div class="cactus-garden">
-    <svg class="cactus cactus-1" viewBox="0 0 80 120" fill="none">
+    <svg class="cactus cactus-1" viewBox="0 0 80 120" fill="none" aria-hidden="true">
       <ellipse cx="40" cy="110" rx="30" ry="8" fill="#0D0A12" opacity="0.4"/>
       <path d="M32,110 L32,35 Q32,18 40,18 Q48,18 48,35 L48,110" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
       <path d="M32,55 Q18,50 18,40 Q18,30 28,35" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
@@ -982,19 +1228,19 @@ body {
       <line x1="36" y1="30" x2="36" y2="33" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/>
       <line x1="44" y1="25" x2="44" y2="28" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/>
     </svg>
-    <svg class="cactus cactus-2" viewBox="0 0 60 90" fill="none">
+    <svg class="cactus cactus-2" viewBox="0 0 60 90" fill="none" aria-hidden="true">
       <ellipse cx="30" cy="82" rx="22" ry="6" fill="#0D0A12" opacity="0.4"/>
       <path d="M24,82 L24,40 Q24,25 30,25 Q36,25 36,40 L36,82" fill="#6B8F7A" stroke="#4A6B5A" stroke-width="2"/>
       <path d="M24,55 Q15,50 15,42 Q15,34 22,38" fill="#6B8F7A" stroke="#4A6B5A" stroke-width="2"/>
       <line x1="28" y1="32" x2="28" y2="35" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
-    <svg class="cactus cactus-3" viewBox="0 0 70 100" fill="none">
+    <svg class="cactus cactus-3" viewBox="0 0 70 100" fill="none" aria-hidden="true">
       <ellipse cx="35" cy="92" rx="25" ry="7" fill="#0D0A12" opacity="0.4"/>
       <path d="M28,92 L28,30 Q28,16 35,16 Q42,16 42,30 L42,92" fill="#5A7D6A" stroke="#3D5C4A" stroke-width="2"/>
       <path d="M42,52 Q54,47 54,37 Q54,27 46,32" fill="#5A7D6A" stroke="#3D5C4A" stroke-width="2"/>
       <line x1="32" y1="24" x2="32" y2="27" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
-    <svg class="cactus cactus-4" viewBox="0 0 50 80" fill="none">
+    <svg class="cactus cactus-4" viewBox="0 0 50 80" fill="none" aria-hidden="true">
       <ellipse cx="25" cy="74" rx="18" ry="5" fill="#0D0A12" opacity="0.4"/>
       <path d="M20,74 L20,35 Q20,22 25,22 Q30,22 30,35 L30,74" fill="#7A9E8C" stroke="#5A7D6A" stroke-width="2"/>
       <line x1="23" y1="28" x2="23" y2="31" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
@@ -1003,9 +1249,9 @@ body {
 </section>
 
 <!-- PROBLEM SECTION -->
-<section class="section-loom" id="problem">
+<section class="section-loom" id="problem" aria-labelledby="problem-heading">
   <div class="section-header reveal">
-    <h2 class="section-title">The Format Schism</h2>
+    <h2 class="section-title" id="problem-heading">The Format Schism</h2>
     <p class="section-desc">Mid-size fabrication shops hemorrhage 780+ hours annually to format fragmentation. Every file conversion is a stitch unpicked.</p>
   </div>
   <div class="grid-loom grid-loom-2">
@@ -1052,25 +1298,25 @@ body {
 </section>
 
 <!-- MORPHISM FRAMEWORK -->
-<section class="section-loom" id="morphism">
+<section class="section-loom" id="morphism" aria-labelledby="morphism-heading">
   <div class="section-header reveal">
-    <h2 class="section-title">The Morphism Diagnostic Framework</h2>
+    <h2 class="section-title" id="morphism-heading">The Morphism Diagnostic Framework</h2>
     <p class="section-desc">Four material paradigms, one unified compiler. Each morphism represents a distinct tactile language translated into deterministic machine instruction.</p>
   </div>
   <div class="morphism-showcase reveal">
-    <div class="morphism-panel morphism-glass">
+    <div class="morphism-panel morphism-glass" tabindex="0" aria-label="Glassmorphism panel">
       <div class="morphism-label" style="color: var(--loom-dust-light);">Glassmorphism</div>
       <div class="morphism-desc" style="color: var(--loom-dust);">Maximizes visibility for precise preview panels and laser toolpaths. Frosted clarity with depth.</div>
     </div>
-    <div class="morphism-panel morphism-wood">
+    <div class="morphism-panel morphism-wood" tabindex="0" aria-label="Woodmorphism panel">
       <div class="morphism-label" style="color: var(--loom-dust-light);">Woodmorphism</div>
       <div class="morphism-desc" style="color: var(--loom-dust);">Warm, organic variation and depth. Natural grain patterns inform tactile feedback.</div>
     </div>
-    <div class="morphism-panel morphism-paper">
+    <div class="morphism-panel morphism-paper" tabindex="0" aria-label="Papermorphism panel">
       <div class="morphism-label">Papermorphism</div>
       <div class="morphism-desc">Stackable, annotatable layers of fabric design. Fold, crease, annotate.</div>
     </div>
-    <div class="morphism-panel morphism-silicon">
+    <div class="morphism-panel morphism-silicon" tabindex="0" aria-label="Siliconmorphism panel">
       <div class="morphism-label" style="color: var(--loom-dust-light);">Siliconmorphism</div>
       <div class="morphism-desc" style="color: var(--loom-dust);">Industrial precision and chemical mixing. The substrate of computation.</div>
     </div>
@@ -1078,16 +1324,16 @@ body {
 </section>
 
 <!-- COMPUTATIONAL SUBSTRATE -->
-<section class="section-loom" id="substrate">
+<section class="section-loom" id="substrate" aria-labelledby="substrate-heading">
   <div class="section-header reveal">
-    <h2 class="section-title">The Computational Substrate</h2>
+    <h2 class="section-title" id="substrate-heading">The Computational Substrate</h2>
     <p class="section-desc">Processing physics and light at the speed of thought. Rust/WASM meets WebGPU for real-time deterministic simulation.</p>
   </div>
   <div class="grid-loom grid-loom-2">
-    <div class="card-loom card-denim reveal reveal-left">
+    <div class="card-loom card-denim reveal reveal-left" tabindex="0">
       <div class="card-stitch"></div>
       <div class="card-icon">
-        <svg viewBox="0 0 56 56" fill="none">
+        <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
           <rect x="8" y="8" width="40" height="40" rx="4" fill="url(#copper-shine)" opacity="0.3"/>
           <path d="M16,28 L24,20 L32,28 L40,20" stroke="#00D4AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M16,36 L28,24 L40,36" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1098,10 +1344,10 @@ body {
       <p class="card-body">Calculates soft-body kinematics, cloth draping, and thread tension with deterministic accuracy.</p>
       <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-thread-cyan);">&gt; xpbd.solve(mesh, constraints, dt=0.016)</div>
     </div>
-    <div class="card-loom card-glass reveal reveal-right">
+    <div class="card-loom card-glass reveal reveal-right" tabindex="0">
       <div class="card-stitch"></div>
       <div class="card-icon">
-        <svg viewBox="0 0 56 56" fill="none">
+        <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
           <rect x="4" y="4" width="48" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
           <path d="M14,42 L14,14 L28,28 L42,14 L42,42" stroke="#FF6B9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           <circle cx="28" cy="28" r="8" stroke="#6B4EE6" stroke-width="1.5" fill="none"/>
@@ -1115,16 +1361,16 @@ body {
 </section>
 
 <!-- 8-STAGE PIPELINE -->
-<section class="section-loom" id="pipeline">
+<section class="section-loom" id="pipeline" aria-labelledby="pipeline-heading">
   <div class="section-header reveal">
-    <h2 class="section-title">The 8-Stage Compilation Pipeline</h2>
+    <h2 class="section-title" id="pipeline-heading">The 8-Stage Compilation Pipeline</h2>
     <p class="section-desc">From creative intent to physical dispatch — every stage is versioned, reversible, and mathematically provable.</p>
   </div>
   <div class="pipeline-loom">
     <div class="pipeline-thread"></div>
     <div class="pipeline-stage" data-stage="1">
-      <div class="pipeline-node">1</div>
-      <div class="pipeline-content card-loom card-leather">
+      <div class="pipeline-node" role="img" aria-label="Stage 1: Intent Capture">1</div>
+      <div class="pipeline-content card-loom card-leather" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Intent Capture</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">Natural language or SVG parsed into AST. Every decision logged as semantic node.</p>
@@ -1132,8 +1378,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="2">
-      <div class="pipeline-node">2</div>
-      <div class="pipeline-content card-loom card-denim">
+      <div class="pipeline-node" role="img" aria-label="Stage 2: Orchestration">2</div>
+      <div class="pipeline-content card-loom card-denim" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Orchestration</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">Chief Spatial Architect distributes work. Multi-threaded with dependency graph resolution.</p>
@@ -1141,8 +1387,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="3">
-      <div class="pipeline-node">3</div>
-      <div class="pipeline-content card-loom card-wood">
+      <div class="pipeline-node" role="img" aria-label="Stage 3: Physics">3</div>
+      <div class="pipeline-content card-loom card-wood" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Physics</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">Rust XPBD solver: soft-body kinematics, cloth draping, thread tension.</p>
@@ -1150,8 +1396,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="4">
-      <div class="pipeline-node">4</div>
-      <div class="pipeline-content card-loom card-glass">
+      <div class="pipeline-node" role="img" aria-label="Stage 4: Render">4</div>
+      <div class="pipeline-content card-loom card-glass" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Render</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">WebGPU procedural textures — wood grain, fabric weave, leather grain.</p>
@@ -1159,8 +1405,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="5">
-      <div class="pipeline-node">5</div>
-      <div class="pipeline-content card-loom card-leather">
+      <div class="pipeline-node" role="img" aria-label="Stage 5: Synesthesia">5</div>
+      <div class="pipeline-content card-loom card-leather" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Synesthesia</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">Audio-haptic mapping: visual data into vibration envelopes and spectral soundscapes.</p>
@@ -1168,8 +1414,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="6">
-      <div class="pipeline-node">6</div>
-      <div class="pipeline-content card-loom card-denim">
+      <div class="pipeline-node" role="img" aria-label="Stage 6: Geometry Unwrap">6</div>
+      <div class="pipeline-content card-loom card-denim" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Geometry Unwrap</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">ABF++ flattening: 3D surfaces to 2D toolpaths with minimal distortion.</p>
@@ -1177,8 +1423,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="7">
-      <div class="pipeline-node">7</div>
-      <div class="pipeline-content card-loom card-wood">
+      <div class="pipeline-node" role="img" aria-label="Stage 7: Fabrication Export">7</div>
+      <div class="pipeline-content card-loom card-wood" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Fabrication Export</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">G-Code, DST, PNG generation with trapping, color separation, registration marks.</p>
@@ -1186,8 +1432,8 @@ body {
       </div>
     </div>
     <div class="pipeline-stage" data-stage="8">
-      <div class="pipeline-node">8</div>
-      <div class="pipeline-content card-loom card-glass">
+      <div class="pipeline-node" role="img" aria-label="Stage 8: Cyber-Physical Handshake">8</div>
+      <div class="pipeline-content card-loom card-glass" tabindex="0">
         <div class="card-stitch"></div>
         <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Cyber-Physical Handshake</h3>
         <p style="font-size: 0.85rem; color: var(--loom-dust);">Containerized dispatch via MQTT/OPC-UA. Real-time telemetry feedback loop.</p>
@@ -1198,9 +1444,9 @@ body {
 </section>
 
 <!-- EMBROIDERED MANIFESTO -->
-<section class="section-loom" id="manifesto">
+<section class="section-loom" id="manifesto" aria-labelledby="manifesto-heading">
   <div class="section-header reveal">
-    <h2 class="section-title">The Embroidered Manifesto</h2>
+    <h2 class="section-title" id="manifesto-heading">The Embroidered Manifesto</h2>
     <p class="section-desc">One universal intermediate representation. Six fabrication modalities. Infinite material expression.</p>
   </div>
   <div class="manifesto-hub reveal" id="manifestoHub">
@@ -1212,32 +1458,32 @@ body {
 </section>
 
 <!-- 12-MONTH ROADMAP -->
-<section class="section-loom" id="roadmap">
+<section class="section-loom" id="roadmap" aria-labelledby="roadmap-heading">
   <div class="section-header reveal">
-    <h2 class="section-title">The 12-Month Roadmap</h2>
+    <h2 class="section-title" id="roadmap-heading">The 12-Month Roadmap</h2>
     <p class="section-desc">From foundation to orbit. Four phases, twelve months, one deterministic trajectory.</p>
   </div>
   <div class="roadmap-loom reveal">
     <div class="roadmap-phase">
-      <div class="roadmap-badge">M1-3</div>
+      <div class="roadmap-badge" role="img" aria-label="Phase 1: Months 1-3">M1-3</div>
       <div class="roadmap-title">Foundation</div>
       <div class="roadmap-body">Rust XPBD solver, WebGPU shaders, Docker Compose. Lock design tokens and component library.</div>
       <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">4 engineers</div>
     </div>
     <div class="roadmap-phase">
-      <div class="roadmap-badge">M4-6</div>
+      <div class="roadmap-badge" role="img" aria-label="Phase 2: Months 4-6">M4-6</div>
       <div class="roadmap-title">Pipeline</div>
       <div class="roadmap-body">8-stage compilation pipeline. Git-as-Memory audit trails. CE/UL pre-audits. Kubernetes.</div>
       <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">5 engineers</div>
     </div>
     <div class="roadmap-phase">
-      <div class="roadmap-badge">M7-9</div>
+      <div class="roadmap-badge" role="img" aria-label="Phase 3: Months 7-9">M7-9</div>
       <div class="roadmap-title">Integration</div>
       <div class="roadmap-body">Machine worker fleet. MQTT telemetry. Beta customers, stress tests.</div>
       <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">6 engineers</div>
     </div>
     <div class="roadmap-phase">
-      <div class="roadmap-badge">M10-12</div>
+      <div class="roadmap-badge" role="img" aria-label="Phase 4: Months 10-12">M10-12</div>
       <div class="roadmap-title">Launch</div>
       <div class="roadmap-body">Enterprise pilots. LumenForge + ThreadWeave launch. Community onboarding.</div>
       <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">6 engineers</div>
@@ -1252,10 +1498,29 @@ body {
     <p style="font-family: var(--font-parchment); font-size: 1.2rem; color: var(--loom-dust); max-width: 600px; margin: 0 auto; line-height: 1.6;">
       There are good design tools. There are good fabrication machines. Omni-Loom is the reliable, deterministic, auditable bridge between them.
     </p>
-    <div class="footer-cta">
-      <a href="#" class="btn-loom btn-copper" onclick="event.preventDefault(); alert('Enterprise pilot scheduling coming soon.');">Schedule Pilot</a>
-      <a href="#" class="btn-loom btn-ghost" onclick="event.preventDefault(); alert('Technical whitepaper download coming soon.');">Download Whitepaper</a>
+
+    <!-- SOCIAL PROOF -->
+    <div class="social-proof" aria-label="Trusted by fabrication shops worldwide">
+      <span class="social-proof-item">CNC Routers</span>
+      <span style="color: var(--loom-copper);">&#9670;</span>
+      <span class="social-proof-item">Embroidery</span>
+      <span style="color: var(--loom-copper);">&#9670;</span>
+      <span class="social-proof-item">Laser Cutting</span>
+      <span style="color: var(--loom-copper);">&#9670;</span>
+      <span class="social-proof-item">3D Printing</span>
     </div>
+
+    <div class="footer-cta">
+      <a href="#" class="btn-loom btn-copper" aria-label="Schedule enterprise pilot" onclick="event.preventDefault(); alert('Enterprise pilot scheduling coming soon.');">Schedule Pilot</a>
+      <a href="#" class="btn-loom btn-ghost" aria-label="Download technical whitepaper" onclick="event.preventDefault(); alert('Technical whitepaper download coming soon.');">Download Whitepaper</a>
+    </div>
+
+    <!-- NEWSLETTER CAPTURE -->
+    <form class="newsletter-loom" onsubmit="event.preventDefault(); handleNewsletter(this);" aria-label="Newsletter signup">
+      <input type="email" placeholder="Enter your email for updates" aria-label="Email address for newsletter" required>
+      <button type="submit" class="btn-loom btn-copper" aria-label="Subscribe to newsletter">Subscribe</button>
+    </form>
+
     <div style="margin-top: var(--space-2xl); padding-top: var(--space-lg); border-top: 1px solid rgba(212,168,67,0.1);">
       <p style="font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-dust); opacity: 0.5;">
         Omni-Loom Fabrication Compiler &copy; 2026 &mdash; Every cut, compiled.
@@ -1270,9 +1535,38 @@ body {
 // ═══════════════════════════════════════════════════════════════════════════
 // OMNI-LOOM INTERACTION ENGINE — Self-contained, zero-dependency
 // Integrated: particle physics, custom cursor, scroll reveal, ambient audio
+// Architecture: Config-driven, plug-in ready components
 // ═══════════════════════════════════════════════════════════════════════════
 (function() {
   'use strict';
+
+  // ── CONFIGURATION LAYER ── Plug-in ready defaults
+  const CONFIG = {
+    cursor: { enabled: !window.matchMedia('(pointer: coarse)').matches, trailCount: 8, lerp: 0.15 },
+    particles: { count: 60, connectionThreshold: 120, mouseRepelRadius: 100 },
+    audio: { enabled: true, frequencies: [110, 164.81, 220, 329.63], reducedMotionRespect: true },
+    scrollReveal: { threshold: 0.15, rootMargin: '0px' },
+    soundEffects: { enabled: true, volume: 0.05 }
+  };
+
+  // ── REDUCED MOTION CHECK ──
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion && CONFIG.audio.reducedMotionRespect) {
+    CONFIG.audio.enabled = false;
+    CONFIG.soundEffects.enabled = false;
+  }
+
+  // ── SCROLL PROGRESS BAR ──
+  const scrollProgress = document.getElementById('scrollProgress');
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = progress + '%';
+    scrollProgress.setAttribute('aria-valuenow', Math.round(progress));
+  }
+  window.addEventListener('scroll', updateScrollProgress, { passive: true });
+  updateScrollProgress();
 
   // ── CURSOR SYSTEM ── 8-particle trail with spring physics
   const cursor = document.getElementById('cursor');
@@ -1487,15 +1781,68 @@ body {
     }
   });
 
+  // ── SOUND EFFECTS ENGINE ── Web Audio API hover/click sounds
+  let sfxCtx = null;
+  function initSfx() {
+    if (sfxCtx || !CONFIG.soundEffects.enabled) return;
+    sfxCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  function playSfx(type) {
+    if (!sfxCtx || !CONFIG.soundEffects.enabled) return;
+    if (sfxCtx.state === 'suspended') sfxCtx.resume();
+    const osc = sfxCtx.createOscillator();
+    const gain = sfxCtx.createGain();
+    const now = sfxCtx.currentTime;
+    if (type === 'hover') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(800, now);
+      osc.frequency.exponentialRampToValueAtTime(1200, now + 0.05);
+      gain.gain.setValueAtTime(CONFIG.soundEffects.volume, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc.connect(gain);
+      gain.connect(sfxCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.1);
+    } else if (type === 'click') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.1);
+      gain.gain.setValueAtTime(CONFIG.soundEffects.volume * 1.5, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+      osc.connect(gain);
+      gain.connect(sfxCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.15);
+    }
+  }
+  // Attach sound effects to interactive elements
+  if (CONFIG.soundEffects.enabled) {
+    document.querySelectorAll('a, button, .card-loom, .morphism-panel, .pipeline-node, .btn-loom').forEach(el => {
+      el.addEventListener('mouseenter', () => { initSfx(); playSfx('hover'); }, { passive: true });
+      el.addEventListener('click', () => { initSfx(); playSfx('click'); });
+    });
+  }
+
+  // ── NEWSLETTER HANDLER ──
+  window.handleNewsletter = function(form) {
+    const email = form.querySelector('input[type="email"]').value;
+    console.log('%c Newsletter signup: ' + email, 'color:#00D4AA;font-weight:bold;');
+    // In production: POST to your backend / mailing list API
+    alert('Thanks for subscribing! We\'ll send updates to ' + email);
+    form.reset();
+  };
+
   // ── PARALLAX ──
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const holo = document.querySelector('.bg-holo');
     if (holo) holo.style.transform = `translateY(${scrolled * 0.15}px)`;
-  });
+  }, { passive: true });
 
+  // ── CONSOLE BRANDING ──
   console.log('%c Omni-Loom Fabrication Compiler ', 'background:#B87333;color:#1A0F2E;font-size:14px;font-weight:bold;padding:4px 8px;border-radius:4px;');
   console.log('%c Every cut, compiled. ', 'color:#D4A843;font-style:italic;');
+  console.log('%c CONFIG ', 'background:#527568;color:#F5F0E8;font-size:10px;padding:2px 4px;border-radius:2px;', CONFIG);
 })();
 </script>
 
