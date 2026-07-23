@@ -8,1137 +8,208 @@
 <meta name="author" content="Omni-Loom">
 <meta name="theme-color" content="#B87333">
 <meta name="color-scheme" content="dark">
-
-<!-- Open Graph / Social -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://thetbxcrmozis.kimi.page">
 <meta property="og:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
 <meta property="og:description" content="Every cut, compiled. Save 780+ hours annually with deterministic fabrication across CNC, embroidery, laser cutting, and 3D printing.">
 <meta property="og:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
 <meta property="og:site_name" content="Omni-Loom">
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
 <meta name="twitter:description" content="Every cut, compiled. Save 780+ hours annually with deterministic fabrication.">
 <meta name="twitter:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
-
-<!-- Canonical URL -->
 <link rel="canonical" href="https://thetbxcrmozis.kimi.page">
-
-<!-- Preconnect hints -->
 <link rel="preconnect" href="https://thetbxcrmozis.kimi.page">
-
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231A0F2E' stroke='%23B87333' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23D4A843'/%3E%3C/svg%3E">
-
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Omni-Loom Fabrication Compiler",
-  "description": "Universal fabrication compiler that compiles creative intent to physical dispatch across CNC, embroidery, laser cutting, and 3D printing.",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "ratingCount": "127"
-  }
-}
-</script>
-
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Omni-Loom Fabrication Compiler","description":"Universal fabrication compiler that compiles creative intent to physical dispatch across CNC, embroidery, laser cutting, and 3D printing.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"127"}}</script>
+<!-- Google Analytics 4 placeholder — replace G-XXXXXXXXXX -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
 <title>Omni-Loom — The Enterprise Deterministic Fabrication Compiler</title>
 <style>
-/* ═══════════════════════════════════════════════════════════════════════════
-   OMNI-LOOM FABRICATION COMPILER — COMPLETE DESIGN SYSTEM v2
-   Integrated toolchain output:
-   - Musepool design inspiration (desert palette, agency layout, WebGL motion)
-   - AI Image Prompt Schema generated hero + material textures
-   - SVG tactile filters for fabric/leather/wood/denim material simulation
-   - Interactive Research Report patterns for data viz (stats, pipeline)
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/* ── SEMANTIC TOKEN ARCHITECTURE ────────────────────────────────────────── */
-:root {
-  /* COLOR PRIMITIVES — 24-color master palette from slide KMeans analysis */
-  --loom-copper:        #B87333;
-  --loom-copper-light:  #D4A843;
-  --loom-copper-dark:   #8B5A2B;
-  --loom-denim:         #2B3F5C;
-  --loom-denim-light:   #3D5161;
-  --loom-denim-deep:    #1A0F2E;
-  --loom-sage:          #7A9E8C;
-  --loom-sage-light:    #A1B1AE;
-  --loom-sage-dark:     #527568;
-  --loom-dust:          #C4B9A8;
-  --loom-dust-light:    #E8E0D4;
-  --loom-dust-warm:     #D5CEC4;
-  --loom-oxide:         #8B4513;
-  --loom-oxide-light:   #AD9073;
-  --loom-linen:         #F5F0E8;
-  --loom-midnight:      #1A0F2E;
-  --loom-void:          #0D0A12;
-  --loom-embroidery:    #D4A843;
-  --loom-thread-cyan:   #00D4AA;
-  --loom-thread-magenta:#FF6B9D;
-  --loom-thread-violet: #6B4EE6;
-
-  /* MATERIAL TOKENS — from AI Image Prompt Schema material physics */
-  --mat-glass:          rgba(255,255,255,0.08);
-  --mat-glass-border:   rgba(255,255,255,0.15);
-  --mat-leather:        linear-gradient(145deg, #6B4E3D 0%, #4A342B 50%, #3D2C27 100%);
-  --mat-wood:           linear-gradient(180deg, #8B6F4E 0%, #6B5344 50%, #4A3828 100%);
-  --mat-copper:         linear-gradient(145deg, #D4A843 0%, #B87333 40%, #8B5A2B 100%);
-  --mat-denim:          linear-gradient(135deg, #2B3F5C 0%, #1E2D42 100%);
-  --mat-holographic:    linear-gradient(135deg, #6B4EE6, #00D4AA, #FF6B9D, #6B4EE6);
-
-  /* DIMENSION / SHADOW TOKENS */
-  --z-stitch:           inset 0 -2px 4px rgba(0,0,0,0.3), 0 2px 4px rgba(255,255,255,0.1);
-  --z-copper-bevel:     inset 0 0 20px rgba(0,0,0,0.5), 0 0 30px rgba(184,115,51,0.3);
-  --z-paper-lift:       0 4px 20px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
-  --z-emboss:           0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-  --z-deep:             0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
-  --z-glow-copper:      0 0 20px rgba(184,115,51,0.4), 0 0 60px rgba(184,115,51,0.1);
-  --z-glow-cyan:        0 0 15px rgba(0,212,170,0.3);
-
-  /* MOTION TOKENS — Musepool 2FzMifwb WebGL motion reference */
-  --ease-weave:         cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-loom:          cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-settle:        cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-mouse:         cubic-bezier(0.05, 0.5, 0.5, 1);
-  --dur-fast:           0.2s;
-  --dur-normal:         0.4s;
-  --dur-slow:           0.8s;
-  --dur-holographic:    8s;
-  --dur-breathe:        4s;
-
-  /* SPACING TOKENS — Musepool msz30ocg agency layout */
-  --space-xs:  4px;   --space-sm:  8px;
-  --space-md:  16px;  --space-lg:  32px;
-  --space-xl:  64px;  --space-2xl: 128px;
-  --space-hero: 40vh;
-
-  /* TYPOGRAPHY */
-  --font-embroidery: 'Georgia', 'Times New Roman', serif;
-  --font-circuit:    'Courier New', 'Monaco', monospace;
-  --font-parchment:  'Georgia', serif;
-  --font-ui:         -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  /* STITCH TOKENS */
-  --stitch-running: 2px dashed var(--loom-embroidery);
-  --stitch-saddle:  3px double var(--loom-oxide);
-  --stitch-blanket: 2px dashed var(--loom-dust);
-}
-
-/* ── RESET ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   BLACK SCREEN FIX EXPLAINED:
-   
-   Root cause: The original had background layers at z-index: -1, which
-   placed them BEHIND the body's stacking context. The body had 
-   background: var(--loom-void) which is nearly black, completely 
-   obscuring the subtle (8% opacity) gradient layers.
-   
-   Fix applied:
-   1. Body has NO background color — it's transparent
-   2. Background layers at z-index: 0 (fixed, pointer-events: none)
-   3. All content wrapped in .content-layer at z-index: 1
-   4. Opacity increased from 8% to 12% on holographic gradient
-   5. Added hero background image as visible anchor
-   ═══════════════════════════════════════════════════════════════════════════ */
-body {
-  font-family: var(--font-ui);
-  color: var(--loom-dust-light);
-  overflow-x: hidden;
-  /* NO background — layers show through transparent body */
-  background: transparent;
-  min-height: 100vh;
-}
-
-/* ── BACKGROUND LAYER STACK ──
-   z-index: 0 — behind all content, pointer-events: none */
-.bg-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.bg-holo {
-  background: var(--loom-void);
-  overflow: hidden;
-}
-.bg-holo::before {
-  content: '';
-  position: absolute;
-  inset: -50%;
-  background: var(--mat-holographic);
-  background-size: 400% 400%;
-  animation: holo-shift var(--dur-holographic) ease-in-out infinite;
-  opacity: 0.12; /* increased from 0.08 */
-  filter: blur(80px);
-}
-.bg-holo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(107,78,230,0.2) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(0,212,170,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(255,107,157,0.12) 0%, transparent 50%);
-}
-@keyframes holo-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.bg-circuit {
-  z-index: 0;
-  opacity: 0.2;
-  background-image:
-    linear-gradient(90deg, transparent 98%, rgba(0,212,170,0.35) 98%),
-    linear-gradient(0deg, transparent 98%, rgba(0,212,170,0.35) 98%);
-  background-size: 60px 60px;
-}
-#particle-canvas { z-index: 0; }
-
-/* ── CONTENT LAYER ── z-index: 1+ */
-.content-layer {
-  position: relative;
-  z-index: 1;
-}
-
-/* ── SVG FILTER DEFINITIONS ── Tactile material simulation */
-.svg-filters { position: absolute; width: 0; height: 0; }
-
-/* ── CURSOR ── */
-.cursor-loom {
-  position: fixed;
-  width: 24px; height: 24px;
-  border: 2px solid var(--loom-copper);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transition: transform 0.15s var(--ease-weave), width 0.2s, height 0.2s;
-  mix-blend-mode: difference;
-  transform: translate(-50%, -50%);
-}
-.cursor-loom::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border: 1px dashed var(--loom-embroidery);
-  border-radius: 50%;
-  animation: cursor-rotate 8s linear infinite;
-}
-@keyframes cursor-rotate { to { transform: rotate(360deg); } }
-.cursor-trail {
-  position: fixed;
-  width: 6px; height: 6px;
-  background: var(--loom-copper);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  opacity: 0.6;
-  transition: opacity 0.5s;
-}
-
-/* ── NAVIGATION ── */
-.nav-loom {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  padding: var(--space-md) var(--space-xl);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(13,10,18,0.85);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border-bottom: 1px solid rgba(212,168,67,0.15);
-  transition: all var(--dur-normal) var(--ease-settle);
-}
-.nav-loom.scrolled {
-  padding: var(--space-sm) var(--space-xl);
-  background: rgba(13,10,18,0.95);
-}
-.nav-logo {
-  font-family: var(--font-embroidery);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--loom-copper);
-  text-decoration: none;
-  letter-spacing: 0.1em;
-}
-.nav-logo::after {
-  content: '';
-  display: block;
-  width: 0; height: 2px;
-  background: var(--loom-embroidery);
-  transition: width var(--dur-normal) var(--ease-weave);
-}
-.nav-logo:hover::after { width: 100%; }
-.nav-links { display: flex; gap: var(--space-lg); list-style: none; }
-.nav-links a {
-  color: var(--loom-dust);
-  text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  position: relative;
-  transition: color var(--dur-fast);
-}
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: var(--loom-thread-cyan);
-  transition: width var(--dur-normal) var(--ease-weave);
-}
-.nav-links a:hover { color: var(--loom-thread-cyan); }
-.nav-links a:hover::after { width: 100%; }
-
-/* ── HERO ── AI-generated background + SVG tactile overlay */
-.hero-loom {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  padding: var(--space-hero) var(--space-xl);
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, rgba(13,10,18,0.4) 0%, rgba(13,10,18,0.7) 60%, rgba(13,10,18,0.95) 100%),
-    url('images/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 900px;
-}
-.hero-title {
-  font-family: var(--font-embroidery);
-  font-size: clamp(3rem, 10vw, 7rem);
-  font-weight: 700;
-  color: var(--loom-copper);
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-  margin-bottom: var(--space-md);
-  text-shadow:
-    0 1px 0 rgba(255,255,255,0.1),
-    0 2px 0 rgba(0,0,0,0.3),
-    0 4px 8px rgba(0,0,0,0.4),
-    0 0 40px rgba(184,115,51,0.3);
-}
-/* SVG stitch effect on title using text-shadow */
-.hero-title .stitch-text {
-  display: inline-block;
-  position: relative;
-}
-.hero-title .stitch-text::after {
-  content: '';
-  position: absolute;
-  bottom: -8px; left: 0; right: 0;
-  height: 3px;
-  background: repeating-linear-gradient(90deg,
-    var(--loom-embroidery) 0px, var(--loom-embroidery) 8px,
-    transparent 8px, transparent 12px);
-  opacity: 0.9;
-}
-.hero-subtitle {
-  font-family: var(--font-parchment);
-  font-size: clamp(1rem, 2.5vw, 1.5rem);
-  color: var(--loom-dust-light);
-  font-style: italic;
-  margin-bottom: var(--space-lg);
-  letter-spacing: 0.05em;
-  opacity: 0.9;
-}
-.hero-tagline {
-  display: inline-block;
-  padding: var(--space-sm) var(--space-lg);
-  background: var(--mat-leather);
-  border: var(--stitch-saddle);
-  border-radius: 4px;
-  font-family: var(--font-circuit);
-  font-size: 0.9rem;
-  color: var(--loom-dust-light);
-  letter-spacing: 0.15em;
-  box-shadow: var(--z-emboss);
-  position: relative;
-  overflow: hidden;
-}
-.hero-tagline::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transform: translateX(-100%);
-  animation: shimmer 3s ease-in-out infinite;
-}
-@keyframes shimmer {
-  0%, 100% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-}
-
-/* ── CACTUS GARDEN ── SVG illustrated, breathing animation */
-.cactus-garden {
-  position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 200px;
-  pointer-events: none;
-  z-index: 1;
-}
-.cactus {
-  position: absolute;
-  bottom: 0;
-  animation: cactus-breathe var(--dur-breathe) ease-in-out infinite;
-}
-.cactus-1 { left: 5%; width: 80px; height: 120px; animation-delay: 0s; }
-.cactus-2 { left: 15%; width: 60px; height: 90px; animation-delay: 0.5s; }
-.cactus-3 { right: 10%; width: 70px; height: 100px; animation-delay: 1s; }
-.cactus-4 { right: 25%; width: 50px; height: 80px; animation-delay: 1.5s; }
-@keyframes cactus-breathe {
-  0%, 100% { transform: scaleY(1) scaleX(1); }
-  50% { transform: scaleY(1.03) scaleX(0.98); }
-}
-
-/* ── SECTION BASE ── */
-.section-loom {
-  position: relative;
-  padding: var(--space-2xl) var(--space-xl);
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.section-header {
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-}
-.section-title {
-  font-family: var(--font-embroidery);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  color: var(--loom-copper);
-  margin-bottom: var(--space-md);
-  position: relative;
-  display: inline-block;
-}
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: var(--loom-embroidery);
-  border-radius: 2px;
-}
-.section-desc {
-  font-family: var(--font-parchment);
-  font-size: 1.1rem;
-  color: var(--loom-dust);
-  max-width: 600px;
-  margin: var(--space-lg) auto 0;
-  line-height: 1.7;
-}
-
-/* ── CARD SYSTEM with SVG tactile material filters ── */
-.card-loom {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 8px;
-  padding: var(--space-lg);
-  position: relative;
-  overflow: hidden;
-  transition: all var(--dur-normal) var(--ease-weave);
-  box-shadow: var(--z-paper-lift);
-}
-/* Gradient border using mask — no extra elements needed */
-.card-loom::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 8px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(212,168,67,0.3), transparent 50%, rgba(0,212,170,0.2));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-.card-loom:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: var(--z-deep), var(--z-glow-copper);
-}
-.card-loom:hover::before {
-  background: linear-gradient(135deg, rgba(212,168,67,0.6), transparent 50%, rgba(0,212,170,0.4));
-}
-/* Running stitch border — animated */
-.card-stitch {
-  position: absolute;
-  inset: 4px;
-  border: var(--stitch-running);
-  border-radius: 6px;
-  pointer-events: none;
-  opacity: 0.3;
-  transition: opacity var(--dur-normal);
-}
-.card-loom:hover .card-stitch {
-  opacity: 0.7;
-}
-.card-icon {
-  width: 56px; height: 56px;
-  margin-bottom: var(--space-md);
-}
-.card-title {
-  font-family: var(--font-embroidery);
-  font-size: 1.3rem;
-  color: var(--loom-copper-light);
-  margin-bottom: var(--space-sm);
-}
-.card-body {
-  font-size: 0.95rem;
-  color: var(--loom-dust);
-  line-height: 1.6;
-}
-
-/* Material variants with AI-generated textures */
-.card-leather {
-  background:
-    linear-gradient(145deg, rgba(107,78,61,0.85), rgba(74,52,43,0.9)),
-    url('images/leather.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-  border: 2px solid var(--loom-oxide);
-  box-shadow: var(--z-emboss), inset 0 0 30px rgba(0,0,0,0.3);
-}
-.card-wood {
-  background:
-    linear-gradient(180deg, rgba(139,111,78,0.85), rgba(107,83,68,0.9)),
-    url('images/wood.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-  border: 2px solid var(--loom-oxide-light);
-}
-.card-denim {
-  background:
-    linear-gradient(135deg, rgba(43,63,92,0.9), rgba(30,45,66,0.95)),
-    url('images/denim.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-  border: 2px solid var(--loom-denim-light);
-}
-.card-glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(30px) saturate(1.2);
-  -webkit-backdrop-filter: blur(30px) saturate(1.2);
-  border: 1px solid rgba(255,255,255,0.12);
-}
-.card-glass::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%);
-  border-radius: 8px;
-  pointer-events: none;
-}
-
-/* ── PIPELINE TIMELINE ── */
-.pipeline-loom {
-  position: relative;
-  padding: var(--space-xl) 0;
-}
-.pipeline-thread {
-  position: absolute;
-  left: 50%;
-  top: 0; bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg,
-    var(--loom-copper) 0%, var(--loom-thread-cyan) 25%,
-    var(--loom-thread-magenta) 50%, var(--loom-thread-violet) 75%,
-    var(--loom-copper) 100%);
-  transform: translateX(-50%);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0,212,170,0.3);
-}
-.pipeline-stage {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: var(--space-xl);
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all var(--dur-slow) var(--ease-loom);
-}
-.pipeline-stage.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.pipeline-stage:nth-child(even) { flex-direction: row-reverse; }
-.pipeline-node {
-  width: 60px; height: 60px;
-  border-radius: 50%;
-  background: var(--mat-copper);
-  border: 3px solid var(--loom-dust-light);
-  box-shadow: var(--z-copper-bevel), var(--z-glow-copper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-circuit);
-  font-weight: bold;
-  color: var(--loom-midnight);
-  font-size: 1.2rem;
-  position: relative;
-  z-index: 2;
-  flex-shrink: 0;
-}
-.pipeline-node::after {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border: 2px dashed var(--loom-embroidery);
-  border-radius: 50%;
-  animation: cursor-rotate 12s linear infinite;
-}
-.pipeline-content {
-  flex: 1;
-  max-width: 450px;
-  padding: var(--space-md) var(--space-lg);
-  margin: 0 var(--space-lg);
-}
-
-/* ── GRID SYSTEM ── */
-.grid-loom {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-lg);
-}
-.grid-loom-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-loom-3 { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 768px) {
-  .grid-loom-2, .grid-loom-3 { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  .pipeline-thread { left: 30px; }
-  .pipeline-stage, .pipeline-stage:nth-child(even) { flex-direction: column; align-items: flex-start; padding-left: 70px; }
-}
-
-/* ── BUTTONS ── */
-.btn-loom {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg);
-  font-family: var(--font-circuit);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all var(--dur-normal) var(--ease-weave);
-}
-.btn-loom::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s;
-}
-.btn-loom:hover::before { transform: translateX(100%); }
-.btn-copper {
-  background: var(--mat-copper);
-  color: var(--loom-midnight);
-  box-shadow: var(--z-copper-bevel);
-}
-.btn-copper:hover { transform: translateY(-2px); box-shadow: var(--z-copper-bevel), var(--z-glow-copper); }
-.btn-ghost {
-  background: transparent;
-  color: var(--loom-copper);
-  border: 2px solid var(--loom-copper);
-}
-.btn-ghost:hover { background: rgba(184,115,51,0.1); box-shadow: var(--z-glow-copper); }
-
-/* ── PROBLEM / SOLUTION CARDS ── */
-.problem-card {
-  background: linear-gradient(145deg, rgba(139,69,19,0.25), rgba(61,44,39,0.5));
-  border-left: 4px solid var(--loom-oxide);
-  padding: var(--space-md);
-  border-radius: 0 8px 8px 0;
-  margin-bottom: var(--space-md);
-}
-.solution-card {
-  background: linear-gradient(145deg, rgba(0,212,170,0.12), rgba(107,78,230,0.12));
-  border-left: 4px solid var(--loom-thread-cyan);
-  padding: var(--space-md);
-  border-radius: 0 8px 8px 0;
-}
-
-/* ── MORPHISM SHOWCASE ── */
-.morphism-showcase {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
-  margin: var(--space-xl) 0;
-}
-.morphism-panel {
-  aspect-ratio: 3/4;
-  border-radius: 8px;
-  padding: var(--space-md);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative;
-  overflow: hidden;
-  transition: all var(--dur-normal) var(--ease-weave);
-}
-.morphism-panel:hover { transform: translateY(-12px) scale(1.03); z-index: 10; }
-.morphism-glass {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: inset 0 0 20px rgba(255,255,255,0.05), 0 8px 32px rgba(0,0,0,0.2);
-}
-.morphism-wood {
-  background:
-    linear-gradient(180deg, rgba(139,111,78,0.7), rgba(74,56,40,0.8)),
-    url('images/wood.jpg');
-  background-size: cover;
-  background-blend-mode: multiply;
-  border: 2px solid var(--loom-oxide-light);
-  box-shadow: inset 0 0 40px rgba(0,0,0,0.3);
-}
-.morphism-paper {
-  background: var(--loom-linen);
-  border: 1px solid var(--loom-dust);
-  box-shadow: var(--z-paper-lift);
-  color: var(--loom-midnight);
-}
-.morphism-silicon {
-  background: linear-gradient(145deg, #5B6E6F, #3D5161);
-  border: 2px solid var(--loom-sage);
-  box-shadow: inset 0 0 30px rgba(0,0,0,0.3), 0 0 20px rgba(0,212,170,0.1);
-}
-.morphism-label {
-  font-family: var(--font-embroidery);
-  font-size: 1.1rem;
-  margin-bottom: var(--space-xs);
-}
-.morphism-desc { font-size: 0.8rem; opacity: 0.8; line-height: 1.4; }
-
-/* ── STATS ── Interactive Research Report pattern */
-.stat-loom { text-align: center; padding: var(--space-lg); }
-.stat-number {
-  font-family: var(--font-circuit);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 700;
-  color: var(--loom-copper);
-  line-height: 1;
-  text-shadow: var(--z-glow-copper);
-}
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--loom-dust);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-top: var(--space-sm);
-}
-.stat-divider {
-  width: 40px; height: 2px;
-  background: var(--loom-embroidery);
-  margin: var(--space-sm) auto;
-}
-
-/* ── MANIFESTO HUB ── Radial diagram */
-.manifesto-hub {
-  position: relative;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  aspect-ratio: 1;
-}
-.manifesto-center {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  background: var(--mat-copper);
-  border: 4px solid var(--loom-embroidery);
-  box-shadow: var(--z-copper-bevel), var(--z-glow-copper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--space-md);
-  z-index: 10;
-}
-.manifesto-spoke {
-  position: absolute;
-  width: 150px;
-  padding: var(--space-sm);
-  background: var(--mat-leather);
-  border: var(--stitch-saddle);
-  border-radius: 8px;
-  text-align: center;
-  font-size: 0.8rem;
-  transition: all var(--dur-normal) var(--ease-weave);
-}
-.manifesto-spoke:hover { transform: scale(1.1); box-shadow: var(--z-glow-copper); }
-
-/* ── ROADMAP ── */
-.roadmap-loom {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-}
-.roadmap-phase {
-  flex: 1;
-  text-align: center;
-  position: relative;
-}
-.roadmap-badge {
-  width: 80px; height: 80px;
-  margin: 0 auto var(--space-md);
-  border-radius: 50%;
-  background: var(--mat-denim);
-  border: 3px solid var(--loom-copper);
-  box-shadow: var(--z-copper-bevel);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-circuit);
-  font-size: 0.7rem;
-  color: var(--loom-dust-light);
-  position: relative;
-  z-index: 2;
-}
-.roadmap-badge::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border: 2px dashed var(--loom-embroidery);
-  border-radius: 50%;
-  animation: cursor-rotate 15s linear infinite;
-}
-.roadmap-title {
-  font-family: var(--font-embroidery);
-  font-size: 1rem;
-  color: var(--loom-copper-light);
-  margin-bottom: var(--space-xs);
-}
-.roadmap-body {
-  font-size: 0.8rem;
-  color: var(--loom-dust);
-  line-height: 1.5;
-  padding: var(--space-sm);
-  background: rgba(0,0,0,0.2);
-  border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-/* ── FOOTER ── */
-.footer-loom {
-  background: linear-gradient(180deg, transparent, rgba(13,10,18,0.9));
-  padding: var(--space-2xl) var(--space-xl) var(--space-xl);
-  text-align: center;
-  border-top: 1px solid rgba(212,168,67,0.1);
-  position: relative;
-}
-.footer-loom::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 200px; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--loom-embroidery), transparent);
-}
-.footer-tagline {
-  font-family: var(--font-embroidery);
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  color: var(--loom-copper);
-  margin-bottom: var(--space-md);
-}
-.footer-cta { display: inline-flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; justify-content: center; }
-
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all var(--dur-slow) var(--ease-loom);
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-left { transform: translateX(-40px); }
-.reveal-right { transform: translateX(40px); }
-.reveal.visible.reveal-left, .reveal.visible.reveal-right { transform: translateX(0); }
-
-/* ── AUDIO TOGGLE ── */
-.audio-toggle {
-  position: fixed;
-  bottom: var(--space-lg);
-  right: var(--space-lg);
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: var(--mat-copper);
-  border: 2px solid var(--loom-embroidery);
-  color: var(--loom-midnight);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  transition: all var(--dur-normal) var(--ease-weave);
-  box-shadow: var(--z-copper-bevel);
-}
-.audio-toggle:hover { transform: scale(1.1); box-shadow: var(--z-copper-bevel), var(--z-glow-copper); }
-.audio-toggle.muted { opacity: 0.5; }
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--loom-void); }
-::-webkit-scrollbar-thumb { background: var(--loom-copper-dark); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: var(--loom-copper); }
-::selection { background: rgba(184,115,51,0.3); color: var(--loom-dust-light); }
-
-/* ── SKIP LINK ── */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--loom-copper);
-  color: var(--loom-midnight);
-  padding: 8px 16px;
-  z-index: 100000;
-  font-family: var(--font-circuit);
-  font-size: 0.85rem;
-  text-decoration: none;
-  border-radius: 0 0 4px 0;
-  transition: top 0.2s;
-}
-.skip-link:focus {
-  top: 0;
-}
-
-/* ── SCROLL PROGRESS BAR ── */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: var(--mat-holographic);
-  background-size: 200% 200%;
-  animation: holo-shift 3s ease-in-out infinite;
-  z-index: 10001;
-  pointer-events: none;
-  transition: width 0.1s linear;
-}
-
-/* ── FOCUS-VISIBLE STATES ── */
-a:focus-visible,
-button:focus-visible,
-[tabindex]:focus-visible {
-  outline: 2px solid var(--loom-thread-cyan);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-.nav-links a:focus-visible::after {
-  width: 100%;
-}
-.card-loom:focus-visible {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: var(--z-deep), var(--z-glow-copper);
-}
-
-/* ── 3D TACTILE CARD TRANSFORMS ── */
-.card-loom {
-  transform-style: preserve-3d;
-  perspective: 800px;
-}
-.card-loom:hover {
-  transform: translateY(-8px) scale(1.02) rotateX(2deg);
-}
-.morphism-panel {
-  transform-style: preserve-3d;
-  perspective: 600px;
-}
-.morphism-panel:hover {
-  transform: translateY(-12px) scale(1.03) rotateX(3deg) rotateY(-2deg);
-}
-
-/* ── SVG STITCH ANIMATION ── */
-@keyframes stitch-draw {
-  from { stroke-dashoffset: 100; }
-  to { stroke-dashoffset: 0; }
-}
-.card-stitch {
-  background: repeating-linear-gradient(90deg,
-    var(--loom-embroidery) 0px, var(--loom-embroidery) 6px,
-    transparent 6px, transparent 10px);
-  height: 2px;
-  border: none;
-  border-radius: 0;
-  animation: stitch-draw 2s ease-out forwards;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-}
-
-/* ── MOBILE BOTTOM NAV ── */
-@media (max-width: 768px) {
-  .nav-loom {
-    top: auto;
-    bottom: 0;
-    border-bottom: none;
-    border-top: 1px solid rgba(212,168,67,0.15);
-    padding: var(--space-sm) var(--space-md);
-  }
-  .nav-loom.scrolled {
-    padding: var(--space-sm) var(--space-md);
-  }
-  .nav-links {
-    display: flex !important;
-    gap: var(--space-sm);
-  }
-  .nav-links a {
-    font-size: 0.65rem;
-    letter-spacing: 0.04em;
-  }
-  /* Add padding to bottom of sections to account for fixed nav */
-  .section-loom {
-    padding-bottom: calc(var(--space-2xl) + 60px);
-  }
-  .footer-loom {
-    padding-bottom: calc(var(--space-xl) + 60px);
-  }
-  .hero-loom {
-    padding-bottom: calc(var(--space-hero) + 60px);
-  }
-  /* Hide cursor on touch devices */
-  .cursor-loom,
-  .cursor-trail {
-    display: none;
-  }
-}
-
-/* ── 44px MINIMUM TAP TARGETS ── */
-.btn-loom,
-.audio-toggle,
-.pipeline-node,
-.nav-links a {
-  min-height: 44px;
-  min-width: 44px;
-}
-.nav-links a {
-  display: flex;
-  align-items: center;
-}
-
-/* ── PREFERS-REDUCED-MOTION: AUDIO RESPECT ── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .audio-toggle {
-    display: none;
-  }
-}
-
-/* ── NEWSLETTER CAPTURE ── */
-.newsletter-loom {
-  display: flex;
-  gap: var(--space-sm);
-  max-width: 500px;
-  margin: var(--space-lg) auto 0;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.newsletter-loom input {
-  flex: 1;
-  min-width: 200px;
-  padding: var(--space-sm) var(--space-md);
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 4px;
-  color: var(--loom-dust-light);
-  font-family: var(--font-circuit);
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-}
-.newsletter-loom input:focus-visible {
-  outline: 2px solid var(--loom-thread-cyan);
-  border-color: var(--loom-thread-cyan);
-}
-.newsletter-loom input::placeholder {
-  color: var(--loom-dust);
-  opacity: 0.6;
-}
-
-/* ── SOCIAL PROOF ── */
-.social-proof {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-xl);
-  flex-wrap: wrap;
-  margin-top: var(--space-lg);
-  opacity: 0.5;
-}
-.social-proof-item {
-  font-family: var(--font-circuit);
-  font-size: 0.75rem;
-  color: var(--loom-dust);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-}
-
-/* ── LOADING="LAZY" FOR IMAGES ── */
-img, .hero-loom {
-  content-visibility: auto;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+:root{
+--loom-copper:#B87333;--loom-copper-light:#D4A843;--loom-copper-dark:#8B5A2B;
+--loom-denim:#2B3F5C;--loom-denim-light:#3D5161;--loom-denim-deep:#1A0F2E;
+--loom-sage:#7A9E8C;--loom-sage-light:#A1B1AE;--loom-sage-dark:#527568;
+--loom-dust:#C4B9A8;--loom-dust-light:#E8E0D4;--loom-dust-warm:#D5CEC4;
+--loom-oxide:#8B4513;--loom-oxide-light:#AD9073;--loom-linen:#F5F0E8;
+--loom-midnight:#1A0F2E;--loom-void:#0D0A12;--loom-embroidery:#D4A843;
+--loom-thread-cyan:#00D4AA;--loom-thread-magenta:#FF6B9D;--loom-thread-violet:#6B4EE6;
+--mat-glass:rgba(255,255,255,0.08);--mat-glass-border:rgba(255,255,255,0.15);
+--mat-leather:linear-gradient(145deg,#6B4E3D,#4A342B 50%,#3D2C27);
+--mat-wood:linear-gradient(180deg,#8B6F4E,#6B5344 50%,#4A3828);
+--mat-copper:linear-gradient(145deg,#D4A843,#B87333 40%,#8B5A2B);
+--mat-denim:linear-gradient(135deg,#2B3F5C,#1E2D42);
+--mat-holographic:linear-gradient(135deg,#6B4EE6,#00D4AA,#FF6B9D,#6B4EE6);
+--z-stitch:inset 0 -2px 4px rgba(0,0,0,0.3),0 2px 4px rgba(255,255,255,0.1);
+--z-copper-bevel:inset 0 0 20px rgba(0,0,0,0.5),0 0 30px rgba(184,115,51,0.3);
+--z-paper-lift:0 4px 20px rgba(0,0,0,0.15),0 1px 3px rgba(0,0,0,0.1);
+--z-emboss:0 8px 32px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.1);
+--z-deep:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.05);
+--z-glow-copper:0 0 20px rgba(184,115,51,0.4),0 0 60px rgba(184,115,51,0.1);
+--z-glow-cyan:0 0 15px rgba(0,212,170,0.3);
+--ease-weave:cubic-bezier(0.34,1.56,0.64,1);--ease-loom:cubic-bezier(0.16,1,0.3,1);
+--ease-settle:cubic-bezier(0.4,0,0.2,1);--ease-mouse:cubic-bezier(0.05,0.5,0.5,1);
+--dur-fast:0.2s;--dur-normal:0.4s;--dur-slow:0.8s;--dur-holographic:8s;--dur-breathe:4s;
+--space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:32px;--space-xl:64px;--space-2xl:128px;--space-hero:40vh;
+--font-embroidery:'Georgia','Times New Roman',serif;--font-circuit:'Courier New','Monaco',monospace;
+--font-parchment:'Georgia',serif;--font-ui:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+--stitch-running:2px dashed var(--loom-embroidery);--stitch-saddle:3px double var(--loom-oxide);--stitch-blanket:2px dashed var(--loom-dust)}
+body{font-family:var(--font-ui);color:var(--loom-dust-light);overflow-x:hidden;background:transparent;min-height:100vh}
+.bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none}
+.bg-holo{background:var(--loom-void);overflow:hidden}
+.bg-holo::before{content:'';position:absolute;inset:-50%;background:var(--mat-holographic);background-size:400% 400%;animation:holo-shift var(--dur-holographic) ease-in-out infinite;opacity:.12;filter:blur(80px)}
+.bg-holo::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(107,78,230,0.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(0,212,170,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(255,107,157,0.12) 0%,transparent 50%)}
+@keyframes holo-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.bg-circuit{z-index:0;opacity:.2;background-image:linear-gradient(90deg,transparent 98%,rgba(0,212,170,0.35) 98%),linear-gradient(0deg,transparent 98%,rgba(0,212,170,0.35) 98%);background-size:60px 60px}
+#particle-canvas{z-index:0}
+.content-layer{position:relative;z-index:1}
+.svg-filters{position:absolute;width:0;height:0}
+.skip-link{position:absolute;top:-40px;left:0;background:var(--loom-copper);color:var(--loom-midnight);padding:8px 16px;z-index:100000;font-family:var(--font-circuit);font-size:.85rem;text-decoration:none;border-radius:0 0 4px 0;transition:top .2s}
+.skip-link:focus{top:0}
+.scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:var(--mat-holographic);background-size:200% 200%;animation:holo-shift 3s ease-in-out infinite;z-index:10001;pointer-events:none;transition:width .1s linear}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--loom-thread-cyan);outline-offset:3px;border-radius:2px}
+.nav-links a:focus-visible::after{width:100%}
+.card-loom:focus-visible{transform:translateY(-4px) scale(1.01);box-shadow:var(--z-deep),var(--z-glow-copper)}
+.cursor-loom{position:fixed;width:24px;height:24px;border:2px solid var(--loom-copper);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s var(--ease-weave),width .2s,height .2s;mix-blend-mode:difference;transform:translate(-50%,-50%)}
+.cursor-loom::after{content:'';position:absolute;inset:-8px;border:1px dashed var(--loom-embroidery);border-radius:50%;animation:cursor-rotate 8s linear infinite}
+@keyframes cursor-rotate{to{transform:rotate(360deg)}}
+.cursor-trail{position:fixed;width:6px;height:6px;background:var(--loom-copper);border-radius:50%;pointer-events:none;z-index:99998;opacity:.6;transition:opacity .5s}
+.nav-loom{position:fixed;top:0;left:0;right:0;z-index:1000;padding:var(--space-md) var(--space-xl);display:flex;justify-content:space-between;align-items:center;background:rgba(13,10,18,.85);backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);border-bottom:1px solid rgba(212,168,67,.15);transition:all var(--dur-normal) var(--ease-settle)}
+.nav-loom.scrolled{padding:var(--space-sm) var(--space-xl);background:rgba(13,10,18,.95)}
+.nav-logo{font-family:var(--font-embroidery);font-size:1.4rem;font-weight:700;color:var(--loom-copper);text-decoration:none;letter-spacing:.1em}
+.nav-logo::after{content:'';display:block;width:0;height:2px;background:var(--loom-embroidery);transition:width var(--dur-normal) var(--ease-weave)}
+.nav-logo:hover::after{width:100%}
+.nav-links{display:flex;gap:var(--space-lg);list-style:none}
+.nav-links a{color:var(--loom-dust);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;position:relative;transition:color var(--dur-fast)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--loom-thread-cyan);transition:width var(--dur-normal) var(--ease-weave)}
+.nav-links a:hover{color:var(--loom-thread-cyan)}
+.nav-links a:hover::after{width:100%}
+.hero-loom{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;padding:var(--space-hero) var(--space-xl);overflow:hidden;background:linear-gradient(180deg,rgba(13,10,18,.4) 0%,rgba(13,10,18,.7) 60%,rgba(13,10,18,.95) 100%),url('images/hero.jpg');background-size:cover;background-position:center;background-attachment:fixed}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px}
+.hero-title{font-family:var(--font-embroidery);font-size:clamp(3rem,10vw,7rem);font-weight:700;color:var(--loom-copper);letter-spacing:.05em;line-height:1.1;margin-bottom:var(--space-md);text-shadow:0 1px 0 rgba(255,255,255,.1),0 2px 0 rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.4),0 0 40px rgba(184,115,51,.3)}
+.hero-title .stitch-text{display:inline-block;position:relative}
+.hero-title .stitch-text::after{content:'';position:absolute;bottom:-8px;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,var(--loom-embroidery) 0,var(--loom-embroidery) 8px,transparent 8px,transparent 12px);opacity:.9}
+.hero-subtitle{font-family:var(--font-parchment);font-size:clamp(1rem,2.5vw,1.5rem);color:var(--loom-dust-light);font-style:italic;margin-bottom:var(--space-lg);letter-spacing:.05em;opacity:.9}
+.hero-tagline{display:inline-block;padding:var(--space-sm) var(--space-lg);background:var(--mat-leather);border:var(--stitch-saddle);border-radius:4px;font-family:var(--font-circuit);font-size:.9rem;color:var(--loom-dust-light);letter-spacing:.15em;box-shadow:var(--z-emboss);position:relative;overflow:hidden}
+.hero-tagline::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.cactus-garden{position:absolute;bottom:0;left:0;right:0;height:200px;pointer-events:none;z-index:1}
+.cactus{position:absolute;bottom:0;animation:cactus-breathe var(--dur-breathe) ease-in-out infinite}
+.cactus-1{left:5%;width:80px;height:120px;animation-delay:0s}
+.cactus-2{left:15%;width:60px;height:90px;animation-delay:.5s}
+.cactus-3{right:10%;width:70px;height:100px;animation-delay:1s}
+.cactus-4{right:25%;width:50px;height:80px;animation-delay:1.5s}
+@keyframes cactus-breathe{0%,100%{transform:scaleY(1) scaleX(1)}50%{transform:scaleY(1.03) scaleX(.98)}}
+.section-loom{position:relative;padding:var(--space-2xl) var(--space-xl);max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:var(--space-2xl)}
+.section-title{font-family:var(--font-embroidery);font-size:clamp(1.8rem,4vw,3rem);color:var(--loom-copper);margin-bottom:var(--space-md);position:relative;display:inline-block}
+.section-title::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:60px;height:3px;background:var(--loom-embroidery);border-radius:2px}
+.section-desc{font-family:var(--font-parchment);font-size:1.1rem;color:var(--loom-dust);max-width:600px;margin:var(--space-lg) auto 0;line-height:1.7}
+.card-loom{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:var(--space-lg);position:relative;overflow:hidden;transition:all var(--dur-normal) var(--ease-weave);box-shadow:var(--z-paper-lift);transform-style:preserve-3d;perspective:800px}
+.card-loom::before{content:'';position:absolute;inset:0;border-radius:8px;padding:1px;background:linear-gradient(135deg,rgba(212,168,67,.3),transparent 50%,rgba(0,212,170,.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.card-loom:hover{transform:translateY(-8px) scale(1.02) rotateX(2deg);box-shadow:var(--z-deep),var(--z-glow-copper)}
+.card-loom:hover::before{background:linear-gradient(135deg,rgba(212,168,67,.6),transparent 50%,rgba(0,212,170,.4))}
+.card-stitch{position:absolute;inset:4px;border:var(--stitch-running);border-radius:6px;pointer-events:none;opacity:.3;transition:opacity var(--dur-normal)}
+.card-loom:hover .card-stitch{opacity:.7}
+.card-icon{width:56px;height:56px;margin-bottom:var(--space-md)}
+.card-title{font-family:var(--font-embroidery);font-size:1.3rem;color:var(--loom-copper-light);margin-bottom:var(--space-sm)}
+.card-body{font-size:.95rem;color:var(--loom-dust);line-height:1.6}
+.card-leather{background:linear-gradient(145deg,rgba(107,78,61,.85),rgba(74,52,43,.9)),url('images/leather.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-oxide);box-shadow:var(--z-emboss),inset 0 0 30px rgba(0,0,0,.3)}
+.card-wood{background:linear-gradient(180deg,rgba(139,111,78,.85),rgba(107,83,68,.9)),url('images/wood.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-oxide-light)}
+.card-denim{background:linear-gradient(135deg,rgba(43,63,92,.9),rgba(30,45,66,.95)),url('images/denim.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-denim-light)}
+.card-glass{background:rgba(255,255,255,.05);backdrop-filter:blur(30px) saturate(1.2);-webkit-backdrop-filter:blur(30px) saturate(1.2);border:1px solid rgba(255,255,255,.12)}
+.card-glass::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%);border-radius:8px;pointer-events:none}
+.pipeline-loom{position:relative;padding:var(--space-xl) 0}
+.pipeline-thread{position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--loom-copper) 0%,var(--loom-thread-cyan) 25%,var(--loom-thread-magenta) 50%,var(--loom-thread-violet) 75%,var(--loom-copper) 100%);transform:translateX(-50%);border-radius:2px;box-shadow:0 0 10px rgba(0,212,170,.3)}
+.pipeline-stage{position:relative;display:flex;align-items:center;margin-bottom:var(--space-xl);opacity:0;transform:translateY(40px);transition:all var(--dur-slow) var(--ease-loom)}
+.pipeline-stage.visible{opacity:1;transform:translateY(0)}
+.pipeline-stage:nth-child(even){flex-direction:row-reverse}
+.pipeline-node{width:60px;height:60px;border-radius:50%;background:var(--mat-copper);border:3px solid var(--loom-dust-light);box-shadow:var(--z-copper-bevel),var(--z-glow-copper);display:flex;align-items:center;justify-content:center;font-family:var(--font-circuit);font-weight:700;color:var(--loom-midnight);font-size:1.2rem;position:relative;z-index:2;flex-shrink:0}
+.pipeline-node::after{content:'';position:absolute;inset:-8px;border:2px dashed var(--loom-embroidery);border-radius:50%;animation:cursor-rotate 12s linear infinite}
+.pipeline-content{flex:1;max-width:450px;padding:var(--space-md) var(--space-lg);margin:0 var(--space-lg)}
+.grid-loom{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-lg)}
+.grid-loom-2{grid-template-columns:repeat(2,1fr)}
+.grid-loom-3{grid-template-columns:repeat(3,1fr)}
+.btn-loom{display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) var(--space-lg);font-family:var(--font-circuit);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;cursor:pointer;position:relative;overflow:hidden;transition:all var(--dur-normal) var(--ease-weave);min-height:44px;min-width:44px}
+.btn-loom::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
+.btn-loom:hover::before{transform:translateX(100%)}
+.btn-copper{background:var(--mat-copper);color:var(--loom-midnight);box-shadow:var(--z-copper-bevel)}
+.btn-copper:hover{transform:translateY(-2px);box-shadow:var(--z-copper-bevel),var(--z-glow-copper)}
+.btn-ghost{background:transparent;color:var(--loom-copper);border:2px solid var(--loom-copper)}
+.btn-ghost:hover{background:rgba(184,115,51,.1);box-shadow:var(--z-glow-copper)}
+.problem-card{background:linear-gradient(145deg,rgba(139,69,19,.25),rgba(61,44,39,.5));border-left:4px solid var(--loom-oxide);padding:var(--space-md);border-radius:0 8px 8px 0;margin-bottom:var(--space-md)}
+.solution-card{background:linear-gradient(145deg,rgba(0,212,170,.12),rgba(107,78,230,.12));border-left:4px solid var(--loom-thread-cyan);padding:var(--space-md);border-radius:0 8px 8px 0}
+.morphism-showcase{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-md);margin:var(--space-xl) 0}
+.morphism-panel{aspect-ratio:3/4;border-radius:8px;padding:var(--space-md);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;transition:all var(--dur-normal) var(--ease-weave);transform-style:preserve-3d;perspective:600px}
+.morphism-panel:hover{transform:translateY(-12px) scale(1.03) rotateX(3deg) rotateY(-2deg);z-index:10}
+.morphism-glass{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);box-shadow:inset 0 0 20px rgba(255,255,255,.05),0 8px 32px rgba(0,0,0,.2)}
+.morphism-wood{background:linear-gradient(180deg,rgba(139,111,78,.7),rgba(74,56,40,.8)),url('images/wood.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-oxide-light);box-shadow:inset 0 0 40px rgba(0,0,0,.3)}
+.morphism-paper{background:var(--loom-linen);border:1px solid var(--loom-dust);box-shadow:var(--z-paper-lift);color:var(--loom-midnight)}
+.morphism-silicon{background:linear-gradient(145deg,#5B6E6F,#3D5161);border:2px solid var(--loom-sage);box-shadow:inset 0 0 30px rgba(0,0,0,.3),0 0 20px rgba(0,212,170,.1)}
+.morphism-label{font-family:var(--font-embroidery);font-size:1.1rem;margin-bottom:var(--space-xs)}
+.morphism-desc{font-size:.8rem;opacity:.8;line-height:1.4}
+.stat-loom{text-align:center;padding:var(--space-lg)}
+.stat-number{font-family:var(--font-circuit);font-size:clamp(2.5rem,6vw,4rem);font-weight:700;color:var(--loom-copper);line-height:1;text-shadow:var(--z-glow-copper)}
+.stat-label{font-size:.85rem;color:var(--loom-dust);text-transform:uppercase;letter-spacing:.15em;margin-top:var(--space-sm)}
+.stat-divider{width:40px;height:2px;background:var(--loom-embroidery);margin:var(--space-sm) auto}
+.manifesto-hub{position:relative;width:100%;max-width:800px;margin:0 auto;aspect-ratio:1}
+.manifesto-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;background:var(--mat-copper);border:4px solid var(--loom-embroidery);box-shadow:var(--z-copper-bevel),var(--z-glow-copper);display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-md);z-index:10}
+.manifesto-spoke{position:absolute;width:150px;padding:var(--space-sm);background:var(--mat-leather);border:var(--stitch-saddle);border-radius:8px;text-align:center;font-size:.8rem;transition:all var(--dur-normal) var(--ease-weave)}
+.manifesto-spoke:hover{transform:scale(1.1);box-shadow:var(--z-glow-copper)}
+.roadmap-loom{display:flex;justify-content:space-between;gap:var(--space-md);margin-top:var(--space-xl)}
+.roadmap-phase{flex:1;text-align:center;position:relative}
+.roadmap-badge{width:80px;height:80px;margin:0 auto var(--space-md);border-radius:50%;background:var(--mat-denim);border:3px solid var(--loom-copper);box-shadow:var(--z-copper-bevel);display:flex;align-items:center;justify-content:center;font-family:var(--font-circuit);font-size:.7rem;color:var(--loom-dust-light);position:relative;z-index:2}
+.roadmap-badge::after{content:'';position:absolute;inset:-6px;border:2px dashed var(--loom-embroidery);border-radius:50%;animation:cursor-rotate 15s linear infinite}
+.roadmap-title{font-family:var(--font-embroidery);font-size:1rem;color:var(--loom-copper-light);margin-bottom:var(--space-xs)}
+.roadmap-body{font-size:.8rem;color:var(--loom-dust);line-height:1.5;padding:var(--space-sm);background:rgba(0,0,0,.2);border-radius:6px;border:1px solid rgba(255,255,255,.05)}
+.footer-loom{background:linear-gradient(180deg,transparent,rgba(13,10,18,.9));padding:var(--space-2xl) var(--space-xl) var(--space-xl);text-align:center;border-top:1px solid rgba(212,168,67,.1);position:relative}
+.footer-loom::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--loom-embroidery),transparent)}
+.footer-tagline{font-family:var(--font-embroidery);font-size:clamp(1.2rem,3vw,1.8rem);color:var(--loom-copper);margin-bottom:var(--space-md)}
+.footer-cta{display:inline-flex;gap:var(--space-md);margin-top:var(--space-lg);flex-wrap:wrap;justify-content:center}
+.reveal{opacity:0;transform:translateY(30px);transition:all var(--dur-slow) var(--ease-loom)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{transform:translateX(-40px)}
+.reveal-right{transform:translateX(40px)}
+.reveal.visible.reveal-left,.reveal.visible.reveal-right{transform:translateX(0)}
+.audio-toggle{position:fixed;bottom:var(--space-lg);right:var(--space-lg);width:48px;height:48px;border-radius:50%;background:var(--mat-copper);border:2px solid var(--loom-embroidery);color:var(--loom-midnight);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;transition:all var(--dur-normal) var(--ease-weave);box-shadow:var(--z-copper-bevel);min-height:44px;min-width:44px}
+.audio-toggle:hover{transform:scale(1.1);box-shadow:var(--z-copper-bevel),var(--z-glow-copper)}
+.audio-toggle.muted{opacity:.5}
+.exit-modal{position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--dur-normal) var(--ease-settle)}
+.exit-modal.active{opacity:1;pointer-events:all}
+.exit-modal-content{background:var(--mat-denim);border:2px solid var(--loom-copper);border-radius:12px;padding:var(--space-xl);max-width:480px;width:90%;text-align:center;position:relative;box-shadow:var(--z-deep),var(--z-glow-copper);transform:translateY(20px) scale(.95);transition:transform var(--dur-normal) var(--ease-weave)}
+.exit-modal.active .exit-modal-content{transform:translateY(0) scale(1)}
+.exit-modal-close{position:absolute;top:var(--space-sm);right:var(--space-sm);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--loom-dust-light);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all var(--dur-fast);min-height:36px;min-width:36px}
+.exit-modal-close:hover{background:rgba(255,255,255,.15);transform:rotate(90deg)}
+.exit-modal-title{font-family:var(--font-embroidery);font-size:1.5rem;color:var(--loom-copper-light);margin-bottom:var(--space-sm)}
+.exit-modal-body{font-size:.95rem;color:var(--loom-dust-light);line-height:1.6;margin-bottom:var(--space-lg)}
+.social-proof{display:flex;justify-content:center;align-items:center;gap:var(--space-xl);flex-wrap:wrap;margin-top:var(--space-lg);opacity:.5}
+.social-proof-item{font-family:var(--font-circuit);font-size:.75rem;color:var(--loom-dust);text-transform:uppercase;letter-spacing:.15em}
+.newsletter-loom{display:flex;gap:var(--space-sm);max-width:500px;margin:var(--space-lg) auto 0;flex-wrap:wrap;justify-content:center}
+.newsletter-loom input{flex:1;min-width:200px;padding:var(--space-sm) var(--space-md);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:4px;color:var(--loom-dust-light);font-family:var(--font-circuit);font-size:.85rem;letter-spacing:.05em}
+.newsletter-loom input:focus-visible{outline:2px solid var(--loom-thread-cyan);border-color:var(--loom-thread-cyan)}
+.newsletter-loom input::placeholder{color:var(--loom-dust);opacity:.6}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--loom-void)}
+::-webkit-scrollbar-thumb{background:var(--loom-copper-dark);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--loom-copper)}
+::selection{background:rgba(184,115,51,.3);color:var(--loom-dust-light)}
+.nav-links a{min-height:44px;display:flex;align-items:center}
+.pipeline-node{min-height:44px;min-width:44px}
+@media(max-width:768px){.grid-loom-2,.grid-loom-3{grid-template-columns:1fr}.nav-links{display:none}.pipeline-thread{left:30px}.pipeline-stage,.pipeline-stage:nth-child(even){flex-direction:column;align-items:flex-start;padding-left:70px}.nav-loom{top:auto;bottom:0;border-bottom:none;border-top:1px solid rgba(212,168,67,.15);padding:var(--space-sm) var(--space-md)}.nav-loom.scrolled{padding:var(--space-sm) var(--space-md)}.nav-links{display:flex!important;gap:var(--space-sm)}.nav-links a{font-size:.65rem;letter-spacing:.04em}.section-loom{padding-bottom:calc(var(--space-2xl)+60px)}.footer-loom{padding-bottom:calc(var(--space-xl)+60px)}.hero-loom{padding-bottom:calc(var(--space-hero)+60px)}.cursor-loom,.cursor-trail{display:none}.morphism-showcase{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:var(--space-md);padding-bottom:var(--space-md)}.morphism-showcase::-webkit-scrollbar{height:4px}.morphism-showcase::-webkit-scrollbar-thumb{background:var(--loom-copper-dark);border-radius:2px}.morphism-panel{min-width:200px;flex-shrink:0;scroll-snap-align:start}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.audio-toggle{display:none}}
+img,.hero-loom{content-visibility:auto}
 </style>
 </head>
 <body>
-
-<!-- SKIP TO CONTENT -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
-
-<!-- SCROLL PROGRESS BAR -->
 <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
-
-<!-- SVG FILTERS: Tactile material simulation -->
 <svg class="svg-filters" aria-hidden="true">
   <defs>
-    <!-- Fabric weave pattern -->
     <pattern id="fabric-weave" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
       <rect width="3" height="3" fill="rgba(212,168,67,0.08)"/>
       <rect x="3" y="3" width="3" height="3" fill="rgba(212,168,67,0.08)"/>
     </pattern>
-    <!-- Leather grain noise -->
     <filter id="leather-grain" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise"/>
       <feDiffuseLighting in="noise" lighting-color="#8B6F4E" surfaceScale="1" result="light">
@@ -1146,7 +217,6 @@ img, .hero-loom {
       </feDiffuseLighting>
       <feBlend in="light" in2="SourceGraphic" mode="multiply"/>
     </filter>
-    <!-- Embossed stitch -->
     <filter id="emboss-stitch" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
       <feOffset in="blur" dx="1" dy="1" result="offset"/>
@@ -1160,41 +230,40 @@ img, .hero-loom {
         <feMergeNode in="spec"/>
       </feMerge>
     </filter>
-    <!-- Copper metallic gradient -->
     <linearGradient id="copper-shine" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#D4A843"/>
       <stop offset="30%" stop-color="#B87333"/>
       <stop offset="60%" stop-color="#8B5A2B"/>
       <stop offset="100%" stop-color="#D4A843"/>
     </linearGradient>
-    <!-- Denim texture filter -->
     <filter id="denim-texture" x="0" y="0" width="100%" height="100%">
       <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
   </defs>
 </svg>
-
-<!-- BACKGROUND LAYERS (z-index: 0) -->
 <div class="bg-layer bg-holo"></div>
 <div class="bg-layer bg-circuit"></div>
 <canvas id="particle-canvas" class="bg-layer"></canvas>
-
-<!-- CURSOR -->
 <div class="cursor-loom" id="cursor"></div>
-
-<!-- AUDIO TOGGLE -->
 <button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
     <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
   </svg>
 </button>
-
-<!-- CONTENT LAYER (z-index: 1+) -->
+<div class="exit-modal" id="exitModal" role="dialog" aria-modal="true" aria-label="Download whitepaper offer">
+  <div class="exit-modal-content">
+    <button class="exit-modal-close" id="exitModalClose" aria-label="Close dialog">&times;</button>
+    <div class="exit-modal-title">Before You Go</div>
+    <p class="exit-modal-body">Download the <strong style="color:var(--loom-copper-light)">Omni-Loom Technical Whitepaper</strong> — a 40-page deep dive into the deterministic fabrication compiler architecture, the 8-stage pipeline, and the morphism diagnostic framework.</p>
+    <form class="newsletter-loom" style="margin-top:0" onsubmit="event.preventDefault();handleWhitepaperDownload(this);" aria-label="Whitepaper download">
+      <input type="email" placeholder="Your email address" aria-label="Email for whitepaper" required>
+      <button type="submit" class="btn-loom btn-copper" aria-label="Download whitepaper">Download Now</button>
+    </form>
+  </div>
+</div>
 <div class="content-layer" id="main-content" role="main">
-
-<!-- NAVIGATION -->
 <nav class="nav-loom" id="navbar" role="navigation" aria-label="Main navigation">
   <a href="#" class="nav-logo" aria-label="Omni-Loom home">Omni-Loom</a>
   <ul class="nav-links">
@@ -1206,19 +275,16 @@ img, .hero-loom {
     <li><a href="#roadmap" aria-label="12-Month Roadmap section">Roadmap</a></li>
   </ul>
 </nav>
-
-<!-- HERO -->
 <section class="hero-loom" id="hero">
   <div class="hero-content">
     <h1 class="hero-title"><span class="stitch-text">Omni-Loom</span></h1>
     <p class="hero-subtitle">The Enterprise Deterministic Fabrication Compiler</p>
     <div class="hero-tagline">Every cut, compiled.</div>
-    <div style="margin-top: var(--space-xl); display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+    <div style="margin-top:var(--space-xl);display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
       <a href="#problem" class="btn-loom btn-copper" aria-label="Explore the Format Schism section">Explore the Schism</a>
       <a href="#manifesto" class="btn-loom btn-ghost" aria-label="View the Embroidered Manifesto">View Manifesto</a>
     </div>
   </div>
-  <!-- SVG Cactus Garden -->
   <div class="cactus-garden">
     <svg class="cactus cactus-1" viewBox="0 0 80 120" fill="none" aria-hidden="true">
       <ellipse cx="40" cy="110" rx="30" ry="8" fill="#0D0A12" opacity="0.4"/>
@@ -1247,8 +313,6 @@ img, .hero-loom {
     </svg>
   </div>
 </section>
-
-<!-- PROBLEM SECTION -->
 <section class="section-loom" id="problem" aria-labelledby="problem-heading">
   <div class="section-header reveal">
     <h2 class="section-title" id="problem-heading">The Format Schism</h2>
@@ -1257,25 +321,25 @@ img, .hero-loom {
   <div class="grid-loom grid-loom-2">
     <div class="reveal reveal-left">
       <div class="problem-card">
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-oxide-light); margin-bottom: var(--space-sm);">Fragmented Vector Tools</h3>
-        <p style="color: var(--loom-dust-light);">Designers work in Illustrator, CorelDRAW, Inkscape — each exporting incompatible paths. The 780+ hour manual file conversion tax drains creative capacity.</p>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-oxide-light);margin-bottom:var(--space-sm)">Fragmented Vector Tools</h3>
+        <p style="color:var(--loom-dust-light)">Designers work in Illustrator, CorelDRAW, Inkscape — each exporting incompatible paths. The 780+ hour manual file conversion tax drains creative capacity.</p>
       </div>
       <div class="problem-card">
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-oxide-light); margin-bottom: var(--space-sm);">Inconsistent Scaling</h3>
-        <p style="color: var(--loom-dust-light);">Arbitrary color spaces between design and machine yield $400+ material waste per registration error. Needle breaks and unpredictable kerf compound losses.</p>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-oxide-light);margin-bottom:var(--space-sm)">Inconsistent Scaling</h3>
+        <p style="color:var(--loom-dust-light)">Arbitrary color spaces between design and machine yield $400+ material waste per registration error. Needle breaks and unpredictable kerf compound losses.</p>
       </div>
       <div class="problem-card">
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-oxide-light); margin-bottom: var(--space-sm);">Proprietary Lock-in</h3>
-        <p style="color: var(--loom-dust-light);">Rigid machine protocols (DST, G-Code) trap shops in vendor ecosystems. No interoperability, no portability, no escape.</p>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-oxide-light);margin-bottom:var(--space-sm)">Proprietary Lock-in</h3>
+        <p style="color:var(--loom-dust-light)">Rigid machine protocols (DST, G-Code) trap shops in vendor ecosystems. No interoperability, no portability, no escape.</p>
       </div>
     </div>
     <div class="reveal reveal-right">
       <div class="solution-card">
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-thread-cyan); margin-bottom: var(--space-sm);">The Omni-Loom Bridge</h3>
-        <p style="color: var(--loom-dust-light);">A universal intermediate representation — <code style="color: var(--loom-copper);">stitch_plan.json</code> — compiles intent to physical dispatch with mathematical determinism.</p>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-thread-cyan);margin-bottom:var(--space-sm)">The Omni-Loom Bridge</h3>
+        <p style="color:var(--loom-dust-light)">A universal intermediate representation — <code style="color:var(--loom-copper)">stitch_plan.json</code> — compiles intent to physical dispatch with mathematical determinism.</p>
       </div>
-      <div style="margin-top: var(--space-lg); padding: var(--space-lg); background: var(--mat-denim); border-radius: 8px; border: 1px solid var(--loom-denim-light);">
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); text-align: center;">
+      <div style="margin-top:var(--space-lg);padding:var(--space-lg);background:var(--mat-denim);border-radius:8px;border:1px solid var(--loom-denim-light)">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);text-align:center">
           <div class="stat-loom">
             <div class="stat-number" data-count="780">0</div>
             <div class="stat-divider"></div>
@@ -1296,8 +360,6 @@ img, .hero-loom {
     </div>
   </div>
 </section>
-
-<!-- MORPHISM FRAMEWORK -->
 <section class="section-loom" id="morphism" aria-labelledby="morphism-heading">
   <div class="section-header reveal">
     <h2 class="section-title" id="morphism-heading">The Morphism Diagnostic Framework</h2>
@@ -1305,25 +367,23 @@ img, .hero-loom {
   </div>
   <div class="morphism-showcase reveal">
     <div class="morphism-panel morphism-glass" tabindex="0" aria-label="Glassmorphism panel">
-      <div class="morphism-label" style="color: var(--loom-dust-light);">Glassmorphism</div>
-      <div class="morphism-desc" style="color: var(--loom-dust);">Maximizes visibility for precise preview panels and laser toolpaths. Frosted clarity with depth.</div>
+      <div class="morphism-label" style="color:var(--loom-dust-light)">Glassmorphism</div>
+      <div class="morphism-desc" style="color:var(--loom-dust)">Maximizes visibility for precise preview panels and laser toolpaths. Frosted clarity with depth.</div>
     </div>
     <div class="morphism-panel morphism-wood" tabindex="0" aria-label="Woodmorphism panel">
-      <div class="morphism-label" style="color: var(--loom-dust-light);">Woodmorphism</div>
-      <div class="morphism-desc" style="color: var(--loom-dust);">Warm, organic variation and depth. Natural grain patterns inform tactile feedback.</div>
+      <div class="morphism-label" style="color:var(--loom-dust-light)">Woodmorphism</div>
+      <div class="morphism-desc" style="color:var(--loom-dust)">Warm, organic variation and depth. Natural grain patterns inform tactile feedback.</div>
     </div>
     <div class="morphism-panel morphism-paper" tabindex="0" aria-label="Papermorphism panel">
       <div class="morphism-label">Papermorphism</div>
       <div class="morphism-desc">Stackable, annotatable layers of fabric design. Fold, crease, annotate.</div>
     </div>
     <div class="morphism-panel morphism-silicon" tabindex="0" aria-label="Siliconmorphism panel">
-      <div class="morphism-label" style="color: var(--loom-dust-light);">Siliconmorphism</div>
-      <div class="morphism-desc" style="color: var(--loom-dust);">Industrial precision and chemical mixing. The substrate of computation.</div>
+      <div class="morphism-label" style="color:var(--loom-dust-light)">Siliconmorphism</div>
+      <div class="morphism-desc" style="color:var(--loom-dust)">Industrial precision and chemical mixing. The substrate of computation.</div>
     </div>
   </div>
 </section>
-
-<!-- COMPUTATIONAL SUBSTRATE -->
 <section class="section-loom" id="substrate" aria-labelledby="substrate-heading">
   <div class="section-header reveal">
     <h2 class="section-title" id="substrate-heading">The Computational Substrate</h2>
@@ -1342,7 +402,7 @@ img, .hero-loom {
       </div>
       <h3 class="card-title">The Warp: Rust/WASM XPBD Solver</h3>
       <p class="card-body">Calculates soft-body kinematics, cloth draping, and thread tension with deterministic accuracy.</p>
-      <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-thread-cyan);">&gt; xpbd.solve(mesh, constraints, dt=0.016)</div>
+      <div style="margin-top:var(--space-md);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.75rem;color:var(--loom-thread-cyan)">&gt; xpbd.solve(mesh, constraints, dt=0.016)</div>
     </div>
     <div class="card-loom card-glass reveal reveal-right" tabindex="0">
       <div class="card-stitch"></div>
@@ -1355,12 +415,10 @@ img, .hero-loom {
       </div>
       <h3 class="card-title">The Weft: WebGPU Render Pipeline</h3>
       <p class="card-body">Procedural textures — wood grain via fractal noise, fabric weave via turbulence — without heavy asset payloads.</p>
-      <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-thread-magenta);">&gt; webgpu.render(proceduralTexture, PBR)</div>
+      <div style="margin-top:var(--space-md);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.75rem;color:var(--loom-thread-magenta)">&gt; webgpu.render(proceduralTexture, PBR)</div>
     </div>
   </div>
 </section>
-
-<!-- 8-STAGE PIPELINE -->
 <section class="section-loom" id="pipeline" aria-labelledby="pipeline-heading">
   <div class="section-header reveal">
     <h2 class="section-title" id="pipeline-heading">The 8-Stage Compilation Pipeline</h2>
@@ -1372,78 +430,76 @@ img, .hero-loom {
       <div class="pipeline-node" role="img" aria-label="Stage 1: Intent Capture">1</div>
       <div class="pipeline-content card-loom card-leather" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Intent Capture</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">Natural language or SVG parsed into AST. Every decision logged as semantic node.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">parse(intent) &rarr; AST</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Intent Capture</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">Natural language or SVG parsed into AST. Every decision logged as semantic node.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">parse(intent) &rarr; AST</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="2">
       <div class="pipeline-node" role="img" aria-label="Stage 2: Orchestration">2</div>
       <div class="pipeline-content card-loom card-denim" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Orchestration</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">Chief Spatial Architect distributes work. Multi-threaded with dependency graph resolution.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">orchestrate(AST) &rarr; DAG</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Orchestration</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">Chief Spatial Architect distributes work. Multi-threaded with dependency graph resolution.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">orchestrate(AST) &rarr; DAG</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="3">
       <div class="pipeline-node" role="img" aria-label="Stage 3: Physics">3</div>
       <div class="pipeline-content card-loom card-wood" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Physics</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">Rust XPBD solver: soft-body kinematics, cloth draping, thread tension.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">solve(mesh, constraints)</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Physics</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">Rust XPBD solver: soft-body kinematics, cloth draping, thread tension.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">solve(mesh, constraints)</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="4">
       <div class="pipeline-node" role="img" aria-label="Stage 4: Render">4</div>
       <div class="pipeline-content card-loom card-glass" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Render</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">WebGPU procedural textures — wood grain, fabric weave, leather grain.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">render(PBR, noise)</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Render</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">WebGPU procedural textures — wood grain, fabric weave, leather grain.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">render(PBR, noise)</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="5">
       <div class="pipeline-node" role="img" aria-label="Stage 5: Synesthesia">5</div>
       <div class="pipeline-content card-loom card-leather" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Synesthesia</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">Audio-haptic mapping: visual data into vibration envelopes and spectral soundscapes.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">map(visual &rarr; haptic)</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Synesthesia</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">Audio-haptic mapping: visual data into vibration envelopes and spectral soundscapes.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">map(visual &rarr; haptic)</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="6">
       <div class="pipeline-node" role="img" aria-label="Stage 6: Geometry Unwrap">6</div>
       <div class="pipeline-content card-loom card-denim" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Geometry Unwrap</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">ABF++ flattening: 3D surfaces to 2D toolpaths with minimal distortion.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">unwrap(mesh) &rarr; UV</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Geometry Unwrap</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">ABF++ flattening: 3D surfaces to 2D toolpaths with minimal distortion.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">unwrap(mesh) &rarr; UV</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="7">
       <div class="pipeline-node" role="img" aria-label="Stage 7: Fabrication Export">7</div>
       <div class="pipeline-content card-loom card-wood" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Fabrication Export</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">G-Code, DST, PNG generation with trapping, color separation, registration marks.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">export(toolpath, format)</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Fabrication Export</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">G-Code, DST, PNG generation with trapping, color separation, registration marks.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">export(toolpath, format)</code>
       </div>
     </div>
     <div class="pipeline-stage" data-stage="8">
       <div class="pipeline-node" role="img" aria-label="Stage 8: Cyber-Physical Handshake">8</div>
       <div class="pipeline-content card-loom card-glass" tabindex="0">
         <div class="card-stitch"></div>
-        <h3 style="font-family: var(--font-embroidery); color: var(--loom-copper-light); margin-bottom: var(--space-xs);">Cyber-Physical Handshake</h3>
-        <p style="font-size: 0.85rem; color: var(--loom-dust);">Containerized dispatch via MQTT/OPC-UA. Real-time telemetry feedback loop.</p>
-        <code style="display: block; margin-top: var(--space-sm); padding: var(--space-sm); background: rgba(0,0,0,0.3); border-radius: 4px; font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-thread-cyan);">dispatch(machine, verify)</code>
+        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Cyber-Physical Handshake</h3>
+        <p style="font-size:0.85rem;color:var(--loom-dust)">Containerized dispatch via MQTT/OPC-UA. Real-time telemetry feedback loop.</p>
+        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">dispatch(machine, verify)</code>
       </div>
     </div>
   </div>
 </section>
-
-<!-- EMBROIDERED MANIFESTO -->
 <section class="section-loom" id="manifesto" aria-labelledby="manifesto-heading">
   <div class="section-header reveal">
     <h2 class="section-title" id="manifesto-heading">The Embroidered Manifesto</h2>
@@ -1451,13 +507,11 @@ img, .hero-loom {
   </div>
   <div class="manifesto-hub reveal" id="manifestoHub">
     <div class="manifesto-center">
-      <div style="font-family: var(--font-circuit); font-size: 0.9rem; font-weight: bold; color: var(--loom-midnight);">stitch_plan.json</div>
-      <div style="font-family: var(--font-circuit); font-size: 0.65rem; margin-top: 4px; opacity: 0.8; color: var(--loom-midnight);">Universal IR</div>
+      <div style="font-family:var(--font-circuit);font-size:0.9rem;font-weight:700;color:var(--loom-midnight)">stitch_plan.json</div>
+      <div style="font-family:var(--font-circuit);font-size:0.65rem;margin-top:4px;opacity:0.8;color:var(--loom-midnight)">Universal IR</div>
     </div>
   </div>
 </section>
-
-<!-- 12-MONTH ROADMAP -->
 <section class="section-loom" id="roadmap" aria-labelledby="roadmap-heading">
   <div class="section-header reveal">
     <h2 class="section-title" id="roadmap-heading">The 12-Month Roadmap</h2>
@@ -1468,383 +522,115 @@ img, .hero-loom {
       <div class="roadmap-badge" role="img" aria-label="Phase 1: Months 1-3">M1-3</div>
       <div class="roadmap-title">Foundation</div>
       <div class="roadmap-body">Rust XPBD solver, WebGPU shaders, Docker Compose. Lock design tokens and component library.</div>
-      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">4 engineers</div>
+      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">4 engineers</div>
     </div>
     <div class="roadmap-phase">
       <div class="roadmap-badge" role="img" aria-label="Phase 2: Months 4-6">M4-6</div>
       <div class="roadmap-title">Pipeline</div>
       <div class="roadmap-body">8-stage compilation pipeline. Git-as-Memory audit trails. CE/UL pre-audits. Kubernetes.</div>
-      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">5 engineers</div>
+      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">5 engineers</div>
     </div>
     <div class="roadmap-phase">
       <div class="roadmap-badge" role="img" aria-label="Phase 3: Months 7-9">M7-9</div>
       <div class="roadmap-title">Integration</div>
       <div class="roadmap-body">Machine worker fleet. MQTT telemetry. Beta customers, stress tests.</div>
-      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">6 engineers</div>
+      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">6 engineers</div>
     </div>
     <div class="roadmap-phase">
       <div class="roadmap-badge" role="img" aria-label="Phase 4: Months 10-12">M10-12</div>
       <div class="roadmap-title">Launch</div>
       <div class="roadmap-body">Enterprise pilots. LumenForge + ThreadWeave launch. Community onboarding.</div>
-      <div style="margin-top: var(--space-sm); font-family: var(--font-circuit); font-size: 0.7rem; color: var(--loom-copper);">6 engineers</div>
+      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">6 engineers</div>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer class="footer-loom" id="cta">
   <div class="reveal">
     <h2 class="footer-tagline">The Bridge is the Product.</h2>
-    <p style="font-family: var(--font-parchment); font-size: 1.2rem; color: var(--loom-dust); max-width: 600px; margin: 0 auto; line-height: 1.6;">
-      There are good design tools. There are good fabrication machines. Omni-Loom is the reliable, deterministic, auditable bridge between them.
-    </p>
-
-    <!-- SOCIAL PROOF -->
+    <p style="font-family:var(--font-parchment);font-size:1.2rem;color:var(--loom-dust);max-width:600px;margin:0 auto;line-height:1.6">There are good design tools. There are good fabrication machines. Omni-Loom is the reliable, deterministic, auditable bridge between them.</p>
     <div class="social-proof" aria-label="Trusted by fabrication shops worldwide">
       <span class="social-proof-item">CNC Routers</span>
-      <span style="color: var(--loom-copper);">&#9670;</span>
+      <span style="color:var(--loom-copper)">&#9670;</span>
       <span class="social-proof-item">Embroidery</span>
-      <span style="color: var(--loom-copper);">&#9670;</span>
+      <span style="color:var(--loom-copper)">&#9670;</span>
       <span class="social-proof-item">Laser Cutting</span>
-      <span style="color: var(--loom-copper);">&#9670;</span>
+      <span style="color:var(--loom-copper)">&#9670;</span>
       <span class="social-proof-item">3D Printing</span>
     </div>
-
     <div class="footer-cta">
-      <a href="#" class="btn-loom btn-copper" aria-label="Schedule enterprise pilot" onclick="event.preventDefault(); alert('Enterprise pilot scheduling coming soon.');">Schedule Pilot</a>
-      <a href="#" class="btn-loom btn-ghost" aria-label="Download technical whitepaper" onclick="event.preventDefault(); alert('Technical whitepaper download coming soon.');">Download Whitepaper</a>
+      <a href="#" class="btn-loom btn-copper" aria-label="Schedule enterprise pilot" onclick="event.preventDefault();alert('Enterprise pilot scheduling coming soon.')">Schedule Pilot</a>
+      <a href="#" class="btn-loom btn-ghost" aria-label="Download technical whitepaper" onclick="event.preventDefault();alert('Technical whitepaper download coming soon.')">Download Whitepaper</a>
     </div>
-
-    <!-- NEWSLETTER CAPTURE -->
-    <form class="newsletter-loom" onsubmit="event.preventDefault(); handleNewsletter(this);" aria-label="Newsletter signup">
+    <form class="newsletter-loom" onsubmit="event.preventDefault();handleNewsletter(this);" aria-label="Newsletter signup">
       <input type="email" placeholder="Enter your email for updates" aria-label="Email address for newsletter" required>
       <button type="submit" class="btn-loom btn-copper" aria-label="Subscribe to newsletter">Subscribe</button>
     </form>
-
-    <div style="margin-top: var(--space-2xl); padding-top: var(--space-lg); border-top: 1px solid rgba(212,168,67,0.1);">
-      <p style="font-family: var(--font-circuit); font-size: 0.75rem; color: var(--loom-dust); opacity: 0.5;">
-        Omni-Loom Fabrication Compiler &copy; 2026 &mdash; Every cut, compiled.
-      </p>
+    <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(212,168,67,0.1)">
+      <p style="font-family:var(--font-circuit);font-size:0.75rem;color:var(--loom-dust);opacity:0.5">Omni-Loom Fabrication Compiler &copy; 2026 &mdash; Every cut, compiled.</p>
     </div>
   </div>
 </footer>
-
-</div><!-- /content-layer -->
-
+</div>
 <script>
-// ═══════════════════════════════════════════════════════════════════════════
-// OMNI-LOOM INTERACTION ENGINE — Self-contained, zero-dependency
-// Integrated: particle physics, custom cursor, scroll reveal, ambient audio
-// Architecture: Config-driven, plug-in ready components
-// ═══════════════════════════════════════════════════════════════════════════
-(function() {
-  'use strict';
-
-  // ── CONFIGURATION LAYER ── Plug-in ready defaults
-  const CONFIG = {
-    cursor: { enabled: !window.matchMedia('(pointer: coarse)').matches, trailCount: 8, lerp: 0.15 },
-    particles: { count: 60, connectionThreshold: 120, mouseRepelRadius: 100 },
-    audio: { enabled: true, frequencies: [110, 164.81, 220, 329.63], reducedMotionRespect: true },
-    scrollReveal: { threshold: 0.15, rootMargin: '0px' },
-    soundEffects: { enabled: true, volume: 0.05 }
-  };
-
-  // ── REDUCED MOTION CHECK ──
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion && CONFIG.audio.reducedMotionRespect) {
-    CONFIG.audio.enabled = false;
-    CONFIG.soundEffects.enabled = false;
-  }
-
-  // ── SCROLL PROGRESS BAR ──
-  const scrollProgress = document.getElementById('scrollProgress');
-  function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollProgress.style.width = progress + '%';
-    scrollProgress.setAttribute('aria-valuenow', Math.round(progress));
-  }
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-  updateScrollProgress();
-
-  // ── CURSOR SYSTEM ── 8-particle trail with spring physics
-  const cursor = document.getElementById('cursor');
-  let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-  const trails = [];
-  const TRAIL_COUNT = 8;
-  for (let i = 0; i < TRAIL_COUNT; i++) {
-    const t = document.createElement('div');
-    t.className = 'cursor-trail';
-    document.body.appendChild(t);
-    trails.push({ el: t, x: 0, y: 0 });
-  }
-  document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-  function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.15;
-    cursorY += (mouseY - cursorY) * 0.15;
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-    let px = cursorX, py = cursorY;
-    trails.forEach((t, i) => {
-      t.x += (px - t.x) * (0.1 + i * 0.02);
-      t.y += (py - t.y) * (0.1 + i * 0.02);
-      t.el.style.left = t.x + 'px';
-      t.el.style.top = t.y + 'px';
-      t.el.style.opacity = 0.5 - (i / TRAIL_COUNT) * 0.4;
-      t.el.style.transform = `translate(-50%,-50%) scale(${1 - i * 0.08})`;
-      px = t.x; py = t.y;
-    });
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-
-  // Hover state
-  document.querySelectorAll('a, button, .card-loom, .morphism-panel, .pipeline-node').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '48px';
-      cursor.style.height = '48px';
-      cursor.style.borderColor = 'var(--loom-thread-cyan)';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '24px';
-      cursor.style.height = '24px';
-      cursor.style.borderColor = 'var(--loom-copper)';
-    });
-  });
-
-  // ── PARTICLE SYSTEM ── 60 particles with fabric mesh connections
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  const PARTICLE_COUNT = 60;
-  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-
-  class Particle {
-    constructor() { this.reset(); }
-    reset() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.size = Math.random() * 2 + 0.5;
-      this.speedX = (Math.random() - 0.5) * 0.3;
-      this.speedY = (Math.random() - 0.5) * 0.3;
-      this.opacity = Math.random() * 0.5 + 0.1;
-      this.hue = Math.random() > 0.5 ? 30 : 170;
-    }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      // Mouse repulsion
-      const dx = this.x - mouseX, dy = this.y - mouseY;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 100) {
-        const f = (100 - dist) / 100;
-        this.x += (dx/dist) * f * 2;
-        this.y += (dy/dist) * f * 2;
-      }
-      if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `hsla(${this.hue},70%,60%,${this.opacity})`;
-      ctx.fill();
-    }
-  }
-  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
-
-  function drawConnections() {
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d = Math.sqrt(dx*dx + dy*dy);
-        if (d < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(212,168,67,${0.08 * (1 - d/120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-  }
-  function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    drawConnections();
-    requestAnimationFrame(animateParticles);
-  }
-  animateParticles();
-
-  // ── SCROLL REVEAL ── IntersectionObserver
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Animate stat counters
-        entry.target.querySelectorAll('.stat-number[data-count]').forEach(stat => {
-          if (stat.dataset.animated) return;
-          stat.dataset.animated = 'true';
-          const target = parseInt(stat.dataset.count);
-          const start = performance.now();
-          const duration = 2000;
-          function update(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            stat.textContent = Math.floor(eased * target);
-            if (progress < 1) requestAnimationFrame(update);
-            else stat.textContent = target + (target === 100 ? '%' : '+');
-          }
-          requestAnimationFrame(update);
-        });
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal, .pipeline-stage').forEach(el => revealObserver.observe(el));
-
-  // ── NAVBAR SCROLL ──
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 100);
-  });
-
-  // ── SMOOTH SCROLL ──
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const id = this.getAttribute('href');
-      if (id === '#') return;
-      e.preventDefault();
-      const target = document.querySelector(id);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-
-  // ── MANIFESTO SPOKES ── Radial positioning
-  const hub = document.getElementById('manifestoHub');
-  const spokeData = [
-    { label: 'CNC Routing', desc: 'SVG \u2192 G-Code', cls: 'spoke-top', style: 'top:5%;left:50%;transform:translateX(-50%)' },
-    { label: 'Embroidery', desc: 'SVG \u2192 DST', cls: 'spoke-tr', style: 'top:12%;right:8%' },
-    { label: 'Screen Print', desc: 'Multi-layer PNG', cls: 'spoke-right', style: 'top:50%;right:3%;transform:translateY(-50%)' },
-    { label: 'Sublimation', desc: 'WebGPU \u2192 300 DPI', cls: 'spoke-br', style: 'bottom:12%;right:8%' },
-    { label: 'Laser Cut', desc: 'Kerf-compensated', cls: 'spoke-bottom', style: 'bottom:5%;left:50%;transform:translateX(-50%)' },
-    { label: '3D Print', desc: 'Sliced G-Code', cls: 'spoke-bl', style: 'bottom:12%;left:8%' },
-    { label: 'Weaving', desc: 'Jacquard format', cls: 'spoke-left', style: 'top:50%;left:3%;transform:translateY(-50%)' },
-    { label: 'Quilting', desc: 'Long-arm path', cls: 'spoke-tl', style: 'top:12%;left:8%' },
-  ];
-  spokeData.forEach(s => {
-    const el = document.createElement('div');
-    el.className = 'manifesto-spoke ' + s.cls;
-    el.style.cssText = s.style;
-    el.innerHTML = `<div style="font-family:var(--font-embroidery);color:var(--loom-copper-light);font-size:0.9rem;">${s.label}</div><div style="font-size:0.7rem;color:var(--loom-dust);margin-top:4px;">${s.desc}</div>`;
-    hub.appendChild(el);
-  });
-
-  // ── AUDIO ENGINE ── Web Audio API ambient drone
-  const audioToggle = document.getElementById('audioToggle');
-  let audioEnabled = false, audioCtx = null, gainNodes = [];
-  function initAudio() {
-    if (audioCtx) return;
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const freqs = [110, 164.81, 220, 329.63];
-    freqs.forEach((freq, i) => {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      const filter = audioCtx.createBiquadFilter();
-      osc.type = i % 2 === 0 ? 'sine' : 'triangle';
-      osc.frequency.value = freq;
-      filter.type = 'lowpass';
-      filter.frequency.value = 800;
-      gain.gain.value = 0;
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      gainNodes.push(gain);
-    });
-  }
-  audioToggle.addEventListener('click', () => {
-    if (!audioEnabled) {
-      initAudio();
-      audioCtx.resume();
-      gainNodes.forEach((g, i) => g.gain.setTargetAtTime([0.03,0.02,0.015,0.01][i], audioCtx.currentTime, 1));
-      audioToggle.classList.remove('muted');
-      audioEnabled = true;
-    } else {
-      gainNodes.forEach(g => g.gain.setTargetAtTime(0, audioCtx.currentTime, 0.5));
-      audioToggle.classList.add('muted');
-      audioEnabled = false;
-    }
-  });
-
-  // ── SOUND EFFECTS ENGINE ── Web Audio API hover/click sounds
-  let sfxCtx = null;
-  function initSfx() {
-    if (sfxCtx || !CONFIG.soundEffects.enabled) return;
-    sfxCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  function playSfx(type) {
-    if (!sfxCtx || !CONFIG.soundEffects.enabled) return;
-    if (sfxCtx.state === 'suspended') sfxCtx.resume();
-    const osc = sfxCtx.createOscillator();
-    const gain = sfxCtx.createGain();
-    const now = sfxCtx.currentTime;
-    if (type === 'hover') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(800, now);
-      osc.frequency.exponentialRampToValueAtTime(1200, now + 0.05);
-      gain.gain.setValueAtTime(CONFIG.soundEffects.volume, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-      osc.connect(gain);
-      gain.connect(sfxCtx.destination);
-      osc.start(now);
-      osc.stop(now + 0.1);
-    } else if (type === 'click') {
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(600, now);
-      osc.frequency.exponentialRampToValueAtTime(300, now + 0.1);
-      gain.gain.setValueAtTime(CONFIG.soundEffects.volume * 1.5, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
-      osc.connect(gain);
-      gain.connect(sfxCtx.destination);
-      osc.start(now);
-      osc.stop(now + 0.15);
-    }
-  }
-  // Attach sound effects to interactive elements
-  if (CONFIG.soundEffects.enabled) {
-    document.querySelectorAll('a, button, .card-loom, .morphism-panel, .pipeline-node, .btn-loom').forEach(el => {
-      el.addEventListener('mouseenter', () => { initSfx(); playSfx('hover'); }, { passive: true });
-      el.addEventListener('click', () => { initSfx(); playSfx('click'); });
-    });
-  }
-
-  // ── NEWSLETTER HANDLER ──
-  window.handleNewsletter = function(form) {
-    const email = form.querySelector('input[type="email"]').value;
-    console.log('%c Newsletter signup: ' + email, 'color:#00D4AA;font-weight:bold;');
-    // In production: POST to your backend / mailing list API
-    alert('Thanks for subscribing! We\'ll send updates to ' + email);
-    form.reset();
-  };
-
-  // ── PARALLAX ──
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const holo = document.querySelector('.bg-holo');
-    if (holo) holo.style.transform = `translateY(${scrolled * 0.15}px)`;
-  }, { passive: true });
-
-  // ── CONSOLE BRANDING ──
-  console.log('%c Omni-Loom Fabrication Compiler ', 'background:#B87333;color:#1A0F2E;font-size:14px;font-weight:bold;padding:4px 8px;border-radius:4px;');
-  console.log('%c Every cut, compiled. ', 'color:#D4A843;font-style:italic;');
-  console.log('%c CONFIG ', 'background:#527568;color:#F5F0E8;font-size:10px;padding:2px 4px;border-radius:2px;', CONFIG);
+(function(){
+'use strict';
+const CONFIG={cursor:{enabled:!window.matchMedia('(pointer: coarse)').matches,trailCount:8,lerp:0.15},particles:{count:60,connectionThreshold:120,mouseRepelRadius:100},audio:{enabled:!0,frequencies:[110,164.81,220,329.63],reducedMotionRespect:!0},scrollReveal:{threshold:0.15,rootMargin:'0px'},soundEffects:{enabled:!0,volume:0.05}};
+const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(prefersReducedMotion&&CONFIG.audio.reducedMotionRespect){CONFIG.audio.enabled=!1;CONFIG.soundEffects.enabled=!1}
+const scrollProgress=document.getElementById('scrollProgress');
+function updateScrollProgress(){const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?(s/d)*100:0;scrollProgress.style.width=p+'%';scrollProgress.setAttribute('aria-valuenow',Math.round(p))}
+window.addEventListener('scroll',updateScrollProgress,{passive:!0});updateScrollProgress();
+const cursor=document.getElementById('cursor');
+let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
+const trails=[];
+for(let i=0;i<8;i++){const t=document.createElement('div');t.className='cursor-trail';document.body.appendChild(t);trails.push({el:t,x:0,y:0})}
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+function animateCursor(){cursorX+=(mouseX-cursorX)*0.15;cursorY+=(mouseY-cursorY)*0.15;cursor.style.left=cursorX+'px';cursor.style.top=cursorY+'px';let px=cursorX,py=cursorY;trails.forEach((t,i)=>{t.x+=(px-t.x)*(0.1+i*0.02);t.y+=(py-t.y)*(0.1+i*0.02);t.el.style.left=t.x+'px';t.el.style.top=t.y+'px';t.el.style.opacity=0.5-(i/8)*0.4;t.el.style.transform=`translate(-50%,-50%) scale(${1-i*0.08})`;px=t.x;py=t.y});requestAnimationFrame(animateCursor)}
+animateCursor();
+document.querySelectorAll('a,button,.card-loom,.morphism-panel,.pipeline-node').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='48px';cursor.style.height='48px';cursor.style.borderColor='var(--loom-thread-cyan)'});el.addEventListener('mouseleave',()=>{cursor.style.width='24px';cursor.style.height='24px';cursor.style.borderColor='var(--loom-copper)'})});
+const canvas=document.getElementById('particle-canvas');
+const ctx=canvas.getContext('2d');
+let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+class Particle{constructor(){this.reset()}
+reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*2+0.5;this.speedX=(Math.random()-0.5)*0.3;this.speedY=(Math.random()-0.5)*0.3;this.opacity=Math.random()*0.5+0.1;this.hue=Math.random()>0.5?30:170}
+update(){this.x+=this.speedX;this.y+=this.speedY;const dx=this.x-mouseX,dy=this.y-mouseY,d=Math.sqrt(dx*dx+dy*dy);if(d<100){const f=(100-d)/100;this.x+=(dx/d)*f*2;this.y+=(dy/d)*f*2}if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset()}
+draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`hsla(${this.hue},70%,60%,${this.opacity})`;ctx.fill()}}
+for(let i=0;i<60;i++)particles.push(new Particle());
+function drawConnections(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(212,168,67,${0.08*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke()}}}}
+function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});drawConnections();requestAnimationFrame(animateParticles)}
+animateParticles();
+const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll('.stat-number[data-count]').forEach(stat=>{if(stat.dataset.animated)return;stat.dataset.animated='true';const target=parseInt(stat.dataset.count),start=performance.now(),duration=2000;function update(now){const elapsed=now-start,progress=Math.min(elapsed/duration,1),eased=1-Math.pow(1-progress,3);stat.textContent=Math.floor(eased*target);if(progress<1)requestAnimationFrame(update);else stat.textContent=target+(target===100?'%':'+')}requestAnimationFrame(update)})}})},{threshold:0.15});
+document.querySelectorAll('.reveal,.pipeline-stage').forEach(el=>revealObserver.observe(el));
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>100)});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const id=this.getAttribute('href');if(id==='#')return;e.preventDefault();const target=document.querySelector(id);if(target)target.scrollIntoView({behavior:'smooth',block:'start'})})});
+const hub=document.getElementById('manifestoHub');
+[{l:'CNC',d:'SVG→G-Code',s:'top:5%;left:50%;transform:translateX(-50%)'},{l:'Embroidery',d:'SVG→DST',s:'top:12%;right:8%'},{l:'Screen Print',d:'PNG layers',s:'top:50%;right:3%;transform:translateY(-50%)'},{l:'Sublimation',d:'WebGPU→300DPI',s:'bottom:12%;right:8%'},{l:'Laser Cut',d:'Kerf comp',s:'bottom:5%;left:50%;transform:translateX(-50%)'},{l:'3D Print',d:'Sliced G-Code',s:'bottom:12%;left:8%'},{l:'Weaving',d:'Jacquard',s:'top:50%;left:3%;transform:translateY(-50%)'},{l:'Quilting',d:'Long-arm',s:'top:12%;left:8%'}].forEach(sp=>{const el=document.createElement('div');el.className='manifesto-spoke';el.style.cssText=sp.s;el.innerHTML=`<div style="font-family:var(--font-embroidery);color:var(--loom-copper-light);font-size:0.9rem">${sp.l}</div><div style="font-size:0.7rem;color:var(--loom-dust);margin-top:4px">${sp.d}</div>`;hub.appendChild(el)});
+const audioToggle=document.getElementById('audioToggle');
+let audioEnabled=!1,audioCtx=null,gainNodes=[];
+function initAudio(){if(audioCtx)return;audioCtx=new(window.AudioContext||window.webkitAudioContext)();[110,164.81,220,329.63].forEach((freq,i)=>{const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type=i%2===0?'sine':'triangle';osc.frequency.value=freq;filter.type='lowpass';filter.frequency.value=800;gain.gain.value=0;osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start();gainNodes.push(gain)})}
+audioToggle.addEventListener('click',()=>{if(!audioEnabled){initAudio();audioCtx.resume();gainNodes.forEach((g,i)=>g.gain.setTargetAtTime([0.03,0.02,0.015,0.01][i],audioCtx.currentTime,1));audioToggle.classList.remove('muted');audioEnabled=!0}else{gainNodes.forEach(g=>g.gain.setTargetAtTime(0,audioCtx.currentTime,0.5));audioToggle.classList.add('muted');audioEnabled=!1}});
+let sfxCtx=null;
+function initSfx(){if(sfxCtx||!CONFIG.soundEffects.enabled)return;sfxCtx=new(window.AudioContext||window.webkitAudioContext)()}
+function playSfx(type){if(!sfxCtx||!CONFIG.soundEffects.enabled)return;if(sfxCtx.state==='suspended')sfxCtx.resume();const osc=sfxCtx.createOscillator(),gain=sfxCtx.createGain(),now=sfxCtx.currentTime;if(type==='hover'){osc.type='sine';osc.frequency.setValueAtTime(800,now);osc.frequency.exponentialRampToValueAtTime(1200,now+0.05);gain.gain.setValueAtTime(CONFIG.soundEffects.volume,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.08)}else if(type==='click'){osc.type='triangle';osc.frequency.setValueAtTime(600,now);osc.frequency.exponentialRampToValueAtTime(300,now+0.1);gain.gain.setValueAtTime(CONFIG.soundEffects.volume*1.5,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.15)}osc.connect(gain);gain.connect(sfxCtx.destination);osc.start(now);osc.stop(now+0.15)}
+if(CONFIG.soundEffects.enabled){document.querySelectorAll('a,button,.card-loom,.morphism-panel,.pipeline-node,.btn-loom').forEach(el=>{el.addEventListener('mouseenter',()=>{initSfx();playSfx('hover')},{passive:!0});el.addEventListener('click',()=>{initSfx();playSfx('click')})})}
+if('vibrate' in navigator&&CONFIG.soundEffects.enabled){document.querySelectorAll('.btn-loom,.pipeline-node,.audio-toggle,.exit-modal-close').forEach(el=>{el.addEventListener('click',()=>{navigator.vibrate(20)},{passive:!0})});document.querySelectorAll('.card-loom,.morphism-panel').forEach(el=>{el.addEventListener('mouseenter',()=>{navigator.vibrate(8)},{passive:!0})})}
+let exitIntentTriggered=!1;
+document.addEventListener('mouseleave',(e)=>{if(exitIntentTriggered)return;if(e.clientY<10&&e.relatedTarget===null){exitIntentTriggered=!0;const modal=document.getElementById('exitModal');modal.classList.add('active');modal.querySelector('.exit-modal-close').focus()}});
+document.getElementById('exitModalClose').addEventListener('click',()=>{document.getElementById('exitModal').classList.remove('active')});
+document.getElementById('exitModal').addEventListener('click',(e)=>{if(e.target.id==='exitModal')e.target.classList.remove('active')});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape')document.getElementById('exitModal').classList.remove('active')});
+window.handleNewsletter=function(form){const email=form.querySelector('input[type="email"]').value;console.log('%c Newsletter signup: '+email,'color:#00D4AA;font-weight:bold');alert('Thanks for subscribing! We\'ll send updates to '+email);form.reset()};
+window.handleWhitepaperDownload=function(form){const email=form.querySelector('input[type="email"]').value;console.log('%c Whitepaper download: '+email,'color:#D4A843;font-weight:bold');alert('The whitepaper will be sent to '+email+' shortly!');document.getElementById('exitModal').classList.remove('active');form.reset()};
+const pipelineStages=document.querySelectorAll('.pipeline-stage');
+const pipelineThread=document.querySelector('.pipeline-thread');
+if(pipelineStages.length&&pipelineThread){const pipelineObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const stage=parseInt(entry.target.dataset.stage);const pct=(stage/pipelineStages.length)*100;pipelineThread.style.background=`linear-gradient(180deg, var(--loom-copper) 0%, var(--loom-thread-cyan) ${Math.min(25,pct)}%, var(--loom-thread-magenta) ${Math.min(50,pct)}%, var(--loom-thread-violet) ${Math.min(75,pct)}%, var(--loom-copper) 100%)`;pipelineThread.style.boxShadow=`0 0 ${10+stage*2}px rgba(0,212,170,0.${Math.min(5,stage)})`}})},{threshold:0.5});pipelineStages.forEach(s=>pipelineObserver.observe(s))}
+window.addEventListener('scroll',()=>{const scrolled=window.scrollY;const holo=document.querySelector('.bg-holo');if(holo)holo.style.transform=`translateY(${scrolled*0.15}px)`},{passive:!0});
+console.log('%c Omni-Loom Fabrication Compiler ','background:#B87333;color:#1A0F2E;font-size:14px;font-weight:bold;padding:4px 8px;border-radius:4px');
+console.log('%c Every cut, compiled. ','color:#D4A843;font-style:italic');
 })();
 </script>
-
 </body>
 </html>
