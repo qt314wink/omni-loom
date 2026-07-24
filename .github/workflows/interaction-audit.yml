@@ -1,0 +1,38 @@
+name: Interaction and Conversion Audit
+
+on:
+  pull_request:
+    paths:
+      - index.html
+      - tests/interaction-audit.mjs
+      - docs/INTERACTION_INTENT_MATRIX.md
+      - .github/workflows/interaction-audit.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Run static interaction audit
+        run: node tests/interaction-audit.mjs
+
+      - name: Upload audit receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: omni-loom-interaction-audit
+          path: artifacts/interaction-audit.json
+          if-no-files-found: error
+          retention-days: 30
