@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 
 const htmlPath = resolve(process.cwd(), 'index.html');
 const html = await readFile(htmlPath, 'utf8');
+const activeHtml = html.replace(/<!--[\s\S]*?-->/g, '');
 
 const checks = [];
 
@@ -11,6 +12,7 @@ function check(id, description, pass, severity, evidence) {
 }
 
 const has = (pattern) => pattern.test(html);
+const activeHas = (pattern) => pattern.test(activeHtml);
 
 check(
   'exit-dialog-semantics',
@@ -127,15 +129,15 @@ check(
 check(
   'analytics-placeholder-disabled',
   'Analytics remains disabled until a real consent and data-minimization decision exists.',
-  !has(/gtag\s*\(\s*['"]config['"]\s*,\s*['"]G-[A-Z0-9]+/i),
+  !activeHas(/gtag\s*\(\s*['"]config['"]\s*,\s*['"]G-[A-Z0-9]+/i),
   'critical',
-  'A real GA measurement ID must not be active in this evidence-only stage.',
+  'A real GA measurement ID must not be active in executable markup.',
 );
 
 check(
   'aggregate-rating-evidence',
   'Structured rating claims are not published without a documented evidence source.',
-  !has(/"aggregateRating"/i),
+  !activeHas(/"aggregateRating"/i),
   'critical',
   'The current static schema.org aggregate rating requires substantiation or removal.',
 );
