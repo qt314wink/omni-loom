@@ -1,78 +1,121 @@
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 
-const htmlPath = resolve(process.cwd(), 'index.html');
-const html = await readFile(htmlPath, 'utf8');
-const activeHtml = html.replace(/<!--[\s\S]*?-->/g, '');
-
-const checks = [];
-
-function check(id, description, pass, severity, evidence) {
-  checks.push({ id, description, pass: Boolean(pass), severity, evidence });
+async function readOptional(path) {
+  try {
+    return await readFile(resolve(process.cwd(), path), 'utf8');
+  } catch {
+    return '';
+  }
 }
 
-const has = (pattern) => pattern.test(html);
-const activeHas = (pattern) => pattern.test(activeHtml);
+const [html, css, javascript] = await Promise.all([
+  readOptional('index.html'),
+  readOptional('styles.css'),
+  readOptional('app.js'),
+]);
+
+if (!html) throw new Error('index.html is required for the interaction audit.');
+
+const activeHtml = html.replace(/<!--[\s\S]*?-->/g, '');
+const activeSource = `${activeHtml}\n${css}\n${javascript}`;
+const checks = [];
+
+function check(id, description, applicable, passed, severity, evidence) {
+  const status = !applicable ? 'not-applicable' : passed ? 'pass' : 'fail';
+  checks.push({
+    id,
+    description,
+    applicable: Boolean(applicable),
+    pass: status !== 'fail',
+    status,
+    severity,
+    evidence,
+  });
+}
+
+const has = (pattern) => pattern.test(activeSource);
+const htmlHas = (pattern) => pattern.test(activeHtml);
+const cssHas = (pattern) => pattern.test(css);
+const jsHas = (pattern) => pattern.test(javascript);
+
+const hasExitDialog = htmlHas(/id=["']exitModal["']/i);
+const hasNewsletter =
+  htmlHas(/<form[^>]*(newsletter|whitepaper)/i) ||
+  htmlHas(/class=["'][^"']*(newsletter|whitepaper)/i) ||
+  htmlHas(/<input[^>]*type=["']email["']/i);
+const hasAudio = htmlHas(/id=["']audioToggle["']/i) || jsHas(/AudioContext/i);
+const hasHaptics = jsHas(/navigator\.vibrate|\bvibrate\s*\(/i);
+const hasScrollProgress = htmlHas(/id=["']scrollProgress["']/i);
+const hasMotionRuntime = jsHas(/requestAnimationFrame|IntersectionObserver|particle/i);
 
 check(
   'exit-dialog-semantics',
-  'Exit-intent surface is identified as an accessible modal dialog.',
-  has(/id=["']exitModal["'][^>]*role=["']dialog["'][^>]*aria-modal=["']true["']/i),
+  'If exit intent exists, it is identified as an accessible modal dialog.',
+  hasExitDialog,
+  htmlHas(/id=["']exitModal["'][^>]*role=["']dialog["'][^>]*aria-modal=["']true["']/i),
   'critical',
-  'Expected #exitModal with role="dialog" and aria-modal="true".',
+  'Expected #exitModal with role="dialog" and aria-modal="true" when the feature exists.',
 );
 
 check(
   'exit-dialog-close-control',
-  'Exit-intent dialog exposes a named close control.',
-  has(/id=["']exitModalClose["'][^>]*aria-label=["'][^"']*close/i),
+  'If exit intent exists, it exposes a named close control.',
+  hasExitDialog,
+  htmlHas(/id=["']exitModalClose["'][^>]*aria-label=["'][^"']*close/i),
   'critical',
-  'Expected a close button with an accessible name.',
+  'Expected a close button with an accessible name when the feature exists.',
 );
 
 check(
   'exit-dialog-escape',
-  'Escape closes the exit-intent dialog.',
-  has(/keydown[\s\S]{0,500}(Escape|Esc)/i),
+  'If exit intent exists, Escape closes it.',
+  hasExitDialog,
+  jsHas(/keydown[\s\S]{0,1000}(Escape|Esc)/i),
   'critical',
-  'Expected a keydown listener that handles Escape.',
+  'Expected a keydown listener that handles Escape when the feature exists.',
 );
 
 check(
   'exit-dialog-focus',
-  'Opening and closing the dialog manages focus explicitly.',
-  has(/\.focus\s*\(/) && has(/exitModal/i),
+  'If exit intent exists, opening and closing it manages focus explicitly.',
+  hasExitDialog,
+  jsHas(/\.focus\s*\(/) && jsHas(/exitModal/i),
   'critical',
-  'Expected focus entry and focus restoration associated with the modal.',
+  'Expected focus entry and restoration associated with the modal.',
 );
 
 check(
   'exit-dialog-once',
-  'Exit intent is bounded to one presentation per session or explicit consent state.',
-  has(/sessionStorage|localStorage|exit(?:Intent)?Shown|hasShownExit/i),
+  'If exit intent exists, it is bounded to one presentation per session.',
+  hasExitDialog,
+  has(/sessionStorage|exit(?:Intent)?Shown|hasShownExit/i),
   'warning',
-  'Expected a session-scoped presentation guard.',
+  'Expected a session-scoped guard when the feature exists.',
 );
 
 check(
   'newsletter-email',
-  'Newsletter/whitepaper form requests an email using a required email input.',
-  has(/<input[^>]*type=["']email["'][^>]*required/i),
+  'If newsletter or whitepaper capture exists, it uses a required email input.',
+  hasNewsletter,
+  htmlHas(/<input[^>]*type=["']email["'][^>]*required/i),
   'critical',
-  'Expected type="email" and required.',
+  'Expected type="email" and required when the feature exists.',
 );
 
 check(
   'newsletter-consent',
-  'The form communicates consent or links to a privacy notice.',
+  'If email capture exists, it communicates consent or links to a privacy notice.',
+  hasNewsletter,
   has(/consent|privacy|data use|unsubscribe/i),
   'critical',
-  'Expected a privacy/consent disclosure near the form.',
+  'Expected privacy and consent disclosure near the form.',
 );
 
 check(
   'newsletter-result-state',
-  'Submission exposes success and failure states rather than only suppressing navigation.',
+  'If email capture exists, submission exposes honest success and failure states.',
+  hasNewsletter,
   has(/aria-live|role=["']status["']|submission.*(?:success|error)|catch\s*\(/i),
   'critical',
   'Expected visible status handling for success and failure.',
@@ -80,77 +123,91 @@ check(
 
 check(
   'audio-user-initiated',
-  'Audio is initialized or resumed only from a user gesture.',
-  has(/audioToggle[\s\S]{0,1200}(click|pointerup)[\s\S]{0,1200}(AudioContext|resume\s*\()/i),
+  'If audio exists, its context is initialized or resumed only from a user gesture.',
+  hasAudio,
+  jsHas(/audioButton\.addEventListener\(["']click["'][\s\S]*?(AudioContext|resume\s*\()/i),
   'critical',
-  'Expected AudioContext creation/resume inside an audio-toggle interaction.',
+  'Expected AudioContext creation or resume inside the audio-toggle click handler.',
 );
 
 check(
   'audio-default-off',
-  'Ambient audio defaults to off or muted.',
-  has(/(?:audioEnabled|soundEnabled|isPlaying|isMuted)\s*=\s*(?:false|true)/i) || has(/audio-toggle[^>]*muted/i),
+  'If audio exists, it defaults to off.',
+  hasAudio,
+  htmlHas(/id=["']audioToggle["'][^>]*aria-pressed=["']false["']/i),
   'warning',
-  'Expected an explicit default-off state.',
+  'Expected the audio control to declare aria-pressed="false" initially.',
 );
 
 check(
   'haptic-capability',
-  'Haptic feedback is capability checked and optional.',
-  has(/['"]vibrate['"]\s+in\s+navigator|typeof\s+navigator\.vibrate|navigator\.vibrate\s*&&/i),
+  'If haptics exist, vibration is capability checked and optional.',
+  hasHaptics,
+  jsHas(/["']vibrate["']\s+in\s+navigator|typeof\s+navigator\.vibrate|navigator\.vibrate\s*&&/i),
   'critical',
   'Expected a capability guard before vibration.',
 );
 
 check(
   'reduced-motion-css',
-  'A reduced-motion CSS fallback exists.',
-  has(/@media\s*\(prefers-reduced-motion\s*:\s*reduce\)/i),
+  'Animated interfaces provide a reduced-motion CSS fallback.',
+  hasMotionRuntime,
+  cssHas(/@media\s*\(prefers-reduced-motion\s*:\s*reduce\)/i),
   'critical',
-  'Expected prefers-reduced-motion: reduce.',
+  'Expected prefers-reduced-motion: reduce in styles.css.',
 );
 
 check(
   'reduced-motion-runtime',
   'JavaScript animation loops consult reduced-motion preference.',
-  has(/matchMedia\s*\([^)]*prefers-reduced-motion/i),
+  hasMotionRuntime,
+  jsHas(/matchMedia\s*\([^)]*prefers-reduced-motion/i),
   'warning',
   'Expected runtime animation and particle systems to avoid starting under reduced motion.',
 );
 
 check(
   'scroll-progress-aria',
-  'Scroll progress updates aria-valuenow as well as visual width.',
-  has(/scrollProgress[\s\S]{0,1200}aria-valuenow/i),
+  'If scroll progress exists, it updates aria-valuenow as well as visual width.',
+  hasScrollProgress,
+  htmlHas(/id=["']scrollProgress["'][^>]*role=["']progressbar["']/i) &&
+    jsHas(/scrollProgress|const\s+progress/i) &&
+    jsHas(/setAttribute\(["']aria-valuenow["']/i),
   'critical',
-  'Expected the progressbar accessible value to update.',
+  'Expected progressbar semantics and a runtime aria-valuenow update.',
 );
 
 check(
   'analytics-placeholder-disabled',
-  'Analytics remains disabled until a real consent and data-minimization decision exists.',
-  !activeHas(/gtag\s*\(\s*['"]config['"]\s*,\s*['"]G-[A-Z0-9]+/i),
+  'Analytics remains disabled until a consent and data-minimization decision exists.',
+  true,
+  !has(/gtag\s*\(\s*["']config["']\s*,\s*["']G-[A-Z0-9]+/i),
   'critical',
-  'A real GA measurement ID must not be active in executable markup.',
+  'A real GA measurement ID must not be active in executable source.',
 );
 
 check(
   'aggregate-rating-evidence',
-  'Structured rating claims are not published without a documented evidence source.',
-  !activeHas(/"aggregateRating"/i),
+  'Structured rating claims are not published without a documented source.',
+  true,
+  !has(/"aggregateRating"/i),
   'critical',
-  'The current static schema.org aggregate rating requires substantiation or removal.',
+  'An aggregate rating requires dated, queryable supporting evidence.',
 );
 
 const summary = {
   generatedAt: new Date().toISOString(),
-  source: 'index.html',
-  sourcePolicy: 'static evidence audit; no product files modified',
+  sources: ['index.html', 'styles.css', 'app.js'],
+  sourcePolicy: 'feature-aware static evidence audit; absent optional features are not applicable',
   totals: {
     checks: checks.length,
-    passed: checks.filter((item) => item.pass).length,
-    failed: checks.filter((item) => !item.pass).length,
-    criticalFailures: checks.filter((item) => !item.pass && item.severity === 'critical').length,
+    applicable: checks.filter((item) => item.applicable).length,
+    skipped: checks.filter((item) => item.status === 'not-applicable').length,
+    passed: checks.filter((item) => item.status === 'pass').length,
+    failed: checks.filter((item) => item.status === 'fail').length,
+    criticalFailures: checks.filter(
+      (item) => item.status === 'fail' && item.severity === 'critical',
+    ).length,
   },
   checks,
 };
@@ -163,12 +220,10 @@ await writeFile(
 );
 
 for (const item of checks) {
-  const marker = item.pass ? 'PASS' : 'FAIL';
+  const marker = item.status === 'pass' ? 'PASS' : item.status === 'fail' ? 'FAIL' : 'SKIP';
   console.log(`${marker} [${item.severity}] ${item.id}: ${item.description}`);
 }
 
 console.log(JSON.stringify(summary.totals));
 
-if (summary.totals.criticalFailures > 0) {
-  process.exitCode = 1;
-}
+if (summary.totals.criticalFailures > 0) process.exitCode = 1;
