@@ -1,636 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Omni-Loom is a universal fabrication compiler that compiles creative intent to physical dispatch. Save 780+ hours annually by eliminating format fragmentation across CNC, embroidery, laser cutting, and 3D printing.">
-<meta name="keywords" content="fabrication compiler, CNC, embroidery, laser cutting, 3D printing, manufacturing, design tools">
-<meta name="author" content="Omni-Loom">
-<meta name="theme-color" content="#B87333">
-<meta name="color-scheme" content="dark">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://thetbxcrmozis.kimi.page">
-<meta property="og:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
-<meta property="og:description" content="Every cut, compiled. Save 780+ hours annually with deterministic fabrication across CNC, embroidery, laser cutting, and 3D printing.">
-<meta property="og:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
-<meta property="og:site_name" content="Omni-Loom">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
-<meta name="twitter:description" content="Every cut, compiled. Save 780+ hours annually with deterministic fabrication.">
-<meta name="twitter:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
-<link rel="canonical" href="https://thetbxcrmozis.kimi.page">
-<link rel="preconnect" href="https://thetbxcrmozis.kimi.page">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231A0F2E' stroke='%23B87333' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23D4A843'/%3E%3C/svg%3E">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Omni-Loom Fabrication Compiler","description":"Universal fabrication compiler that compiles creative intent to physical dispatch across CNC, embroidery, laser cutting, and 3D printing.","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"127"}}</script>
-<!-- Google Analytics 4 placeholder — replace G-XXXXXXXXXX -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
-<title>Omni-Loom — The Enterprise Deterministic Fabrication Compiler</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-:root{
---loom-copper:#B87333;--loom-copper-light:#D4A843;--loom-copper-dark:#8B5A2B;
---loom-denim:#2B3F5C;--loom-denim-light:#3D5161;--loom-denim-deep:#1A0F2E;
---loom-sage:#7A9E8C;--loom-sage-light:#A1B1AE;--loom-sage-dark:#527568;
---loom-dust:#C4B9A8;--loom-dust-light:#E8E0D4;--loom-dust-warm:#D5CEC4;
---loom-oxide:#8B4513;--loom-oxide-light:#AD9073;--loom-linen:#F5F0E8;
---loom-midnight:#1A0F2E;--loom-void:#0D0A12;--loom-embroidery:#D4A843;
---loom-thread-cyan:#00D4AA;--loom-thread-magenta:#FF6B9D;--loom-thread-violet:#6B4EE6;
---mat-glass:rgba(255,255,255,0.08);--mat-glass-border:rgba(255,255,255,0.15);
---mat-leather:linear-gradient(145deg,#6B4E3D,#4A342B 50%,#3D2C27);
---mat-wood:linear-gradient(180deg,#8B6F4E,#6B5344 50%,#4A3828);
---mat-copper:linear-gradient(145deg,#D4A843,#B87333 40%,#8B5A2B);
---mat-denim:linear-gradient(135deg,#2B3F5C,#1E2D42);
---mat-holographic:linear-gradient(135deg,#6B4EE6,#00D4AA,#FF6B9D,#6B4EE6);
---z-stitch:inset 0 -2px 4px rgba(0,0,0,0.3),0 2px 4px rgba(255,255,255,0.1);
---z-copper-bevel:inset 0 0 20px rgba(0,0,0,0.5),0 0 30px rgba(184,115,51,0.3);
---z-paper-lift:0 4px 20px rgba(0,0,0,0.15),0 1px 3px rgba(0,0,0,0.1);
---z-emboss:0 8px 32px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.1);
---z-deep:0 20px 60px rgba(0,0,0,0.4),0 0 0 1px rgba(255,255,255,0.05);
---z-glow-copper:0 0 20px rgba(184,115,51,0.4),0 0 60px rgba(184,115,51,0.1);
---z-glow-cyan:0 0 15px rgba(0,212,170,0.3);
---ease-weave:cubic-bezier(0.34,1.56,0.64,1);--ease-loom:cubic-bezier(0.16,1,0.3,1);
---ease-settle:cubic-bezier(0.4,0,0.2,1);--ease-mouse:cubic-bezier(0.05,0.5,0.5,1);
---dur-fast:0.2s;--dur-normal:0.4s;--dur-slow:0.8s;--dur-holographic:8s;--dur-breathe:4s;
---space-xs:4px;--space-sm:8px;--space-md:16px;--space-lg:32px;--space-xl:64px;--space-2xl:128px;--space-hero:40vh;
---font-embroidery:'Georgia','Times New Roman',serif;--font-circuit:'Courier New','Monaco',monospace;
---font-parchment:'Georgia',serif;--font-ui:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
---stitch-running:2px dashed var(--loom-embroidery);--stitch-saddle:3px double var(--loom-oxide);--stitch-blanket:2px dashed var(--loom-dust)}
-body{font-family:var(--font-ui);color:var(--loom-dust-light);overflow-x:hidden;background:transparent;min-height:100vh}
-.bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none}
-.bg-holo{background:var(--loom-void);overflow:hidden}
-.bg-holo::before{content:'';position:absolute;inset:-50%;background:var(--mat-holographic);background-size:400% 400%;animation:holo-shift var(--dur-holographic) ease-in-out infinite;opacity:.12;filter:blur(80px)}
-.bg-holo::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(107,78,230,0.2) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(0,212,170,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(255,107,157,0.12) 0%,transparent 50%)}
-@keyframes holo-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.bg-circuit{z-index:0;opacity:.2;background-image:linear-gradient(90deg,transparent 98%,rgba(0,212,170,0.35) 98%),linear-gradient(0deg,transparent 98%,rgba(0,212,170,0.35) 98%);background-size:60px 60px}
-#particle-canvas{z-index:0}
-.content-layer{position:relative;z-index:1}
-.svg-filters{position:absolute;width:0;height:0}
-.skip-link{position:absolute;top:-40px;left:0;background:var(--loom-copper);color:var(--loom-midnight);padding:8px 16px;z-index:100000;font-family:var(--font-circuit);font-size:.85rem;text-decoration:none;border-radius:0 0 4px 0;transition:top .2s}
-.skip-link:focus{top:0}
-.scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:var(--mat-holographic);background-size:200% 200%;animation:holo-shift 3s ease-in-out infinite;z-index:10001;pointer-events:none;transition:width .1s linear}
-a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--loom-thread-cyan);outline-offset:3px;border-radius:2px}
-.nav-links a:focus-visible::after{width:100%}
-.card-loom:focus-visible{transform:translateY(-4px) scale(1.01);box-shadow:var(--z-deep),var(--z-glow-copper)}
-.cursor-loom{position:fixed;width:24px;height:24px;border:2px solid var(--loom-copper);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s var(--ease-weave),width .2s,height .2s;mix-blend-mode:difference;transform:translate(-50%,-50%)}
-.cursor-loom::after{content:'';position:absolute;inset:-8px;border:1px dashed var(--loom-embroidery);border-radius:50%;animation:cursor-rotate 8s linear infinite}
-@keyframes cursor-rotate{to{transform:rotate(360deg)}}
-.cursor-trail{position:fixed;width:6px;height:6px;background:var(--loom-copper);border-radius:50%;pointer-events:none;z-index:99998;opacity:.6;transition:opacity .5s}
-.nav-loom{position:fixed;top:0;left:0;right:0;z-index:1000;padding:var(--space-md) var(--space-xl);display:flex;justify-content:space-between;align-items:center;background:rgba(13,10,18,.85);backdrop-filter:blur(20px) saturate(1.2);-webkit-backdrop-filter:blur(20px) saturate(1.2);border-bottom:1px solid rgba(212,168,67,.15);transition:all var(--dur-normal) var(--ease-settle)}
-.nav-loom.scrolled{padding:var(--space-sm) var(--space-xl);background:rgba(13,10,18,.95)}
-.nav-logo{font-family:var(--font-embroidery);font-size:1.4rem;font-weight:700;color:var(--loom-copper);text-decoration:none;letter-spacing:.1em}
-.nav-logo::after{content:'';display:block;width:0;height:2px;background:var(--loom-embroidery);transition:width var(--dur-normal) var(--ease-weave)}
-.nav-logo:hover::after{width:100%}
-.nav-links{display:flex;gap:var(--space-lg);list-style:none}
-.nav-links a{color:var(--loom-dust);text-decoration:none;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;position:relative;transition:color var(--dur-fast)}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--loom-thread-cyan);transition:width var(--dur-normal) var(--ease-weave)}
-.nav-links a:hover{color:var(--loom-thread-cyan)}
-.nav-links a:hover::after{width:100%}
-.hero-loom{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;padding:var(--space-hero) var(--space-xl);overflow:hidden;background:linear-gradient(180deg,rgba(13,10,18,.4) 0%,rgba(13,10,18,.7) 60%,rgba(13,10,18,.95) 100%),url('images/hero.jpg');background-size:cover;background-position:center;background-attachment:fixed}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:900px}
-.hero-title{font-family:var(--font-embroidery);font-size:clamp(3rem,10vw,7rem);font-weight:700;color:var(--loom-copper);letter-spacing:.05em;line-height:1.1;margin-bottom:var(--space-md);text-shadow:0 1px 0 rgba(255,255,255,.1),0 2px 0 rgba(0,0,0,.3),0 4px 8px rgba(0,0,0,.4),0 0 40px rgba(184,115,51,.3)}
-.hero-title .stitch-text{display:inline-block;position:relative}
-.hero-title .stitch-text::after{content:'';position:absolute;bottom:-8px;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,var(--loom-embroidery) 0,var(--loom-embroidery) 8px,transparent 8px,transparent 12px);opacity:.9}
-.hero-subtitle{font-family:var(--font-parchment);font-size:clamp(1rem,2.5vw,1.5rem);color:var(--loom-dust-light);font-style:italic;margin-bottom:var(--space-lg);letter-spacing:.05em;opacity:.9}
-.hero-tagline{display:inline-block;padding:var(--space-sm) var(--space-lg);background:var(--mat-leather);border:var(--stitch-saddle);border-radius:4px;font-family:var(--font-circuit);font-size:.9rem;color:var(--loom-dust-light);letter-spacing:.15em;box-shadow:var(--z-emboss);position:relative;overflow:hidden}
-.hero-tagline::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:translateX(-100%);animation:shimmer 3s ease-in-out infinite}
-@keyframes shimmer{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
-.cactus-garden{position:absolute;bottom:0;left:0;right:0;height:200px;pointer-events:none;z-index:1}
-.cactus{position:absolute;bottom:0;animation:cactus-breathe var(--dur-breathe) ease-in-out infinite}
-.cactus-1{left:5%;width:80px;height:120px;animation-delay:0s}
-.cactus-2{left:15%;width:60px;height:90px;animation-delay:.5s}
-.cactus-3{right:10%;width:70px;height:100px;animation-delay:1s}
-.cactus-4{right:25%;width:50px;height:80px;animation-delay:1.5s}
-@keyframes cactus-breathe{0%,100%{transform:scaleY(1) scaleX(1)}50%{transform:scaleY(1.03) scaleX(.98)}}
-.section-loom{position:relative;padding:var(--space-2xl) var(--space-xl);max-width:1400px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:var(--space-2xl)}
-.section-title{font-family:var(--font-embroidery);font-size:clamp(1.8rem,4vw,3rem);color:var(--loom-copper);margin-bottom:var(--space-md);position:relative;display:inline-block}
-.section-title::after{content:'';position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:60px;height:3px;background:var(--loom-embroidery);border-radius:2px}
-.section-desc{font-family:var(--font-parchment);font-size:1.1rem;color:var(--loom-dust);max-width:600px;margin:var(--space-lg) auto 0;line-height:1.7}
-.card-loom{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:var(--space-lg);position:relative;overflow:hidden;transition:all var(--dur-normal) var(--ease-weave);box-shadow:var(--z-paper-lift);transform-style:preserve-3d;perspective:800px}
-.card-loom::before{content:'';position:absolute;inset:0;border-radius:8px;padding:1px;background:linear-gradient(135deg,rgba(212,168,67,.3),transparent 50%,rgba(0,212,170,.2));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-.card-loom:hover{transform:translateY(-8px) scale(1.02) rotateX(2deg);box-shadow:var(--z-deep),var(--z-glow-copper)}
-.card-loom:hover::before{background:linear-gradient(135deg,rgba(212,168,67,.6),transparent 50%,rgba(0,212,170,.4))}
-.card-stitch{position:absolute;inset:4px;border:var(--stitch-running);border-radius:6px;pointer-events:none;opacity:.3;transition:opacity var(--dur-normal)}
-.card-loom:hover .card-stitch{opacity:.7}
-.card-icon{width:56px;height:56px;margin-bottom:var(--space-md)}
-.card-title{font-family:var(--font-embroidery);font-size:1.3rem;color:var(--loom-copper-light);margin-bottom:var(--space-sm)}
-.card-body{font-size:.95rem;color:var(--loom-dust);line-height:1.6}
-.card-leather{background:linear-gradient(145deg,rgba(107,78,61,.85),rgba(74,52,43,.9)),url('images/leather.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-oxide);box-shadow:var(--z-emboss),inset 0 0 30px rgba(0,0,0,.3)}
-.card-wood{background:linear-gradient(180deg,rgba(139,111,78,.85),rgba(107,83,68,.9)),url('images/wood.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-oxide-light)}
-.card-denim{background:linear-gradient(135deg,rgba(43,63,92,.9),rgba(30,45,66,.95)),url('images/denim.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-denim-light)}
-.card-glass{background:rgba(255,255,255,.05);backdrop-filter:blur(30px) saturate(1.2);-webkit-backdrop-filter:blur(30px) saturate(1.2);border:1px solid rgba(255,255,255,.12)}
-.card-glass::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 50%);border-radius:8px;pointer-events:none}
-.pipeline-loom{position:relative;padding:var(--space-xl) 0}
-.pipeline-thread{position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--loom-copper) 0%,var(--loom-thread-cyan) 25%,var(--loom-thread-magenta) 50%,var(--loom-thread-violet) 75%,var(--loom-copper) 100%);transform:translateX(-50%);border-radius:2px;box-shadow:0 0 10px rgba(0,212,170,.3)}
-.pipeline-stage{position:relative;display:flex;align-items:center;margin-bottom:var(--space-xl);opacity:0;transform:translateY(40px);transition:all var(--dur-slow) var(--ease-loom)}
-.pipeline-stage.visible{opacity:1;transform:translateY(0)}
-.pipeline-stage:nth-child(even){flex-direction:row-reverse}
-.pipeline-node{width:60px;height:60px;border-radius:50%;background:var(--mat-copper);border:3px solid var(--loom-dust-light);box-shadow:var(--z-copper-bevel),var(--z-glow-copper);display:flex;align-items:center;justify-content:center;font-family:var(--font-circuit);font-weight:700;color:var(--loom-midnight);font-size:1.2rem;position:relative;z-index:2;flex-shrink:0}
-.pipeline-node::after{content:'';position:absolute;inset:-8px;border:2px dashed var(--loom-embroidery);border-radius:50%;animation:cursor-rotate 12s linear infinite}
-.pipeline-content{flex:1;max-width:450px;padding:var(--space-md) var(--space-lg);margin:0 var(--space-lg)}
-.grid-loom{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-lg)}
-.grid-loom-2{grid-template-columns:repeat(2,1fr)}
-.grid-loom-3{grid-template-columns:repeat(3,1fr)}
-.btn-loom{display:inline-flex;align-items:center;gap:var(--space-sm);padding:var(--space-sm) var(--space-lg);font-family:var(--font-circuit);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:none;border-radius:4px;cursor:pointer;position:relative;overflow:hidden;transition:all var(--dur-normal) var(--ease-weave);min-height:44px;min-width:44px}
-.btn-loom::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
-.btn-loom:hover::before{transform:translateX(100%)}
-.btn-copper{background:var(--mat-copper);color:var(--loom-midnight);box-shadow:var(--z-copper-bevel)}
-.btn-copper:hover{transform:translateY(-2px);box-shadow:var(--z-copper-bevel),var(--z-glow-copper)}
-.btn-ghost{background:transparent;color:var(--loom-copper);border:2px solid var(--loom-copper)}
-.btn-ghost:hover{background:rgba(184,115,51,.1);box-shadow:var(--z-glow-copper)}
-.problem-card{background:linear-gradient(145deg,rgba(139,69,19,.25),rgba(61,44,39,.5));border-left:4px solid var(--loom-oxide);padding:var(--space-md);border-radius:0 8px 8px 0;margin-bottom:var(--space-md)}
-.solution-card{background:linear-gradient(145deg,rgba(0,212,170,.12),rgba(107,78,230,.12));border-left:4px solid var(--loom-thread-cyan);padding:var(--space-md);border-radius:0 8px 8px 0}
-.morphism-showcase{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-md);margin:var(--space-xl) 0}
-.morphism-panel{aspect-ratio:3/4;border-radius:8px;padding:var(--space-md);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;transition:all var(--dur-normal) var(--ease-weave);transform-style:preserve-3d;perspective:600px}
-.morphism-panel:hover{transform:translateY(-12px) scale(1.03) rotateX(3deg) rotateY(-2deg);z-index:10}
-.morphism-glass{background:rgba(255,255,255,.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.15);box-shadow:inset 0 0 20px rgba(255,255,255,.05),0 8px 32px rgba(0,0,0,.2)}
-.morphism-wood{background:linear-gradient(180deg,rgba(139,111,78,.7),rgba(74,56,40,.8)),url('images/wood.jpg');background-size:cover;background-blend-mode:multiply;border:2px solid var(--loom-oxide-light);box-shadow:inset 0 0 40px rgba(0,0,0,.3)}
-.morphism-paper{background:var(--loom-linen);border:1px solid var(--loom-dust);box-shadow:var(--z-paper-lift);color:var(--loom-midnight)}
-.morphism-silicon{background:linear-gradient(145deg,#5B6E6F,#3D5161);border:2px solid var(--loom-sage);box-shadow:inset 0 0 30px rgba(0,0,0,.3),0 0 20px rgba(0,212,170,.1)}
-.morphism-label{font-family:var(--font-embroidery);font-size:1.1rem;margin-bottom:var(--space-xs)}
-.morphism-desc{font-size:.8rem;opacity:.8;line-height:1.4}
-.stat-loom{text-align:center;padding:var(--space-lg)}
-.stat-number{font-family:var(--font-circuit);font-size:clamp(2.5rem,6vw,4rem);font-weight:700;color:var(--loom-copper);line-height:1;text-shadow:var(--z-glow-copper)}
-.stat-label{font-size:.85rem;color:var(--loom-dust);text-transform:uppercase;letter-spacing:.15em;margin-top:var(--space-sm)}
-.stat-divider{width:40px;height:2px;background:var(--loom-embroidery);margin:var(--space-sm) auto}
-.manifesto-hub{position:relative;width:100%;max-width:800px;margin:0 auto;aspect-ratio:1}
-.manifesto-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;background:var(--mat-copper);border:4px solid var(--loom-embroidery);box-shadow:var(--z-copper-bevel),var(--z-glow-copper);display:flex;align-items:center;justify-content:center;text-align:center;padding:var(--space-md);z-index:10}
-.manifesto-spoke{position:absolute;width:150px;padding:var(--space-sm);background:var(--mat-leather);border:var(--stitch-saddle);border-radius:8px;text-align:center;font-size:.8rem;transition:all var(--dur-normal) var(--ease-weave)}
-.manifesto-spoke:hover{transform:scale(1.1);box-shadow:var(--z-glow-copper)}
-.roadmap-loom{display:flex;justify-content:space-between;gap:var(--space-md);margin-top:var(--space-xl)}
-.roadmap-phase{flex:1;text-align:center;position:relative}
-.roadmap-badge{width:80px;height:80px;margin:0 auto var(--space-md);border-radius:50%;background:var(--mat-denim);border:3px solid var(--loom-copper);box-shadow:var(--z-copper-bevel);display:flex;align-items:center;justify-content:center;font-family:var(--font-circuit);font-size:.7rem;color:var(--loom-dust-light);position:relative;z-index:2}
-.roadmap-badge::after{content:'';position:absolute;inset:-6px;border:2px dashed var(--loom-embroidery);border-radius:50%;animation:cursor-rotate 15s linear infinite}
-.roadmap-title{font-family:var(--font-embroidery);font-size:1rem;color:var(--loom-copper-light);margin-bottom:var(--space-xs)}
-.roadmap-body{font-size:.8rem;color:var(--loom-dust);line-height:1.5;padding:var(--space-sm);background:rgba(0,0,0,.2);border-radius:6px;border:1px solid rgba(255,255,255,.05)}
-.footer-loom{background:linear-gradient(180deg,transparent,rgba(13,10,18,.9));padding:var(--space-2xl) var(--space-xl) var(--space-xl);text-align:center;border-top:1px solid rgba(212,168,67,.1);position:relative}
-.footer-loom::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--loom-embroidery),transparent)}
-.footer-tagline{font-family:var(--font-embroidery);font-size:clamp(1.2rem,3vw,1.8rem);color:var(--loom-copper);margin-bottom:var(--space-md)}
-.footer-cta{display:inline-flex;gap:var(--space-md);margin-top:var(--space-lg);flex-wrap:wrap;justify-content:center}
-.reveal{opacity:0;transform:translateY(30px);transition:all var(--dur-slow) var(--ease-loom)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{transform:translateX(-40px)}
-.reveal-right{transform:translateX(40px)}
-.reveal.visible.reveal-left,.reveal.visible.reveal-right{transform:translateX(0)}
-.audio-toggle{position:fixed;bottom:var(--space-lg);right:var(--space-lg);width:48px;height:48px;border-radius:50%;background:var(--mat-copper);border:2px solid var(--loom-embroidery);color:var(--loom-midnight);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1000;transition:all var(--dur-normal) var(--ease-weave);box-shadow:var(--z-copper-bevel);min-height:44px;min-width:44px}
-.audio-toggle:hover{transform:scale(1.1);box-shadow:var(--z-copper-bevel),var(--z-glow-copper)}
-.audio-toggle.muted{opacity:.5}
-.exit-modal{position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--dur-normal) var(--ease-settle)}
-.exit-modal.active{opacity:1;pointer-events:all}
-.exit-modal-content{background:var(--mat-denim);border:2px solid var(--loom-copper);border-radius:12px;padding:var(--space-xl);max-width:480px;width:90%;text-align:center;position:relative;box-shadow:var(--z-deep),var(--z-glow-copper);transform:translateY(20px) scale(.95);transition:transform var(--dur-normal) var(--ease-weave)}
-.exit-modal.active .exit-modal-content{transform:translateY(0) scale(1)}
-.exit-modal-close{position:absolute;top:var(--space-sm);right:var(--space-sm);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:var(--loom-dust-light);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all var(--dur-fast);min-height:36px;min-width:36px}
-.exit-modal-close:hover{background:rgba(255,255,255,.15);transform:rotate(90deg)}
-.exit-modal-title{font-family:var(--font-embroidery);font-size:1.5rem;color:var(--loom-copper-light);margin-bottom:var(--space-sm)}
-.exit-modal-body{font-size:.95rem;color:var(--loom-dust-light);line-height:1.6;margin-bottom:var(--space-lg)}
-.social-proof{display:flex;justify-content:center;align-items:center;gap:var(--space-xl);flex-wrap:wrap;margin-top:var(--space-lg);opacity:.5}
-.social-proof-item{font-family:var(--font-circuit);font-size:.75rem;color:var(--loom-dust);text-transform:uppercase;letter-spacing:.15em}
-.newsletter-loom{display:flex;gap:var(--space-sm);max-width:500px;margin:var(--space-lg) auto 0;flex-wrap:wrap;justify-content:center}
-.newsletter-loom input{flex:1;min-width:200px;padding:var(--space-sm) var(--space-md);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:4px;color:var(--loom-dust-light);font-family:var(--font-circuit);font-size:.85rem;letter-spacing:.05em}
-.newsletter-loom input:focus-visible{outline:2px solid var(--loom-thread-cyan);border-color:var(--loom-thread-cyan)}
-.newsletter-loom input::placeholder{color:var(--loom-dust);opacity:.6}
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--loom-void)}
-::-webkit-scrollbar-thumb{background:var(--loom-copper-dark);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--loom-copper)}
-::selection{background:rgba(184,115,51,.3);color:var(--loom-dust-light)}
-.nav-links a{min-height:44px;display:flex;align-items:center}
-.pipeline-node{min-height:44px;min-width:44px}
-@media(max-width:768px){.grid-loom-2,.grid-loom-3{grid-template-columns:1fr}.nav-links{display:none}.pipeline-thread{left:30px}.pipeline-stage,.pipeline-stage:nth-child(even){flex-direction:column;align-items:flex-start;padding-left:70px}.nav-loom{top:auto;bottom:0;border-bottom:none;border-top:1px solid rgba(212,168,67,.15);padding:var(--space-sm) var(--space-md)}.nav-loom.scrolled{padding:var(--space-sm) var(--space-md)}.nav-links{display:flex!important;gap:var(--space-sm)}.nav-links a{font-size:.65rem;letter-spacing:.04em}.section-loom{padding-bottom:calc(var(--space-2xl)+60px)}.footer-loom{padding-bottom:calc(var(--space-xl)+60px)}.hero-loom{padding-bottom:calc(var(--space-hero)+60px)}.cursor-loom,.cursor-trail{display:none}.morphism-showcase{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:var(--space-md);padding-bottom:var(--space-md)}.morphism-showcase::-webkit-scrollbar{height:4px}.morphism-showcase::-webkit-scrollbar-thumb{background:var(--loom-copper-dark);border-radius:2px}.morphism-panel{min-width:200px;flex-shrink:0;scroll-snap-align:start}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.audio-toggle{display:none}}
-img,.hero-loom{content-visibility:auto}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Omni-Loom is a deterministic fabrication compiler that translates creative intent into auditable machine-ready output across CNC, embroidery, laser cutting, and 3D printing.">
+  <meta name="theme-color" content="#0D0A12">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thetbxcrmozis.kimi.page">
+  <meta property="og:title" content="Omni-Loom — The Enterprise Deterministic Fabrication Compiler">
+  <meta property="og:description" content="Every cut, compiled. A deterministic bridge between creative intent and physical fabrication.">
+  <meta property="og:image" content="https://thetbxcrmozis.kimi.page/images/hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thetbxcrmozis.kimi.page">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231A0F2E' stroke='%23B87333' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23D4A843'/%3E%3C/svg%3E">
+  <title>Omni-Loom — Deterministic Fabrication Compiler</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
-<svg class="svg-filters" aria-hidden="true">
-  <defs>
-    <pattern id="fabric-weave" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
-      <rect width="3" height="3" fill="rgba(212,168,67,0.08)"/>
-      <rect x="3" y="3" width="3" height="3" fill="rgba(212,168,67,0.08)"/>
-    </pattern>
-    <filter id="leather-grain" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise"/>
-      <feDiffuseLighting in="noise" lighting-color="#8B6F4E" surfaceScale="1" result="light">
-        <feDistantLight azimuth="45" elevation="60"/>
-      </feDiffuseLighting>
-      <feBlend in="light" in2="SourceGraphic" mode="multiply"/>
-    </filter>
-    <filter id="emboss-stitch" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur"/>
-      <feOffset in="blur" dx="1" dy="1" result="offset"/>
-      <feSpecularLighting in="blur" surfaceScale="2" specularConstant="0.8" specularExponent="15" result="spec">
-        <fePointLight x="-500" y="-500" z="500"/>
-      </feSpecularLighting>
-      <feComposite in="spec" in2="SourceAlpha" operator="in" result="spec"/>
-      <feMerge>
-        <feMergeNode in="offset"/>
-        <feMergeNode in="SourceGraphic"/>
-        <feMergeNode in="spec"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="copper-shine" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#D4A843"/>
-      <stop offset="30%" stop-color="#B87333"/>
-      <stop offset="60%" stop-color="#8B5A2B"/>
-      <stop offset="100%" stop-color="#D4A843"/>
-    </linearGradient>
-    <filter id="denim-texture" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="turbulence"/>
-      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
-<div class="bg-layer bg-holo"></div>
-<div class="bg-layer bg-circuit"></div>
-<canvas id="particle-canvas" class="bg-layer"></canvas>
-<div class="cursor-loom" id="cursor"></div>
-<button class="audio-toggle" id="audioToggle" aria-label="Toggle ambient sound">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-  </svg>
-</button>
-<div class="exit-modal" id="exitModal" role="dialog" aria-modal="true" aria-label="Download whitepaper offer">
-  <div class="exit-modal-content">
-    <button class="exit-modal-close" id="exitModalClose" aria-label="Close dialog">&times;</button>
-    <div class="exit-modal-title">Before You Go</div>
-    <p class="exit-modal-body">Download the <strong style="color:var(--loom-copper-light)">Omni-Loom Technical Whitepaper</strong> — a 40-page deep dive into the deterministic fabrication compiler architecture, the 8-stage pipeline, and the morphism diagnostic framework.</p>
-    <form class="newsletter-loom" style="margin-top:0" onsubmit="event.preventDefault();handleWhitepaperDownload(this);" aria-label="Whitepaper download">
-      <input type="email" placeholder="Your email address" aria-label="Email for whitepaper" required>
-      <button type="submit" class="btn-loom btn-copper" aria-label="Download whitepaper">Download Now</button>
-    </form>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+  <div class="background" aria-hidden="true">
+    <div class="background__holo"></div>
+    <div class="background__grid"></div>
+    <canvas id="particleCanvas"></canvas>
   </div>
-</div>
-<div class="content-layer" id="main-content" role="main">
-<nav class="nav-loom" id="navbar" role="navigation" aria-label="Main navigation">
-  <a href="#" class="nav-logo" aria-label="Omni-Loom home">Omni-Loom</a>
-  <ul class="nav-links">
-    <li><a href="#problem" aria-label="The Format Schism section">The Schism</a></li>
-    <li><a href="#morphism" aria-label="Morphism Framework section">Framework</a></li>
-    <li><a href="#substrate" aria-label="Computational Substrate section">Physics</a></li>
-    <li><a href="#pipeline" aria-label="Compilation Pipeline section">Pipeline</a></li>
-    <li><a href="#manifesto" aria-label="Embroidered Manifesto section">Manifesto</a></li>
-    <li><a href="#roadmap" aria-label="12-Month Roadmap section">Roadmap</a></li>
-  </ul>
-</nav>
-<section class="hero-loom" id="hero">
-  <div class="hero-content">
-    <h1 class="hero-title"><span class="stitch-text">Omni-Loom</span></h1>
-    <p class="hero-subtitle">The Enterprise Deterministic Fabrication Compiler</p>
-    <div class="hero-tagline">Every cut, compiled.</div>
-    <div style="margin-top:var(--space-xl);display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
-      <a href="#problem" class="btn-loom btn-copper" aria-label="Explore the Format Schism section">Explore the Schism</a>
-      <a href="#manifesto" class="btn-loom btn-ghost" aria-label="View the Embroidered Manifesto">View Manifesto</a>
-    </div>
-  </div>
-  <div class="cactus-garden">
-    <svg class="cactus cactus-1" viewBox="0 0 80 120" fill="none" aria-hidden="true">
-      <ellipse cx="40" cy="110" rx="30" ry="8" fill="#0D0A12" opacity="0.4"/>
-      <path d="M32,110 L32,35 Q32,18 40,18 Q48,18 48,35 L48,110" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
-      <path d="M32,55 Q18,50 18,40 Q18,30 28,35" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
-      <path d="M48,50 Q62,45 62,35 Q62,25 52,30" fill="#527568" stroke="#3D5C4A" stroke-width="2"/>
-      <line x1="36" y1="30" x2="36" y2="33" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/>
-      <line x1="44" y1="25" x2="44" y2="28" stroke="#D4A843" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    <svg class="cactus cactus-2" viewBox="0 0 60 90" fill="none" aria-hidden="true">
-      <ellipse cx="30" cy="82" rx="22" ry="6" fill="#0D0A12" opacity="0.4"/>
-      <path d="M24,82 L24,40 Q24,25 30,25 Q36,25 36,40 L36,82" fill="#6B8F7A" stroke="#4A6B5A" stroke-width="2"/>
-      <path d="M24,55 Q15,50 15,42 Q15,34 22,38" fill="#6B8F7A" stroke="#4A6B5A" stroke-width="2"/>
-      <line x1="28" y1="32" x2="28" y2="35" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <svg class="cactus cactus-3" viewBox="0 0 70 100" fill="none" aria-hidden="true">
-      <ellipse cx="35" cy="92" rx="25" ry="7" fill="#0D0A12" opacity="0.4"/>
-      <path d="M28,92 L28,30 Q28,16 35,16 Q42,16 42,30 L42,92" fill="#5A7D6A" stroke="#3D5C4A" stroke-width="2"/>
-      <path d="M42,52 Q54,47 54,37 Q54,27 46,32" fill="#5A7D6A" stroke="#3D5C4A" stroke-width="2"/>
-      <line x1="32" y1="24" x2="32" y2="27" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-    <svg class="cactus cactus-4" viewBox="0 0 50 80" fill="none" aria-hidden="true">
-      <ellipse cx="25" cy="74" rx="18" ry="5" fill="#0D0A12" opacity="0.4"/>
-      <path d="M20,74 L20,35 Q20,22 25,22 Q30,22 30,35 L30,74" fill="#7A9E8C" stroke="#5A7D6A" stroke-width="2"/>
-      <line x1="23" y1="28" x2="23" y2="31" stroke="#D4A843" stroke-width="1.5" stroke-linecap="round"/>
-    </svg>
-  </div>
-</section>
-<section class="section-loom" id="problem" aria-labelledby="problem-heading">
-  <div class="section-header reveal">
-    <h2 class="section-title" id="problem-heading">The Format Schism</h2>
-    <p class="section-desc">Mid-size fabrication shops hemorrhage 780+ hours annually to format fragmentation. Every file conversion is a stitch unpicked.</p>
-  </div>
-  <div class="grid-loom grid-loom-2">
-    <div class="reveal reveal-left">
-      <div class="problem-card">
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-oxide-light);margin-bottom:var(--space-sm)">Fragmented Vector Tools</h3>
-        <p style="color:var(--loom-dust-light)">Designers work in Illustrator, CorelDRAW, Inkscape — each exporting incompatible paths. The 780+ hour manual file conversion tax drains creative capacity.</p>
-      </div>
-      <div class="problem-card">
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-oxide-light);margin-bottom:var(--space-sm)">Inconsistent Scaling</h3>
-        <p style="color:var(--loom-dust-light)">Arbitrary color spaces between design and machine yield $400+ material waste per registration error. Needle breaks and unpredictable kerf compound losses.</p>
-      </div>
-      <div class="problem-card">
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-oxide-light);margin-bottom:var(--space-sm)">Proprietary Lock-in</h3>
-        <p style="color:var(--loom-dust-light)">Rigid machine protocols (DST, G-Code) trap shops in vendor ecosystems. No interoperability, no portability, no escape.</p>
-      </div>
-    </div>
-    <div class="reveal reveal-right">
-      <div class="solution-card">
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-thread-cyan);margin-bottom:var(--space-sm)">The Omni-Loom Bridge</h3>
-        <p style="color:var(--loom-dust-light)">A universal intermediate representation — <code style="color:var(--loom-copper)">stitch_plan.json</code> — compiles intent to physical dispatch with mathematical determinism.</p>
-      </div>
-      <div style="margin-top:var(--space-lg);padding:var(--space-lg);background:var(--mat-denim);border-radius:8px;border:1px solid var(--loom-denim-light)">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);text-align:center">
-          <div class="stat-loom">
-            <div class="stat-number" data-count="780">0</div>
-            <div class="stat-divider"></div>
-            <div class="stat-label">Hours Saved / Year</div>
-          </div>
-          <div class="stat-loom">
-            <div class="stat-number" data-count="400">0</div>
-            <div class="stat-divider"></div>
-            <div class="stat-label">$ Waste Prevented</div>
-          </div>
-          <div class="stat-loom">
-            <div class="stat-number" data-count="100">0</div>
-            <div class="stat-divider"></div>
-            <div class="stat-label">% Deterministic</div>
-          </div>
+
+  <header class="site-header" id="siteHeader">
+    <a href="#hero" class="brand" aria-label="Omni-Loom home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>Omni-Loom</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">
+      <span class="menu-toggle__label">Menu</span>
+      <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+    </button>
+    <nav class="primary-nav" id="primaryNav" aria-label="Main navigation">
+      <a href="#problem">Schism</a>
+      <a href="#morphism">Framework</a>
+      <a href="#substrate">Physics</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#roadmap">Roadmap</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__content reveal">
+        <p class="eyebrow">Universal fabrication infrastructure</p>
+        <h1 id="hero-title" class="hero__title">Omni-Loom</h1>
+        <p class="hero__subtitle">The Enterprise Deterministic Fabrication Compiler</p>
+        <p class="hero__tagline">Every cut, compiled.</p>
+        <div class="button-row">
+          <a href="#problem" class="button button--primary">Explore the Schism</a>
+          <a href="#pipeline" class="button button--ghost">Trace the Pipeline</a>
         </div>
+        <dl class="hero__proof" aria-label="Core product properties">
+          <div><dt>Versioned</dt><dd>Every transformation</dd></div>
+          <div><dt>Reversible</dt><dd>Every decision</dd></div>
+          <div><dt>Provable</dt><dd>Every dispatch</dd></div>
+        </dl>
       </div>
-    </div>
-  </div>
-</section>
-<section class="section-loom" id="morphism" aria-labelledby="morphism-heading">
-  <div class="section-header reveal">
-    <h2 class="section-title" id="morphism-heading">The Morphism Diagnostic Framework</h2>
-    <p class="section-desc">Four material paradigms, one unified compiler. Each morphism represents a distinct tactile language translated into deterministic machine instruction.</p>
-  </div>
-  <div class="morphism-showcase reveal">
-    <div class="morphism-panel morphism-glass" tabindex="0" aria-label="Glassmorphism panel">
-      <div class="morphism-label" style="color:var(--loom-dust-light)">Glassmorphism</div>
-      <div class="morphism-desc" style="color:var(--loom-dust)">Maximizes visibility for precise preview panels and laser toolpaths. Frosted clarity with depth.</div>
-    </div>
-    <div class="morphism-panel morphism-wood" tabindex="0" aria-label="Woodmorphism panel">
-      <div class="morphism-label" style="color:var(--loom-dust-light)">Woodmorphism</div>
-      <div class="morphism-desc" style="color:var(--loom-dust)">Warm, organic variation and depth. Natural grain patterns inform tactile feedback.</div>
-    </div>
-    <div class="morphism-panel morphism-paper" tabindex="0" aria-label="Papermorphism panel">
-      <div class="morphism-label">Papermorphism</div>
-      <div class="morphism-desc">Stackable, annotatable layers of fabric design. Fold, crease, annotate.</div>
-    </div>
-    <div class="morphism-panel morphism-silicon" tabindex="0" aria-label="Siliconmorphism panel">
-      <div class="morphism-label" style="color:var(--loom-dust-light)">Siliconmorphism</div>
-      <div class="morphism-desc" style="color:var(--loom-dust)">Industrial precision and chemical mixing. The substrate of computation.</div>
-    </div>
-  </div>
-</section>
-<section class="section-loom" id="substrate" aria-labelledby="substrate-heading">
-  <div class="section-header reveal">
-    <h2 class="section-title" id="substrate-heading">The Computational Substrate</h2>
-    <p class="section-desc">Processing physics and light at the speed of thought. Rust/WASM meets WebGPU for real-time deterministic simulation.</p>
-  </div>
-  <div class="grid-loom grid-loom-2">
-    <div class="card-loom card-denim reveal reveal-left" tabindex="0">
-      <div class="card-stitch"></div>
-      <div class="card-icon">
-        <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-          <rect x="8" y="8" width="40" height="40" rx="4" fill="url(#copper-shine)" opacity="0.3"/>
-          <path d="M16,28 L24,20 L32,28 L40,20" stroke="#00D4AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M16,36 L28,24 L40,36" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="28" cy="28" r="20" stroke="#00D4AA" stroke-width="1" opacity="0.3" stroke-dasharray="4 4"/>
+      <div class="hero__ornament" aria-hidden="true">
+        <svg viewBox="0 0 420 150" role="presentation">
+          <defs>
+            <linearGradient id="cactusFill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7A9E8C"/><stop offset="1" stop-color="#527568"/></linearGradient>
+          </defs>
+          <path d="M0 142 Q70 116 145 138 T285 132 T420 140 V150 H0Z" fill="#0D0A12" opacity=".8"/>
+          <g fill="url(#cactusFill)" stroke="#D4A843" stroke-width="2" opacity=".9">
+            <path d="M48 142V68c0-13 7-22 17-22s17 9 17 22v22c11-3 16-10 16-21V57h16v17c0 22-12 35-32 38v30Z"/>
+            <path d="M317 142V78c0-12 7-20 16-20s16 8 16 20v16c9-3 13-9 13-18V66h14v15c0 18-10 30-27 33v28Z"/>
+            <path d="M202 142V93c0-10 6-17 14-17s14 7 14 17v49Z"/>
+          </g>
         </svg>
       </div>
-      <h3 class="card-title">The Warp: Rust/WASM XPBD Solver</h3>
-      <p class="card-body">Calculates soft-body kinematics, cloth draping, and thread tension with deterministic accuracy.</p>
-      <div style="margin-top:var(--space-md);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.75rem;color:var(--loom-thread-cyan)">&gt; xpbd.solve(mesh, constraints, dt=0.016)</div>
-    </div>
-    <div class="card-loom card-glass reveal reveal-right" tabindex="0">
-      <div class="card-stitch"></div>
-      <div class="card-icon">
-        <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
-          <rect x="4" y="4" width="48" height="48" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)"/>
-          <path d="M14,42 L14,14 L28,28 L42,14 L42,42" stroke="#FF6B9D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="28" cy="28" r="8" stroke="#6B4EE6" stroke-width="1.5" fill="none"/>
-        </svg>
+    </section>
+
+    <section class="section" id="problem" aria-labelledby="problem-title">
+      <header class="section__header reveal">
+        <p class="eyebrow">The problem</p>
+        <h2 id="problem-title">The Format Schism</h2>
+        <p>Mid-size fabrication shops lose hundreds of hours to file conversion, incompatible toolchains, and machine-specific rework. Every manual handoff is a stitch unpicked.</p>
+      </header>
+      <div class="split-grid">
+        <div class="issue-stack reveal reveal--left">
+          <article class="issue-card"><span>01</span><div><h3>Fragmented vector tools</h3><p>Designers export from incompatible systems, creating repeated cleanup and interpretation work.</p></div></article>
+          <article class="issue-card"><span>02</span><div><h3>Inconsistent scaling</h3><p>Color, units, kerf, stitch density, and registration drift between design intent and machine behavior.</p></div></article>
+          <article class="issue-card"><span>03</span><div><h3>Proprietary lock-in</h3><p>Machine protocols trap shops inside vendor-specific workflows with weak portability and auditability.</p></div></article>
+        </div>
+        <article class="bridge-card reveal reveal--right">
+          <p class="bridge-card__label">The Omni-Loom bridge</p>
+          <h3>One universal intermediate representation</h3>
+          <p><code>stitch_plan.json</code> compiles intent into physical dispatch with explicit constraints, version history, and machine-ready adapters.</p>
+          <div class="stats-grid">
+            <div><strong data-count="780">0</strong><span>Hours reclaimed / year</span></div>
+            <div><strong data-count="400">0</strong><span>Waste avoided / error</span></div>
+            <div><strong data-count="100">0</strong><span>Traceable pipeline</span></div>
+          </div>
+        </article>
       </div>
-      <h3 class="card-title">The Weft: WebGPU Render Pipeline</h3>
-      <p class="card-body">Procedural textures — wood grain via fractal noise, fabric weave via turbulence — without heavy asset payloads.</p>
-      <div style="margin-top:var(--space-md);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.75rem;color:var(--loom-thread-magenta)">&gt; webgpu.render(proceduralTexture, PBR)</div>
-    </div>
-  </div>
-</section>
-<section class="section-loom" id="pipeline" aria-labelledby="pipeline-heading">
-  <div class="section-header reveal">
-    <h2 class="section-title" id="pipeline-heading">The 8-Stage Compilation Pipeline</h2>
-    <p class="section-desc">From creative intent to physical dispatch — every stage is versioned, reversible, and mathematically provable.</p>
-  </div>
-  <div class="pipeline-loom">
-    <div class="pipeline-thread"></div>
-    <div class="pipeline-stage" data-stage="1">
-      <div class="pipeline-node" role="img" aria-label="Stage 1: Intent Capture">1</div>
-      <div class="pipeline-content card-loom card-leather" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Intent Capture</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">Natural language or SVG parsed into AST. Every decision logged as semantic node.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">parse(intent) &rarr; AST</code>
+    </section>
+
+    <section class="section" id="morphism" aria-labelledby="morphism-title">
+      <header class="section__header reveal">
+        <p class="eyebrow">Material language</p>
+        <h2 id="morphism-title">The Morphism Diagnostic Framework</h2>
+        <p>Four material paradigms make the compiler legible. Each maps a physical quality to an interface role rather than applying texture as decoration.</p>
+      </header>
+      <div class="morphism-track reveal" aria-label="Material paradigms">
+        <article class="morphism-card morphism-card--glass" tabindex="0"><span>01</span><h3>Glassmorphism</h3><p>Visibility, preview, and precision for toolpaths and simulation layers.</p></article>
+        <article class="morphism-card morphism-card--wood" tabindex="0"><span>02</span><h3>Woodmorphism</h3><p>Organic variation and warm feedback for source materials and fabrication context.</p></article>
+        <article class="morphism-card morphism-card--paper" tabindex="0"><span>03</span><h3>Papermorphism</h3><p>Stackable, annotatable layers for plans, decisions, and version history.</p></article>
+        <article class="morphism-card morphism-card--silicon" tabindex="0"><span>04</span><h3>Siliconmorphism</h3><p>Industrial precision for computation, constraints, and machine control.</p></article>
       </div>
-    </div>
-    <div class="pipeline-stage" data-stage="2">
-      <div class="pipeline-node" role="img" aria-label="Stage 2: Orchestration">2</div>
-      <div class="pipeline-content card-loom card-denim" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Orchestration</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">Chief Spatial Architect distributes work. Multi-threaded with dependency graph resolution.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">orchestrate(AST) &rarr; DAG</code>
+    </section>
+
+    <section class="section" id="substrate" aria-labelledby="substrate-title">
+      <header class="section__header reveal">
+        <p class="eyebrow">Computational substrate</p>
+        <h2 id="substrate-title">Physics at the speed of thought</h2>
+        <p>Rust/WASM handles deterministic simulation while WebGPU renders material behavior and fabrication consequences in real time.</p>
+      </header>
+      <div class="feature-grid">
+        <article class="feature-card feature-card--denim reveal reveal--left" tabindex="0">
+          <div class="feature-card__icon" aria-hidden="true">W</div>
+          <p class="feature-card__kicker">The warp</p>
+          <h3>Rust/WASM XPBD Solver</h3>
+          <p>Calculates soft-body kinematics, cloth drape, thread tension, and constraint resolution deterministically.</p>
+          <code>xpbd.solve(mesh, constraints, dt)</code>
+        </article>
+        <article class="feature-card feature-card--glass reveal reveal--right" tabindex="0">
+          <div class="feature-card__icon" aria-hidden="true">F</div>
+          <p class="feature-card__kicker">The weft</p>
+          <h3>WebGPU Render Pipeline</h3>
+          <p>Previews procedural materials, registration, stress, and toolpaths without shipping a heavy asset payload.</p>
+          <code>webgpu.render(material, toolpath)</code>
+        </article>
       </div>
-    </div>
-    <div class="pipeline-stage" data-stage="3">
-      <div class="pipeline-node" role="img" aria-label="Stage 3: Physics">3</div>
-      <div class="pipeline-content card-loom card-wood" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Physics</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">Rust XPBD solver: soft-body kinematics, cloth draping, thread tension.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">solve(mesh, constraints)</code>
+    </section>
+
+    <section class="section" id="pipeline" aria-labelledby="pipeline-title">
+      <header class="section__header reveal">
+        <p class="eyebrow">Translation architecture</p>
+        <h2 id="pipeline-title">The 8-Stage Compilation Pipeline</h2>
+        <p>From creative intent to physical dispatch, every stage produces evidence that can be inspected, reversed, and reproduced.</p>
+      </header>
+      <ol class="pipeline" aria-label="Eight-stage compilation pipeline">
+        <li class="pipeline__stage reveal" data-stage="1"><span class="pipeline__node">1</span><article><p>Input</p><h3>Intent Capture</h3><span>Natural language, SVG, or structured data becomes an explicit abstract syntax tree.</span><code>parse(intent) → AST</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="2"><span class="pipeline__node">2</span><article><p>Plan</p><h3>Orchestration</h3><span>Dependencies, tools, adapters, and validation gates become an executable graph.</span><code>orchestrate(AST) → DAG</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="3"><span class="pipeline__node">3</span><article><p>Simulate</p><h3>Physics</h3><span>Material constraints, tension, deformation, and collision behavior are resolved.</span><code>solve(mesh, constraints)</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="4"><span class="pipeline__node">4</span><article><p>Preview</p><h3>Render</h3><span>Material, toolpath, and registration states become inspectable before fabrication.</span><code>render(PBR, toolpath)</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="5"><span class="pipeline__node">5</span><article><p>Translate</p><h3>Synesthesia</h3><span>Visual state maps to haptic and auditory feedback for accessible machine awareness.</span><code>map(visual → haptic)</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="6"><span class="pipeline__node">6</span><article><p>Flatten</p><h3>Geometry Unwrap</h3><span>Three-dimensional surfaces become distortion-aware two-dimensional fabrication plans.</span><code>unwrap(mesh) → UV</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="7"><span class="pipeline__node">7</span><article><p>Compile</p><h3>Fabrication Export</h3><span>Adapters generate G-Code, DST, raster layers, trapping, and registration marks.</span><code>export(plan, adapter)</code></article></li>
+        <li class="pipeline__stage reveal" data-stage="8"><span class="pipeline__node">8</span><article><p>Verify</p><h3>Cyber-Physical Handshake</h3><span>Dispatch, telemetry, and post-run evidence close the loop between plan and reality.</span><code>dispatch(machine, verify)</code></article></li>
+      </ol>
+    </section>
+
+    <section class="section" id="manifesto" aria-labelledby="manifesto-title">
+      <header class="section__header reveal">
+        <p class="eyebrow">Universal intermediate representation</p>
+        <h2 id="manifesto-title">The Embroidered Manifesto</h2>
+        <p>One semantic core can speak many machine dialects without erasing the material differences that matter.</p>
+      </header>
+      <div class="manifesto-grid reveal">
+        <article class="manifesto-core"><strong>stitch_plan.json</strong><span>Universal IR</span></article>
+        <article><h3>CNC</h3><p>SVG → G-Code</p></article>
+        <article><h3>Embroidery</h3><p>SVG → DST</p></article>
+        <article><h3>Screen print</h3><p>Separated raster layers</p></article>
+        <article><h3>Sublimation</h3><p>Color-managed 300 DPI</p></article>
+        <article><h3>Laser cut</h3><p>Kerf-compensated vectors</p></article>
+        <article><h3>3D print</h3><p>Sliced toolpaths</p></article>
+        <article><h3>Weaving</h3><p>Jacquard instructions</p></article>
+        <article><h3>Quilting</h3><p>Long-arm paths</p></article>
       </div>
-    </div>
-    <div class="pipeline-stage" data-stage="4">
-      <div class="pipeline-node" role="img" aria-label="Stage 4: Render">4</div>
-      <div class="pipeline-content card-loom card-glass" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Render</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">WebGPU procedural textures — wood grain, fabric weave, leather grain.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">render(PBR, noise)</code>
+    </section>
+
+    <section class="section" id="roadmap" aria-labelledby="roadmap-title">
+      <header class="section__header reveal">
+        <p class="eyebrow">12-month path</p>
+        <h2 id="roadmap-title">From foundation to field proof</h2>
+        <p>The next version should progress from a persuasive concept site into an evidence-bearing product case study and runnable compiler demonstrator.</p>
+      </header>
+      <div class="roadmap-grid reveal">
+        <article><span>M1–3</span><h3>Foundation</h3><p>Lock the IR schema, deterministic fixtures, design tokens, and responsive component system.</p><small>Definition: reproducible local demo</small></article>
+        <article><span>M4–6</span><h3>Pipeline</h3><p>Implement adapter contracts, provenance receipts, visual diffing, and audit-grade run history.</p><small>Definition: inspectable end-to-end run</small></article>
+        <article><span>M7–9</span><h3>Integration</h3><p>Add machine simulator profiles, telemetry replay, beta-shop workflows, and stress testing.</p><small>Definition: validated pilot workflow</small></article>
+        <article><span>M10–12</span><h3>Launch</h3><p>Package enterprise pilots, compliance evidence, deployment tooling, and public case-study proof.</p><small>Definition: fundable pilot package</small></article>
       </div>
-    </div>
-    <div class="pipeline-stage" data-stage="5">
-      <div class="pipeline-node" role="img" aria-label="Stage 5: Synesthesia">5</div>
-      <div class="pipeline-content card-loom card-leather" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Synesthesia</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">Audio-haptic mapping: visual data into vibration envelopes and spectral soundscapes.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">map(visual &rarr; haptic)</code>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="cta">
+    <div class="site-footer__inner reveal">
+      <p class="eyebrow">The bridge is the product</p>
+      <h2>Make translation a first-class fabrication layer.</h2>
+      <p>Omni-Loom connects design systems, physical constraints, machine adapters, and immutable evidence into one coherent compilation model.</p>
+      <div class="button-row">
+        <a class="button button--primary" href="https://github.com/qt314wink/omni-loom">Review the source</a>
+        <a class="button button--ghost" href="docs/VNEXT_SCOPE.md">Read the vNext scope</a>
       </div>
+      <p class="site-footer__meta">Omni-Loom Fabrication Compiler © 2026 — Every cut, compiled.</p>
     </div>
-    <div class="pipeline-stage" data-stage="6">
-      <div class="pipeline-node" role="img" aria-label="Stage 6: Geometry Unwrap">6</div>
-      <div class="pipeline-content card-loom card-denim" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Geometry Unwrap</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">ABF++ flattening: 3D surfaces to 2D toolpaths with minimal distortion.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">unwrap(mesh) &rarr; UV</code>
-      </div>
-    </div>
-    <div class="pipeline-stage" data-stage="7">
-      <div class="pipeline-node" role="img" aria-label="Stage 7: Fabrication Export">7</div>
-      <div class="pipeline-content card-loom card-wood" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Fabrication Export</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">G-Code, DST, PNG generation with trapping, color separation, registration marks.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">export(toolpath, format)</code>
-      </div>
-    </div>
-    <div class="pipeline-stage" data-stage="8">
-      <div class="pipeline-node" role="img" aria-label="Stage 8: Cyber-Physical Handshake">8</div>
-      <div class="pipeline-content card-loom card-glass" tabindex="0">
-        <div class="card-stitch"></div>
-        <h3 style="font-family:var(--font-embroidery);color:var(--loom-copper-light);margin-bottom:var(--space-xs)">Cyber-Physical Handshake</h3>
-        <p style="font-size:0.85rem;color:var(--loom-dust)">Containerized dispatch via MQTT/OPC-UA. Real-time telemetry feedback loop.</p>
-        <code style="display:block;margin-top:var(--space-sm);padding:var(--space-sm);background:rgba(0,0,0,0.3);border-radius:4px;font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-thread-cyan)">dispatch(machine, verify)</code>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section-loom" id="manifesto" aria-labelledby="manifesto-heading">
-  <div class="section-header reveal">
-    <h2 class="section-title" id="manifesto-heading">The Embroidered Manifesto</h2>
-    <p class="section-desc">One universal intermediate representation. Six fabrication modalities. Infinite material expression.</p>
-  </div>
-  <div class="manifesto-hub reveal" id="manifestoHub">
-    <div class="manifesto-center">
-      <div style="font-family:var(--font-circuit);font-size:0.9rem;font-weight:700;color:var(--loom-midnight)">stitch_plan.json</div>
-      <div style="font-family:var(--font-circuit);font-size:0.65rem;margin-top:4px;opacity:0.8;color:var(--loom-midnight)">Universal IR</div>
-    </div>
-  </div>
-</section>
-<section class="section-loom" id="roadmap" aria-labelledby="roadmap-heading">
-  <div class="section-header reveal">
-    <h2 class="section-title" id="roadmap-heading">The 12-Month Roadmap</h2>
-    <p class="section-desc">From foundation to orbit. Four phases, twelve months, one deterministic trajectory.</p>
-  </div>
-  <div class="roadmap-loom reveal">
-    <div class="roadmap-phase">
-      <div class="roadmap-badge" role="img" aria-label="Phase 1: Months 1-3">M1-3</div>
-      <div class="roadmap-title">Foundation</div>
-      <div class="roadmap-body">Rust XPBD solver, WebGPU shaders, Docker Compose. Lock design tokens and component library.</div>
-      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">4 engineers</div>
-    </div>
-    <div class="roadmap-phase">
-      <div class="roadmap-badge" role="img" aria-label="Phase 2: Months 4-6">M4-6</div>
-      <div class="roadmap-title">Pipeline</div>
-      <div class="roadmap-body">8-stage compilation pipeline. Git-as-Memory audit trails. CE/UL pre-audits. Kubernetes.</div>
-      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">5 engineers</div>
-    </div>
-    <div class="roadmap-phase">
-      <div class="roadmap-badge" role="img" aria-label="Phase 3: Months 7-9">M7-9</div>
-      <div class="roadmap-title">Integration</div>
-      <div class="roadmap-body">Machine worker fleet. MQTT telemetry. Beta customers, stress tests.</div>
-      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">6 engineers</div>
-    </div>
-    <div class="roadmap-phase">
-      <div class="roadmap-badge" role="img" aria-label="Phase 4: Months 10-12">M10-12</div>
-      <div class="roadmap-title">Launch</div>
-      <div class="roadmap-body">Enterprise pilots. LumenForge + ThreadWeave launch. Community onboarding.</div>
-      <div style="margin-top:var(--space-sm);font-family:var(--font-circuit);font-size:0.7rem;color:var(--loom-copper)">6 engineers</div>
-    </div>
-  </div>
-</section>
-<footer class="footer-loom" id="cta">
-  <div class="reveal">
-    <h2 class="footer-tagline">The Bridge is the Product.</h2>
-    <p style="font-family:var(--font-parchment);font-size:1.2rem;color:var(--loom-dust);max-width:600px;margin:0 auto;line-height:1.6">There are good design tools. There are good fabrication machines. Omni-Loom is the reliable, deterministic, auditable bridge between them.</p>
-    <div class="social-proof" aria-label="Trusted by fabrication shops worldwide">
-      <span class="social-proof-item">CNC Routers</span>
-      <span style="color:var(--loom-copper)">&#9670;</span>
-      <span class="social-proof-item">Embroidery</span>
-      <span style="color:var(--loom-copper)">&#9670;</span>
-      <span class="social-proof-item">Laser Cutting</span>
-      <span style="color:var(--loom-copper)">&#9670;</span>
-      <span class="social-proof-item">3D Printing</span>
-    </div>
-    <div class="footer-cta">
-      <a href="#" class="btn-loom btn-copper" aria-label="Schedule enterprise pilot" onclick="event.preventDefault();alert('Enterprise pilot scheduling coming soon.')">Schedule Pilot</a>
-      <a href="#" class="btn-loom btn-ghost" aria-label="Download technical whitepaper" onclick="event.preventDefault();alert('Technical whitepaper download coming soon.')">Download Whitepaper</a>
-    </div>
-    <form class="newsletter-loom" onsubmit="event.preventDefault();handleNewsletter(this);" aria-label="Newsletter signup">
-      <input type="email" placeholder="Enter your email for updates" aria-label="Email address for newsletter" required>
-      <button type="submit" class="btn-loom btn-copper" aria-label="Subscribe to newsletter">Subscribe</button>
-    </form>
-    <div style="margin-top:var(--space-2xl);padding-top:var(--space-lg);border-top:1px solid rgba(212,168,67,0.1)">
-      <p style="font-family:var(--font-circuit);font-size:0.75rem;color:var(--loom-dust);opacity:0.5">Omni-Loom Fabrication Compiler &copy; 2026 &mdash; Every cut, compiled.</p>
-    </div>
-  </div>
-</footer>
-</div>
-<script>
-(function(){
-'use strict';
-const CONFIG={cursor:{enabled:!window.matchMedia('(pointer: coarse)').matches,trailCount:8,lerp:0.15},particles:{count:60,connectionThreshold:120,mouseRepelRadius:100},audio:{enabled:!0,frequencies:[110,164.81,220,329.63],reducedMotionRespect:!0},scrollReveal:{threshold:0.15,rootMargin:'0px'},soundEffects:{enabled:!0,volume:0.05}};
-const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(prefersReducedMotion&&CONFIG.audio.reducedMotionRespect){CONFIG.audio.enabled=!1;CONFIG.soundEffects.enabled=!1}
-const scrollProgress=document.getElementById('scrollProgress');
-function updateScrollProgress(){const s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight,p=d>0?(s/d)*100:0;scrollProgress.style.width=p+'%';scrollProgress.setAttribute('aria-valuenow',Math.round(p))}
-window.addEventListener('scroll',updateScrollProgress,{passive:!0});updateScrollProgress();
-const cursor=document.getElementById('cursor');
-let mouseX=0,mouseY=0,cursorX=0,cursorY=0;
-const trails=[];
-for(let i=0;i<8;i++){const t=document.createElement('div');t.className='cursor-trail';document.body.appendChild(t);trails.push({el:t,x:0,y:0})}
-document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
-function animateCursor(){cursorX+=(mouseX-cursorX)*0.15;cursorY+=(mouseY-cursorY)*0.15;cursor.style.left=cursorX+'px';cursor.style.top=cursorY+'px';let px=cursorX,py=cursorY;trails.forEach((t,i)=>{t.x+=(px-t.x)*(0.1+i*0.02);t.y+=(py-t.y)*(0.1+i*0.02);t.el.style.left=t.x+'px';t.el.style.top=t.y+'px';t.el.style.opacity=0.5-(i/8)*0.4;t.el.style.transform=`translate(-50%,-50%) scale(${1-i*0.08})`;px=t.x;py=t.y});requestAnimationFrame(animateCursor)}
-animateCursor();
-document.querySelectorAll('a,button,.card-loom,.morphism-panel,.pipeline-node').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='48px';cursor.style.height='48px';cursor.style.borderColor='var(--loom-thread-cyan)'});el.addEventListener('mouseleave',()=>{cursor.style.width='24px';cursor.style.height='24px';cursor.style.borderColor='var(--loom-copper)'})});
-const canvas=document.getElementById('particle-canvas');
-const ctx=canvas.getContext('2d');
-let particles=[];
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-resize();window.addEventListener('resize',resize);
-class Particle{constructor(){this.reset()}
-reset(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*2+0.5;this.speedX=(Math.random()-0.5)*0.3;this.speedY=(Math.random()-0.5)*0.3;this.opacity=Math.random()*0.5+0.1;this.hue=Math.random()>0.5?30:170}
-update(){this.x+=this.speedX;this.y+=this.speedY;const dx=this.x-mouseX,dy=this.y-mouseY,d=Math.sqrt(dx*dx+dy*dy);if(d<100){const f=(100-d)/100;this.x+=(dx/d)*f*2;this.y+=(dy/d)*f*2}if(this.x<0||this.x>canvas.width||this.y<0||this.y>canvas.height)this.reset()}
-draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`hsla(${this.hue},70%,60%,${this.opacity})`;ctx.fill()}}
-for(let i=0;i<60;i++)particles.push(new Particle());
-function drawConnections(){for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(212,168,67,${0.08*(1-d/120)})`;ctx.lineWidth=0.5;ctx.stroke()}}}}
-function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});drawConnections();requestAnimationFrame(animateParticles)}
-animateParticles();
-const revealObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');entry.target.querySelectorAll('.stat-number[data-count]').forEach(stat=>{if(stat.dataset.animated)return;stat.dataset.animated='true';const target=parseInt(stat.dataset.count),start=performance.now(),duration=2000;function update(now){const elapsed=now-start,progress=Math.min(elapsed/duration,1),eased=1-Math.pow(1-progress,3);stat.textContent=Math.floor(eased*target);if(progress<1)requestAnimationFrame(update);else stat.textContent=target+(target===100?'%':'+')}requestAnimationFrame(update)})}})},{threshold:0.15});
-document.querySelectorAll('.reveal,.pipeline-stage').forEach(el=>revealObserver.observe(el));
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>100)});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const id=this.getAttribute('href');if(id==='#')return;e.preventDefault();const target=document.querySelector(id);if(target)target.scrollIntoView({behavior:'smooth',block:'start'})})});
-const hub=document.getElementById('manifestoHub');
-[{l:'CNC',d:'SVG→G-Code',s:'top:5%;left:50%;transform:translateX(-50%)'},{l:'Embroidery',d:'SVG→DST',s:'top:12%;right:8%'},{l:'Screen Print',d:'PNG layers',s:'top:50%;right:3%;transform:translateY(-50%)'},{l:'Sublimation',d:'WebGPU→300DPI',s:'bottom:12%;right:8%'},{l:'Laser Cut',d:'Kerf comp',s:'bottom:5%;left:50%;transform:translateX(-50%)'},{l:'3D Print',d:'Sliced G-Code',s:'bottom:12%;left:8%'},{l:'Weaving',d:'Jacquard',s:'top:50%;left:3%;transform:translateY(-50%)'},{l:'Quilting',d:'Long-arm',s:'top:12%;left:8%'}].forEach(sp=>{const el=document.createElement('div');el.className='manifesto-spoke';el.style.cssText=sp.s;el.innerHTML=`<div style="font-family:var(--font-embroidery);color:var(--loom-copper-light);font-size:0.9rem">${sp.l}</div><div style="font-size:0.7rem;color:var(--loom-dust);margin-top:4px">${sp.d}</div>`;hub.appendChild(el)});
-const audioToggle=document.getElementById('audioToggle');
-let audioEnabled=!1,audioCtx=null,gainNodes=[];
-function initAudio(){if(audioCtx)return;audioCtx=new(window.AudioContext||window.webkitAudioContext)();[110,164.81,220,329.63].forEach((freq,i)=>{const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(),filter=audioCtx.createBiquadFilter();osc.type=i%2===0?'sine':'triangle';osc.frequency.value=freq;filter.type='lowpass';filter.frequency.value=800;gain.gain.value=0;osc.connect(filter);filter.connect(gain);gain.connect(audioCtx.destination);osc.start();gainNodes.push(gain)})}
-audioToggle.addEventListener('click',()=>{if(!audioEnabled){initAudio();audioCtx.resume();gainNodes.forEach((g,i)=>g.gain.setTargetAtTime([0.03,0.02,0.015,0.01][i],audioCtx.currentTime,1));audioToggle.classList.remove('muted');audioEnabled=!0}else{gainNodes.forEach(g=>g.gain.setTargetAtTime(0,audioCtx.currentTime,0.5));audioToggle.classList.add('muted');audioEnabled=!1}});
-let sfxCtx=null;
-function initSfx(){if(sfxCtx||!CONFIG.soundEffects.enabled)return;sfxCtx=new(window.AudioContext||window.webkitAudioContext)()}
-function playSfx(type){if(!sfxCtx||!CONFIG.soundEffects.enabled)return;if(sfxCtx.state==='suspended')sfxCtx.resume();const osc=sfxCtx.createOscillator(),gain=sfxCtx.createGain(),now=sfxCtx.currentTime;if(type==='hover'){osc.type='sine';osc.frequency.setValueAtTime(800,now);osc.frequency.exponentialRampToValueAtTime(1200,now+0.05);gain.gain.setValueAtTime(CONFIG.soundEffects.volume,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.08)}else if(type==='click'){osc.type='triangle';osc.frequency.setValueAtTime(600,now);osc.frequency.exponentialRampToValueAtTime(300,now+0.1);gain.gain.setValueAtTime(CONFIG.soundEffects.volume*1.5,now);gain.gain.exponentialRampToValueAtTime(0.001,now+0.15)}osc.connect(gain);gain.connect(sfxCtx.destination);osc.start(now);osc.stop(now+0.15)}
-if(CONFIG.soundEffects.enabled){document.querySelectorAll('a,button,.card-loom,.morphism-panel,.pipeline-node,.btn-loom').forEach(el=>{el.addEventListener('mouseenter',()=>{initSfx();playSfx('hover')},{passive:!0});el.addEventListener('click',()=>{initSfx();playSfx('click')})})}
-if('vibrate' in navigator&&CONFIG.soundEffects.enabled){document.querySelectorAll('.btn-loom,.pipeline-node,.audio-toggle,.exit-modal-close').forEach(el=>{el.addEventListener('click',()=>{navigator.vibrate(20)},{passive:!0})});document.querySelectorAll('.card-loom,.morphism-panel').forEach(el=>{el.addEventListener('mouseenter',()=>{navigator.vibrate(8)},{passive:!0})})}
-let exitIntentTriggered=!1;
-document.addEventListener('mouseleave',(e)=>{if(exitIntentTriggered)return;if(e.clientY<10&&e.relatedTarget===null){exitIntentTriggered=!0;const modal=document.getElementById('exitModal');modal.classList.add('active');modal.querySelector('.exit-modal-close').focus()}});
-document.getElementById('exitModalClose').addEventListener('click',()=>{document.getElementById('exitModal').classList.remove('active')});
-document.getElementById('exitModal').addEventListener('click',(e)=>{if(e.target.id==='exitModal')e.target.classList.remove('active')});
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape')document.getElementById('exitModal').classList.remove('active')});
-window.handleNewsletter=function(form){const email=form.querySelector('input[type="email"]').value;console.log('%c Newsletter signup: '+email,'color:#00D4AA;font-weight:bold');alert('Thanks for subscribing! We\'ll send updates to '+email);form.reset()};
-window.handleWhitepaperDownload=function(form){const email=form.querySelector('input[type="email"]').value;console.log('%c Whitepaper download: '+email,'color:#D4A843;font-weight:bold');alert('The whitepaper will be sent to '+email+' shortly!');document.getElementById('exitModal').classList.remove('active');form.reset()};
-const pipelineStages=document.querySelectorAll('.pipeline-stage');
-const pipelineThread=document.querySelector('.pipeline-thread');
-if(pipelineStages.length&&pipelineThread){const pipelineObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const stage=parseInt(entry.target.dataset.stage);const pct=(stage/pipelineStages.length)*100;pipelineThread.style.background=`linear-gradient(180deg, var(--loom-copper) 0%, var(--loom-thread-cyan) ${Math.min(25,pct)}%, var(--loom-thread-magenta) ${Math.min(50,pct)}%, var(--loom-thread-violet) ${Math.min(75,pct)}%, var(--loom-copper) 100%)`;pipelineThread.style.boxShadow=`0 0 ${10+stage*2}px rgba(0,212,170,0.${Math.min(5,stage)})`}})},{threshold:0.5});pipelineStages.forEach(s=>pipelineObserver.observe(s))}
-window.addEventListener('scroll',()=>{const scrolled=window.scrollY;const holo=document.querySelector('.bg-holo');if(holo)holo.style.transform=`translateY(${scrolled*0.15}px)`},{passive:!0});
-console.log('%c Omni-Loom Fabrication Compiler ','background:#B87333;color:#1A0F2E;font-size:14px;font-weight:bold;padding:4px 8px;border-radius:4px');
-console.log('%c Every cut, compiled. ','color:#D4A843;font-style:italic');
-})();
-</script>
+  </footer>
+
+  <button class="audio-toggle" id="audioToggle" type="button" aria-label="Turn ambient sound on" aria-pressed="false">
+    <span aria-hidden="true">♪</span>
+  </button>
+  <script src="app.js" defer></script>
 </body>
 </html>
