@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - index.html
+      - styles.css
+      - app.js
       - tests/interaction-audit.mjs
       - docs/INTERACTION_INTENT_MATRIX.md
       - .github/workflows/interaction-audit.yml
