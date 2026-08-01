@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "0.1.0",
+  "specimenId": "omni-loom-specimen-v0",
+  "status": "candidate",
+  "sourceIntent": {
+    "description": "Compile a bounded two-dimensional weave sample into a deterministic machine plan.",
+    "successCondition": "Identical validated inputs produce an identical plan and receipt hash."
+  },
+  "machineProfile": {
+    "kind": "simulated-loom",
+    "profileVersion": "0.1.0",
+    "constraints": {
+      "maxWidthMm": 200,
+      "maxHeightMm": 200,
+      "supportedOperations": ["warp", "weft", "lift", "advance"]
+    }
+  },
+  "materialAssumptions": {
+    "warp": "cotton-20-2",
+    "weft": "cotton-20-2",
+    "nominalDiameterMm": 0.25,
+    "tensionClass": "medium"
+  },
+  "inputPattern": {
+    "type": "plain-weave",
+    "widthCells": 16,
+    "heightCells": 16,
+    "repeat": [2, 2]
+  },
+  "validation": {
+    "required": [
+      "schema-valid",
+      "machine-compatible",
+      "material-assumptions-declared",
+      "plan-deterministic",
+      "receipt-hash-stable"
+    ],
+    "knownFailure": {
+      "id": "unsupported-width",
+      "trigger": "requested physical width exceeds machineProfile.constraints.maxWidthMm",
+      "expectedResult": "Compilation fails before plan emission with a machine-constraint diagnostic."
+    }
+  },
+  "evidenceMaturity": "simulated",
+  "approvalState": "draft"
+}
